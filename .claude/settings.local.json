@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Read(//c/Users/heather.wang/personal/**)",
+      "Bash(npx --yes create-next-app@latest tarrot --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --no-turbopack --use-npm --yes)"
+    ]
+  }
+}
