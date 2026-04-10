@@ -84,9 +84,54 @@ export const dict: Dict = {
     en: "Three cards · past · present · future",
     zh: "三张牌 · 过去 · 现在 · 未来",
   },
+  "reading.spread.single.help": {
+    en: "Best for a quick check-in, a one-line question, or a card-of-the-day. Use when you want clarity on one specific thing right now.",
+    zh: "适合快速的内省、一句话的提问，或日常的「今日一张牌」。当你想就某件具体的事获得清晰时使用。",
+  },
+  "reading.spread.three.help": {
+    en: "Best when a situation has history and direction — relationships, decisions, life chapters. The cards show where it came from, where you stand, and where it is tending.",
+    zh: "适合那些有来历与去向的情境——关系、决定、人生章节。三张牌分别显示它从何而来、你身处何处，以及它正向何处倾斜。",
+  },
   "reading.deck.label": { en: "Deck", zh: "牌组" },
   "reading.deck.major": { en: "Major Arcana (22)", zh: "大阿卡纳 (22)" },
   "reading.deck.full": { en: "Full deck (78)", zh: "全牌组 (78)" },
+  "reading.deck.major.help": {
+    en: "Major Arcana speaks to the great themes of a life — love, change, endings, calling. Choose this when your question feels big, soul-level, or archetypal.",
+    zh: "大阿卡纳诉说生命的宏大主题——爱、变迁、结束、召唤。当你的问题感觉宏大、灵魂层面或带有原型意味时，选择它。",
+  },
+  "reading.deck.full.help": {
+    en: "The full 78-card deck includes the four suits — fire, water, air, earth — for the texture of daily life. Choose this for everyday situations: work, money, friendships, the next concrete step.",
+    zh: "完整的78张牌组包含四个花色——火、水、风、土——对应日常生活的纹理。当涉及工作、金钱、友谊、下一个具体步骤等日常情境时选择它。",
+  },
+  "reading.keywords.label": { en: "Keywords", zh: "关键词" },
+  "reading.position.intro.past": {
+    en: "In the past position, this card describes the soil this question grew from.",
+    zh: "在「过去」的位置，这张牌描绘了此问题所生长的土壤。",
+  },
+  "reading.position.intro.present": {
+    en: "In the present position, it speaks to where you stand right now.",
+    zh: "在「现在」的位置，它诉说着你此刻所立之处。",
+  },
+  "reading.position.intro.future": {
+    en: "In the future position, it suggests where this is tending — not fate, but trajectory.",
+    zh: "在「未来」的位置，它暗示着事物正向何处倾斜——不是命运，而是趋势。",
+  },
+  "reading.synthesis.title": {
+    en: "A question to sit with",
+    zh: "一个可以静坐的问题",
+  },
+  "reading.synthesis.body": {
+    en: "How do these three movements echo each other in your life right now? What single small action would honor what the cards are showing?",
+    zh: "这三个动向，如何在你当下的生活中彼此回响？什么样的一个小行动，会回应这些牌所显示之物？",
+  },
+  "reading.single.synthesis.title": {
+    en: "Sit with this",
+    zh: "静坐于此",
+  },
+  "reading.single.synthesis.body": {
+    en: "Read the meaning slowly, twice. Notice which line catches you — that is where the card is speaking to you specifically.",
+    zh: "缓慢地读两遍含义。留意哪一句让你停顿——那便是这张牌对你具体所言之处。",
+  },
   "reading.draw": { en: "Draw cards", zh: "抽牌" },
   "reading.redraw": { en: "Draw again", zh: "重新抽牌" },
   "reading.shuffling": { en: "Shuffling…", zh: "洗牌中…" },
