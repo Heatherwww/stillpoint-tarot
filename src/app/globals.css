@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Minimalist modern purple palette */
+  --background: #faf8ff;
+  --foreground: #1a0f2e;
+  --surface: #ffffff;
+  --surface-muted: #f3eeff;
+  --border: #e6dcff;
+  --primary: #6b46c1;        /* deep violet */
+  --primary-hover: #553098;
+  --primary-soft: #ede6ff;
+  --accent: #b08968;         /* soft antique gold */
+  --accent-soft: #f5ead8;
+  --muted: #6b6480;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+html, body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
+
+.font-serif-display {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Subtle starfield */
+.starfield {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(107, 70, 193, 0.25), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(176, 137, 104, 0.3), transparent),
+    radial-gradient(1.5px 1.5px at 40% 80%, rgba(107, 70, 193, 0.2), transparent),
+    radial-gradient(1px 1px at 85% 20%, rgba(176, 137, 104, 0.25), transparent),
+    radial-gradient(1px 1px at 10% 70%, rgba(107, 70, 193, 0.2), transparent);
+}
+
+/* Card flip animation */
+.card-back {
+  background:
+    radial-gradient(circle at 50% 50%, #7e57c2 0%, #4a2c7a 60%, #2d1b4e 100%);
+  background-size: cover;
+}
+
+@keyframes float-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-float-in { animation: float-in 0.5s ease-out both; }
