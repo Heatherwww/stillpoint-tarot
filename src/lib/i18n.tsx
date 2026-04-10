@@ -16,8 +16,35 @@ type Dict = Record<string, { en: string; zh: string }>;
 export const dict: Dict = {
   "nav.home": { en: "Home", zh: "首页" },
   "nav.reading": { en: "Reading", zh: "占卜" },
+  "nav.cards": { en: "Cards", zh: "牌库" },
   "nav.shop": { en: "Shop", zh: "商店" },
   "nav.brand": { en: "Lumen Tarot", zh: "流光塔罗" },
+
+  // Card library
+  "cards.title": { en: "The Card Library", zh: "塔罗牌库" },
+  "cards.subtitle": {
+    en: "All 78 cards of the Rider-Waite-Smith deck. Tap any card to read its full meaning, upright and reversed.",
+    zh: "莱德-韦特-史密斯牌组的全部 78 张。点击任意一张牌，查看其正位与逆位的完整含义。",
+  },
+  "cards.filter.all": { en: "All", zh: "全部" },
+  "cards.filter.major": { en: "Major Arcana", zh: "大阿卡纳" },
+  "cards.filter.wands": { en: "Wands", zh: "权杖" },
+  "cards.filter.cups": { en: "Cups", zh: "圣杯" },
+  "cards.filter.swords": { en: "Swords", zh: "宝剑" },
+  "cards.filter.pentacles": { en: "Pentacles", zh: "星币" },
+
+  "card.arcana.major": { en: "Major Arcana", zh: "大阿卡纳" },
+  "card.arcana.minor": { en: "Minor Arcana", zh: "小阿卡纳" },
+  "card.number.label": { en: "Number", zh: "编号" },
+  "card.suit.label": { en: "Suit", zh: "花色" },
+  "card.upright.title": { en: "Upright meaning", zh: "正位含义" },
+  "card.reversed.title": { en: "Reversed meaning", zh: "逆位含义" },
+  "card.keywords.label": { en: "Keywords", zh: "关键词" },
+  "card.cta": {
+    en: "Draw a reading with this deck",
+    zh: "用这副牌做一次解读",
+  },
+  "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
 
   "footer.tagline": {
     en: "A quiet space for tarot.",

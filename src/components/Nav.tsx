@@ -23,6 +23,12 @@ export default function Nav() {
             {t("nav.reading")}
           </Link>
           <Link
+            href="/cards"
+            className="text-muted hover:text-foreground transition-colors"
+          >
+            {t("nav.cards")}
+          </Link>
+          <Link
             href="/shop"
             className="text-muted hover:text-foreground transition-colors"
           >
