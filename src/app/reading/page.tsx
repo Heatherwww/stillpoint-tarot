@@ -10,29 +10,76 @@ import {
   getKeywords,
   getMeaning,
   type DrawnCard,
+  type TarotCard,
 } from "@/lib/cards";
 
 type SpreadKind = "single" | "three";
 type DeckKind = "major" | "full";
+type Area = "love" | "work" | "self" | "decision" | "general";
+type Situation = "stuck" | "choosing" | "processing" | "curious";
+type Intent = "clarity" | "permission" | "push" | "reflection";
 
 const POSITION_KEYS = ["past", "present", "future"] as const;
+const AREAS: Area[] = ["love", "work", "self", "decision", "general"];
+const SITUATIONS: Situation[] = ["stuck", "choosing", "processing", "curious"];
+const INTENTS: Intent[] = ["clarity", "permission", "push", "reflection"];
 
 export default function ReadingPage() {
   const { t, lang } = useLang();
+
+  // Questions
+  const [area, setArea] = useState<Area | null>(null);
+  const [situation, setSituation] = useState<Situation | null>(null);
+  const [intent, setIntent] = useState<Intent | null>(null);
+
+  // Spread/deck
   const [spread, setSpread] = useState<SpreadKind>("single");
   const [deck, setDeck] = useState<DeckKind>("major");
+
+  // Drawn state
   const [drawn, setDrawn] = useState<DrawnCard[] | null>(null);
+  const [clarifier, setClarifier] = useState<DrawnCard | null>(null);
   const [shuffling, setShuffling] = useState(false);
 
+  // Follow-ups revealed
+  const [showApplies, setShowApplies] = useState(false);
+  const [showStep, setShowStep] = useState(false);
+
+  // The answers locked in at draw-time (so later language-switches still match)
+  const [lockedAnswers, setLockedAnswers] = useState<{
+    area: Area;
+    situation: Situation;
+    intent: Intent;
+  } | null>(null);
+
+  const canDraw = area && situation && intent && !shuffling;
+
   const handleDraw = () => {
+    if (!area || !situation || !intent) return;
     setShuffling(true);
     setDrawn(null);
+    setClarifier(null);
+    setShowApplies(false);
+    setShowStep(false);
     const source = deck === "full" ? fullDeck : majorArcana;
     const count = spread === "single" ? 1 : 3;
     setTimeout(() => {
       setDrawn(drawCards(source, count));
+      setLockedAnswers({ area, situation, intent });
       setShuffling(false);
     }, 900);
+  };
+
+  const handleClarify = () => {
+    if (!drawn) return;
+    // Exclude already-drawn cards from the clarifying draw
+    const used = new Set(drawn.map((d) => d.card.id));
+    if (clarifier) used.add(clarifier.card.id);
+    const source = (deck === "full" ? fullDeck : majorArcana).filter(
+      (c: TarotCard) => !used.has(c.id)
+    );
+    const [card] = drawCards(source, 1);
+    setClarifier(card);
   };
 
   return (
@@ -44,8 +91,50 @@ export default function ReadingPage() {
         <p className="mt-3 text-muted">{t("reading.subtitle")}</p>
       </header>
 
-      {/* Controls */}
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
+      {/* Pre-reading questions */}
+      <section className="mt-12 rounded-2xl border border-border bg-surface p-8">
+        <div className="text-center">
+          <h2 className="font-serif-display text-2xl text-primary">
+            {t("reading.questions.title")}
+          </h2>
+          <p className="mt-2 text-sm text-muted">
+            {t("reading.questions.subtitle")}
+          </p>
+        </div>
+
+        <div className="mt-8 space-y-8">
+          <QuestionBlock
+            label={t("reading.q.area")}
+            options={AREAS.map((a) => ({
+              value: a,
+              label: t(`area.${a}` as never),
+            }))}
+            value={area}
+            onChange={(v) => setArea(v as Area)}
+          />
+          <QuestionBlock
+            label={t("reading.q.situation")}
+            options={SITUATIONS.map((s) => ({
+              value: s,
+              label: t(`situation.${s}` as never),
+            }))}
+            value={situation}
+            onChange={(v) => setSituation(v as Situation)}
+          />
+          <QuestionBlock
+            label={t("reading.q.intent")}
+            options={INTENTS.map((i) => ({
+              value: i,
+              label: t(`intent.${i}` as never),
+            }))}
+            value={intent}
+            onChange={(v) => setIntent(v as Intent)}
+          />
+        </div>
+      </section>
+
+      {/* Spread + deck controls */}
+      <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border border-border bg-surface p-6">
           <div className="text-xs uppercase tracking-wider text-muted">
             {t("reading.spread.label")}
@@ -86,11 +175,12 @@ export default function ReadingPage() {
         </div>
       </div>
 
-      <div className="mt-8 flex justify-center">
+      {/* Draw button */}
+      <div className="mt-8 flex flex-col items-center gap-2">
         <button
           onClick={handleDraw}
-          disabled={shuffling}
-          className="rounded-full bg-primary px-8 py-3 text-white font-medium hover:bg-primary-hover transition-colors disabled:opacity-60"
+          disabled={!canDraw}
+          className="rounded-full bg-primary px-8 py-3 text-white font-medium hover:bg-primary-hover transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           {shuffling
             ? t("reading.shuffling")
@@ -98,116 +188,166 @@ export default function ReadingPage() {
             ? t("reading.redraw")
             : t("reading.draw")}
         </button>
+        {!canDraw && !shuffling && (
+          <p className="text-xs text-muted">
+            {t("reading.draw.disabled")}
+          </p>
+        )}
       </div>
 
-      {/* Drawn cards */}
-      {drawn && (
-        <>
-          <div
-            className={`mt-14 grid gap-8 ${
-              drawn.length === 1
-                ? "max-w-2xl mx-auto"
-                : "md:grid-cols-3"
-            }`}
-          >
-            {drawn.map((d, i) => {
-              const positionKey =
-                drawn.length > 1 ? POSITION_KEYS[i] : null;
-              const positionLabel = positionKey
-                ? t(`reading.position.${positionKey}` as never)
-                : null;
-              const positionIntro = positionKey
-                ? t(`reading.position.intro.${positionKey}` as never)
-                : null;
-              return (
-                <article
-                  key={`${d.card.id}-${i}`}
-                  className="animate-float-in rounded-2xl border border-border bg-surface p-6"
-                  style={{ animationDelay: `${i * 150}ms` }}
-                >
-                  {positionLabel && (
-                    <div className="text-center text-xs uppercase tracking-wider text-accent">
-                      {positionLabel}
-                    </div>
-                  )}
-                  <div className="mx-auto mt-3 aspect-[2/3] w-40 rounded-xl card-back flex items-center justify-center text-white/90 shadow-lg">
-                    <div
-                      className={`font-serif-display text-2xl px-3 text-center ${
-                        d.reversed ? "rotate-180" : ""
-                      }`}
-                    >
-                      {getName(d.card, lang)}
-                    </div>
-                  </div>
-                  <h3 className="mt-5 font-serif-display text-2xl text-center">
-                    {getName(d.card, lang)}
-                  </h3>
-                  <div className="mt-2 text-center">
-                    <span
-                      className={`inline-block text-xs px-2 py-0.5 rounded-full ${
-                        d.reversed
-                          ? "bg-accent-soft text-accent"
-                          : "bg-primary-soft text-primary"
-                      }`}
-                    >
-                      {d.reversed
-                        ? t("reading.reversed")
-                        : t("reading.upright")}
-                    </span>
-                  </div>
-
-                  {/* Keywords */}
-                  <div className="mt-4">
-                    <div className="text-[10px] uppercase tracking-wider text-muted text-center">
-                      {t("reading.keywords.label")}
-                    </div>
-                    <div className="mt-2 flex flex-wrap justify-center gap-1.5">
-                      {getKeywords(d.card, lang).map((kw) => (
-                        <span
-                          key={kw}
-                          className="text-xs px-2.5 py-1 rounded-full bg-surface-muted text-foreground/70 border border-border"
-                        >
-                          {kw}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Position framing (3-card only) */}
-                  {positionIntro && (
-                    <p className="mt-5 text-sm italic text-muted leading-relaxed text-center">
-                      {positionIntro}
-                    </p>
-                  )}
-
-                  {/* Full meaning */}
-                  <p className="mt-4 text-sm text-foreground/85 leading-relaxed">
-                    {getMeaning(d, lang)}
-                  </p>
-                </article>
-              );
-            })}
-          </div>
-
-          {/* Closing reflection */}
-          <div className="mt-14 mx-auto max-w-2xl rounded-2xl border border-border bg-surface-muted p-8 text-center">
-            <div className="font-serif-display text-2xl text-primary">
-              {drawn.length === 1
-                ? t("reading.single.synthesis.title")
-                : t("reading.synthesis.title")}
-            </div>
-            <p className="mt-3 text-foreground/80 leading-relaxed">
-              {drawn.length === 1
-                ? t("reading.single.synthesis.body")
-                : t("reading.synthesis.body")}
+      {/* Reading result */}
+      {drawn && lockedAnswers && (
+        <div className="mt-16">
+          {/* Opener, tuned to area */}
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-serif-display text-xl text-foreground/90 leading-relaxed">
+              {t(`opener.${lockedAnswers.area}` as never)}
             </p>
           </div>
-        </>
+
+          {/* Drawn cards */}
+          <div
+            className={`mt-12 grid gap-8 ${
+              drawn.length === 1 ? "max-w-2xl mx-auto" : "md:grid-cols-3"
+            }`}
+          >
+            {drawn.map((d, i) => (
+              <CardDisplay
+                key={`${d.card.id}-${i}`}
+                drawn={d}
+                positionIndex={drawn.length > 1 ? i : null}
+                delayMs={i * 150}
+              />
+            ))}
+          </div>
+
+          {/* Situation bridge */}
+          <p className="mt-10 mx-auto max-w-2xl text-center text-sm italic text-muted leading-relaxed">
+            {t(`bridge.${lockedAnswers.situation}` as never)}
+          </p>
+
+          {/* Intent closer */}
+          <div className="mt-8 mx-auto max-w-2xl rounded-2xl border border-border bg-surface-muted p-8">
+            <p className="text-foreground/85 leading-relaxed">
+              {t(`closer.${lockedAnswers.intent}` as never)}
+            </p>
+          </div>
+
+          {/* Follow-up buttons */}
+          <div className="mt-12">
+            <div className="text-center">
+              <h3 className="font-serif-display text-2xl text-primary">
+                {t("followup.title")}
+              </h3>
+            </div>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <FollowUpButton
+                onClick={() => setShowApplies((v) => !v)}
+                active={showApplies}
+                label={t("followup.applies")}
+              />
+              <FollowUpButton
+                onClick={() => setShowStep((v) => !v)}
+                active={showStep}
+                label={t("followup.step")}
+              />
+              <FollowUpButton
+                onClick={handleClarify}
+                active={!!clarifier}
+                label={t("followup.clarify")}
+              />
+            </div>
+
+            {/* Applies panel */}
+            {showApplies && (
+              <div className="animate-float-in mt-6 mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-6">
+                <p className="text-foreground/85 leading-relaxed">
+                  {t(`applies.${lockedAnswers.area}` as never)}
+                </p>
+              </div>
+            )}
+
+            {/* Step panel */}
+            {showStep && (
+              <div className="animate-float-in mt-6 mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-6">
+                <p className="text-foreground/85 leading-relaxed">
+                  {t(`step.${lockedAnswers.intent}` as never)}
+                </p>
+              </div>
+            )}
+
+            {/* Clarifying card */}
+            {clarifier && (
+              <div className="animate-float-in mt-8 mx-auto max-w-md">
+                <div className="text-center text-xs uppercase tracking-wider text-accent mb-3">
+                  {t("followup.clarify.label")}
+                </div>
+                <CardDisplay drawn={clarifier} positionIndex={null} delayMs={0} />
+              </div>
+            )}
+          </div>
+
+          {/* Locked teaser */}
+          <div className="mt-16 mx-auto max-w-2xl">
+            <div className="relative rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-primary-soft to-surface-muted p-8 overflow-hidden">
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-primary">
+                <LockIcon />
+                <span>{t("locked.label")}</span>
+              </div>
+              <h3 className="mt-3 font-serif-display text-2xl text-primary">
+                {t("locked.title")}
+              </h3>
+              <p className="mt-4 text-foreground/85 leading-relaxed">
+                {t("locked.body")}
+              </p>
+              <p className="mt-5 text-foreground/40 italic leading-relaxed blur-[1.5px] select-none">
+                {t("locked.preview")}
+              </p>
+            </div>
+          </div>
+        </div>
       )}
 
       <p className="mt-16 text-center text-xs text-muted">
         {t("reading.disclaimer")}
       </p>
+    </div>
+  );
+}
+
+function QuestionBlock({
+  label,
+  options,
+  value,
+  onChange,
+}: {
+  label: string;
+  options: { value: string; label: string }[];
+  value: string | null;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div>
+      <div className="text-sm font-medium text-foreground/90">{label}</div>
+      <div className="mt-3 flex flex-wrap gap-2">
+        {options.map((opt) => {
+          const active = value === opt.value;
+          return (
+            <button
+              key={opt.value}
+              type="button"
+              onClick={() => onChange(opt.value)}
+              className={`rounded-full px-4 py-2 text-sm border transition-colors ${
+                active
+                  ? "bg-primary text-white border-primary"
+                  : "bg-surface text-foreground/80 border-border hover:border-primary"
+              }`}
+            >
+              {opt.label}
+            </button>
+          );
+        })}
+      </div>
     </div>
   );
 }
@@ -243,5 +383,125 @@ function ChoiceRow({
         </span>
       </span>
     </label>
+  );
+}
+
+function CardDisplay({
+  drawn,
+  positionIndex,
+  delayMs,
+}: {
+  drawn: DrawnCard;
+  positionIndex: number | null;
+  delayMs: number;
+}) {
+  const { t, lang } = useLang();
+  const positionKey = positionIndex !== null ? POSITION_KEYS[positionIndex] : null;
+  const positionLabel = positionKey
+    ? t(`reading.position.${positionKey}` as never)
+    : null;
+  const positionIntro = positionKey
+    ? t(`reading.position.intro.${positionKey}` as never)
+    : null;
+
+  return (
+    <article
+      className="animate-float-in rounded-2xl border border-border bg-surface p-6"
+      style={{ animationDelay: `${delayMs}ms` }}
+    >
+      {positionLabel && (
+        <div className="text-center text-xs uppercase tracking-wider text-accent">
+          {positionLabel}
+        </div>
+      )}
+      <div className="mx-auto mt-3 aspect-[2/3] w-40 rounded-xl card-back flex items-center justify-center text-white/90 shadow-lg">
+        <div
+          className={`font-serif-display text-2xl px-3 text-center ${
+            drawn.reversed ? "rotate-180" : ""
+          }`}
+        >
+          {getName(drawn.card, lang)}
+        </div>
+      </div>
+      <h3 className="mt-5 font-serif-display text-2xl text-center">
+        {getName(drawn.card, lang)}
+      </h3>
+      <div className="mt-2 text-center">
+        <span
+          className={`inline-block text-xs px-2 py-0.5 rounded-full ${
+            drawn.reversed
+              ? "bg-accent-soft text-accent"
+              : "bg-primary-soft text-primary"
+          }`}
+        >
+          {drawn.reversed ? t("reading.reversed") : t("reading.upright")}
+        </span>
+      </div>
+      <div className="mt-4">
+        <div className="text-[10px] uppercase tracking-wider text-muted text-center">
+          {t("reading.keywords.label")}
+        </div>
+        <div className="mt-2 flex flex-wrap justify-center gap-1.5">
+          {getKeywords(drawn.card, lang).map((kw) => (
+            <span
+              key={kw}
+              className="text-xs px-2.5 py-1 rounded-full bg-surface-muted text-foreground/70 border border-border"
+            >
+              {kw}
+            </span>
+          ))}
+        </div>
+      </div>
+      {positionIntro && (
+        <p className="mt-5 text-sm italic text-muted leading-relaxed text-center">
+          {positionIntro}
+        </p>
+      )}
+      <p className="mt-4 text-sm text-foreground/85 leading-relaxed">
+        {getMeaning(drawn, lang)}
+      </p>
+    </article>
+  );
+}
+
+function FollowUpButton({
+  onClick,
+  active,
+  label,
+}: {
+  onClick: () => void;
+  active: boolean;
+  label: string;
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`rounded-full px-5 py-2.5 text-sm border transition-colors ${
+        active
+          ? "bg-primary text-white border-primary"
+          : "bg-surface text-foreground/80 border-border hover:border-primary"
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function LockIcon() {
+  return (
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="4" y="11" width="16" height="10" rx="2" />
+      <path d="M8 11V7a4 4 0 0 1 8 0v4" />
+    </svg>
   );
 }
