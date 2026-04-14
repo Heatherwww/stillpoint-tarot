@@ -20,7 +20,7 @@ export async function generateMetadata({
 
   // English metadata for crawlers (default). Bilingual hreflang is planned
   // as a separate task — see DECISIONS.md.
-  const title = `${card.name.en} — Tarot Card Meaning · Lumen Tarot`;
+  const title = `${card.name.en} — Tarot Card Meaning · Stillpoint Tarot`;
   const description = `${card.name.en} tarot card: upright and reversed meanings, keywords, and how it shows up in love, work, and self-reflection. ${card.upright.en.slice(0, 100)}…`;
 
   return {

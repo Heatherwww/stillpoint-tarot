@@ -18,7 +18,7 @@ export const dict: Dict = {
   "nav.reading": { en: "Reading", zh: "占卜" },
   "nav.cards": { en: "Cards", zh: "牌库" },
   "nav.shop": { en: "Shop", zh: "商店" },
-  "nav.brand": { en: "Lumen Tarot", zh: "流光塔罗" },
+  "nav.brand": { en: "Stillpoint Tarot", zh: "静点塔罗" },
 
   // Card library
   "cards.title": { en: "The Card Library", zh: "塔罗牌库" },

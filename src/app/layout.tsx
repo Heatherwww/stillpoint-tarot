@@ -19,7 +19,8 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Lumen Tarot · 流光塔罗",
+  metadataBase: new URL("https://www.stillpointtarot.com"),
+  title: "Stillpoint Tarot · 静点塔罗",
   description:
     "A quiet space for tarot — learn, draw a reading, and gather your tools.",
 };

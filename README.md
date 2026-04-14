@@ -1,4 +1,4 @@
-# Lumen Tarot · 流光塔罗
+# Stillpoint Tarot · 静点塔罗
 
 A small bilingual (English / 中文) tarot website with three sections:
 

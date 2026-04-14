@@ -1,7 +1,8 @@
 import type { MetadataRoute } from "next";
 import { fullDeck } from "@/lib/cards";
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com";
+const BASE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.stillpointtarot.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
