@@ -46,6 +46,21 @@ export const dict: Dict = {
   },
   "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
 
+  // Card detail — long-form sections
+  "card.element.label": { en: "Element", zh: "元素" },
+  "card.numerology.label": { en: "Numerology", zh: "数字含义" },
+  "card.love.title": { en: "In love & relationships", zh: "在爱情与关系中" },
+  "card.career.title": { en: "In career & money", zh: "在事业与金钱中" },
+  "card.advice.title": { en: "As advice", zh: "作为指引" },
+  "card.yesno.title": { en: "Yes or no?", zh: "是 还是 否？" },
+  "card.yesno.yes": { en: "Yes", zh: "是" },
+  "card.yesno.no": { en: "No", zh: "否" },
+  "card.yesno.maybe": { en: "Maybe", zh: "也许" },
+  "card.related.title": { en: "Cards that pair with this one", zh: "与之相配的牌" },
+  "card.faq.title": { en: "Frequently asked questions", zh: "常见问题" },
+  "card.breadcrumb.home": { en: "Home", zh: "首页" },
+  "card.breadcrumb.cards": { en: "Cards", zh: "牌库" },
+
   "footer.tagline": {
     en: "A quiet space for tarot.",
     zh: "塔罗的静谧之所。",
