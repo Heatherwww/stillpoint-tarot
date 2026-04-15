@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import type { TarotCard } from "@/lib/cards";
 
@@ -38,10 +39,15 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
 
       {/* Card visual */}
       <div className="mt-10 flex justify-center">
-        <div className="aspect-[2/3] w-56 rounded-2xl card-back flex items-center justify-center text-white/90 shadow-xl">
-          <div className="font-serif-display text-3xl px-4 text-center">
-            {card.name[lang]}
-          </div>
+        <div className="w-56 overflow-hidden rounded-2xl shadow-xl bg-surface-muted">
+          <Image
+            src={`/cards/${card.id}.jpg`}
+            alt={card.name[lang]}
+            width={500}
+            height={833}
+            className="block h-auto w-full"
+            priority
+          />
         </div>
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 import {
   drawCards,
@@ -414,14 +415,15 @@ function CardDisplay({
           {positionLabel}
         </div>
       )}
-      <div className="mx-auto mt-3 aspect-[2/3] w-40 rounded-xl card-back flex items-center justify-center text-white/90 shadow-lg">
-        <div
-          className={`font-serif-display text-2xl px-3 text-center ${
-            drawn.reversed ? "rotate-180" : ""
-          }`}
-        >
-          {getName(drawn.card, lang)}
-        </div>
+      <div className="mx-auto mt-3 w-40 overflow-hidden rounded-xl shadow-lg bg-surface-muted">
+        <Image
+          src={`/cards/${drawn.card.id}.jpg`}
+          alt={getName(drawn.card, lang)}
+          width={500}
+          height={833}
+          className={`block h-auto w-full ${drawn.reversed ? "rotate-180" : ""}`}
+          priority={positionIndex === null || positionIndex === 0}
+        />
       </div>
       <h3 className="mt-5 font-serif-display text-2xl text-center">
         {getName(drawn.card, lang)}

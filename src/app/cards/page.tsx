@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import {
@@ -71,10 +72,14 @@ export default function CardsIndexPage() {
             href={`/cards/${card.id}`}
             className="group rounded-2xl border border-border bg-surface p-4 hover:border-primary transition-colors"
           >
-            <div className="aspect-[2/3] w-full rounded-xl card-back flex items-center justify-center text-white/90 shadow-md group-hover:shadow-lg transition-shadow">
-              <div className="font-serif-display text-base px-2 text-center">
-                {card.name[lang]}
-              </div>
+            <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
+              <Image
+                src={`/cards/${card.id}.jpg`}
+                alt={card.name[lang]}
+                width={500}
+                height={833}
+                className="block h-auto w-full"
+              />
             </div>
             <h3 className="mt-3 font-serif-display text-base text-center">
               {card.name[lang]}
