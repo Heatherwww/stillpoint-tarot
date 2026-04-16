@@ -45,6 +45,8 @@ export const dict: Dict = {
     zh: "用这副牌做一次解读",
   },
   "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
+  "card.prev": { en: "Previous card", zh: "上一张牌" },
+  "card.next": { en: "Next card", zh: "下一张牌" },
 
   // Card detail — long-form sections
   "card.element.label": { en: "Element", zh: "元素" },
@@ -139,6 +141,21 @@ export const dict: Dict = {
   },
   "home.hero.cta": { en: "Draw a card", zh: "抽一张牌" },
   "home.hero.shop": { en: "Visit shop", zh: "进入商店" },
+  "home.hero.browse": { en: "Browse the cards", zh: "浏览牌库" },
+
+  "home.popular.title": { en: "Most-searched tarot cards", zh: "最多人搜索的塔罗牌" },
+  "home.popular.subtitle": {
+    en: "These eight cards draw the most questions — tap any card to read its full meaning.",
+    zh: "这八张牌引发了最多提问——点击任意一张查看完整含义。",
+  },
+  "home.popular.viewall": { en: "View all 78 cards →", zh: "查看全部 78 张牌 →" },
+
+  "home.suits.title": { en: "Browse by suit", zh: "按花色浏览" },
+  "home.suits.subtitle": {
+    en: "The deck divides into five groups — the Major Arcana and four elemental suits. Explore each one.",
+    zh: "牌组分为五组——大阿卡纳与四个元素花色。逐一探索。",
+  },
+  "home.suits.cards": { en: "cards", zh: "张牌" },
 
   "home.what.title": { en: "What is tarot?", zh: "什么是塔罗？" },
   "home.what.body": {

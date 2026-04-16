@@ -3,9 +3,31 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
+import { fullDeck } from "@/lib/cards";
+
+// Most-searched tarot cards (high Google volume)
+const POPULAR_IDS = [
+  "the-fool",
+  "the-lovers",
+  "death",
+  "the-tower",
+  "three-of-swords",
+  "ten-of-pentacles",
+  "the-star",
+  "queen-of-cups",
+];
+const popularCards = POPULAR_IDS.map((id) => fullDeck.find((c) => c.id === id)!);
+
+const SUITS = [
+  { key: "major", href: "/cards/major", emoji: "✦" },
+  { key: "wands", href: "/cards/wands", emoji: "🔥" },
+  { key: "cups", href: "/cards/cups", emoji: "💧" },
+  { key: "swords", href: "/cards/swords", emoji: "🌬" },
+  { key: "pentacles", href: "/cards/pentacles", emoji: "🌿" },
+] as const;
 
 export default function HomePage() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <div>
       {/* Hero */}
@@ -34,11 +56,82 @@ export default function HomePage() {
               {t("home.hero.cta")}
             </Link>
             <Link
-              href="/shop"
+              href="/cards"
               className="rounded-full border border-border bg-surface px-6 py-3 text-foreground text-sm font-medium hover:border-primary transition-colors"
             >
-              {t("home.hero.shop")}
+              {t("home.hero.browse")}
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Popular cards */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <h2 className="font-serif-display text-3xl text-primary text-center">
+            {t("home.popular.title")}
+          </h2>
+          <p className="mt-3 text-center text-muted max-w-2xl mx-auto">
+            {t("home.popular.subtitle")}
+          </p>
+          <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-5">
+            {popularCards.map((card) => (
+              <Link
+                key={card.id}
+                href={`/cards/${card.id}`}
+                className="group rounded-2xl border border-border bg-surface p-4 hover:border-primary transition-colors"
+              >
+                <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
+                  <Image
+                    src={`/cards/${card.id}.jpg`}
+                    alt={card.name[lang]}
+                    width={500}
+                    height={833}
+                    className="block h-auto w-full"
+                  />
+                </div>
+                <h3 className="mt-3 font-serif-display text-sm text-center group-hover:text-primary transition-colors">
+                  {card.name[lang]}
+                </h3>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link
+              href="/cards"
+              className="text-sm text-primary hover:underline"
+            >
+              {t("home.popular.viewall")}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Browse by suit */}
+      <section className="border-t border-border bg-surface-muted">
+        <div className="mx-auto max-w-5xl px-6 py-20">
+          <h2 className="font-serif-display text-3xl text-primary text-center">
+            {t("home.suits.title")}
+          </h2>
+          <p className="mt-3 text-center text-muted max-w-2xl mx-auto">
+            {t("home.suits.subtitle")}
+          </p>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {SUITS.map((s) => (
+              <Link
+                key={s.key}
+                href={s.href}
+                className="group rounded-2xl border border-border bg-surface p-6 text-center hover:border-primary transition-colors"
+              >
+                <div className="text-3xl">{s.emoji}</div>
+                <h3 className="mt-3 font-serif-display text-lg group-hover:text-primary transition-colors">
+                  {t(`cards.filter.${s.key === "major" ? "major" : s.key}` as never)}
+                </h3>
+                <p className="mt-1 text-xs text-muted">
+                  {s.key === "major" ? "22" : "14"} {t("home.suits.cards")}
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -89,22 +182,28 @@ export default function HomePage() {
             {t("home.arcana.title")}
           </h2>
           <div className="mt-12 grid gap-8 md:grid-cols-2">
-            <div className="rounded-2xl border border-border p-8">
-              <h3 className="font-serif-display text-2xl">
+            <Link
+              href="/cards/major"
+              className="group rounded-2xl border border-border p-8 hover:border-primary transition-colors"
+            >
+              <h3 className="font-serif-display text-2xl group-hover:text-primary transition-colors">
                 {t("home.arcana.major.title")}
               </h3>
               <p className="mt-3 text-muted leading-relaxed">
                 {t("home.arcana.major.body")}
               </p>
-            </div>
-            <div className="rounded-2xl border border-border p-8">
-              <h3 className="font-serif-display text-2xl">
+            </Link>
+            <Link
+              href="/cards/wands"
+              className="group rounded-2xl border border-border p-8 hover:border-primary transition-colors"
+            >
+              <h3 className="font-serif-display text-2xl group-hover:text-primary transition-colors">
                 {t("home.arcana.minor.title")}
               </h3>
               <p className="mt-3 text-muted leading-relaxed">
                 {t("home.arcana.minor.body")}
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

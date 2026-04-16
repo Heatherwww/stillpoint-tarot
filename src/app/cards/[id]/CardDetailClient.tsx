@@ -34,6 +34,11 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         ? "bg-accent text-white"
         : "bg-surface-muted text-foreground";
 
+  // Prev / next navigation
+  const idx = fullDeck.findIndex((c) => c.id === card.id);
+  const prevCard = idx > 0 ? fullDeck[idx - 1] : null;
+  const nextCard = idx < fullDeck.length - 1 ? fullDeck[idx + 1] : null;
+
   // Resolve related cards
   const relatedCards = extras.related
     .map((id) => fullDeck.find((c) => c.id === id))
@@ -243,8 +248,38 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         </div>
       </section>
 
+      {/* Prev / Next navigation */}
+      <nav className="mt-12 flex items-stretch justify-between gap-4" aria-label="Card navigation">
+        {prevCard ? (
+          <Link
+            href={`/cards/${prevCard.id}`}
+            className="group flex-1 rounded-2xl border border-border bg-surface p-5 hover:border-primary transition-colors"
+          >
+            <div className="text-xs text-muted">{t("card.prev")}</div>
+            <div className="mt-1 font-serif-display text-sm group-hover:text-primary transition-colors">
+              ← {prevCard.name[lang]}
+            </div>
+          </Link>
+        ) : (
+          <div className="flex-1" />
+        )}
+        {nextCard ? (
+          <Link
+            href={`/cards/${nextCard.id}`}
+            className="group flex-1 rounded-2xl border border-border bg-surface p-5 text-right hover:border-primary transition-colors"
+          >
+            <div className="text-xs text-muted">{t("card.next")}</div>
+            <div className="mt-1 font-serif-display text-sm group-hover:text-primary transition-colors">
+              {nextCard.name[lang]} →
+            </div>
+          </Link>
+        ) : (
+          <div className="flex-1" />
+        )}
+      </nav>
+
       {/* CTA back to reading */}
-      <div className="mt-12 text-center">
+      <div className="mt-8 text-center">
         <Link
           href="/reading"
           className="inline-block rounded-full bg-primary px-8 py-3 text-white font-medium hover:bg-primary-hover transition-colors"
