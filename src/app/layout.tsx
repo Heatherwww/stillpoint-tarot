@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   title: "Stillpoint Tarot · 静点塔罗",
   description:
     "A quiet space for tarot — learn, draw a reading, and gather your tools. 塔罗的静谧之所——学习、解读、寻找工具。",
+  verification: {
+    google: "kA97GookJNlM6436PRe8Nu-m8NE6Osvukedg2VswpJ0",
+  },
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
