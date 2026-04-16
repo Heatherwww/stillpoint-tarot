@@ -39,12 +39,8 @@ export default function Nav() {
           >
             {t("nav.cards")}
           </Link>
-          <Link
-            href="/shop"
-            className="text-muted hover:text-foreground transition-colors"
-          >
-            {t("nav.shop")}
-          </Link>
+          {/* Shop hidden until Airwallex payment is wired up.
+              Restore from branch: feature/shop-and-ai-payment */}
           <LangToggle />
         </nav>
       </div>

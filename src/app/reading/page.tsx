@@ -291,24 +291,8 @@ export default function ReadingPage() {
             )}
           </div>
 
-          {/* Locked teaser */}
-          <div className="mt-16 mx-auto max-w-2xl">
-            <div className="relative rounded-2xl border border-dashed border-primary/40 bg-gradient-to-br from-primary-soft to-surface-muted p-8 overflow-hidden">
-              <div className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-primary">
-                <LockIcon />
-                <span>{t("locked.label")}</span>
-              </div>
-              <h3 className="mt-3 font-serif-display text-2xl text-primary">
-                {t("locked.title")}
-              </h3>
-              <p className="mt-4 text-foreground/85 leading-relaxed">
-                {t("locked.body")}
-              </p>
-              <p className="mt-5 text-foreground/40 italic leading-relaxed blur-[1.5px] select-none">
-                {t("locked.preview")}
-              </p>
-            </div>
-          </div>
+          {/* AI reading teaser hidden until DeepSeek + Airwallex are wired.
+              Restore from branch: feature/shop-and-ai-payment */}
         </div>
       )}
 
