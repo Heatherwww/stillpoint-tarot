@@ -23,6 +23,14 @@ export const metadata: Metadata = {
   title: "Stillpoint Tarot · 静点塔罗",
   description:
     "A quiet space for tarot — learn, draw a reading, and gather your tools.",
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
+  openGraph: {
+    siteName: "Stillpoint Tarot · 静点塔罗",
+    images: [{ url: "/logo.png", width: 500, height: 500, alt: "Stillpoint Tarot logo" }],
+  },
 };
 
 export default function RootLayout({

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useLang } from "@/lib/i18n";
 
 export default function HomePage() {
@@ -11,7 +12,15 @@ export default function HomePage() {
       <section className="relative overflow-hidden">
         <div className="starfield absolute inset-0 opacity-60" aria-hidden />
         <div className="relative mx-auto max-w-4xl px-6 py-24 text-center">
-          <h1 className="font-serif-display text-5xl md:text-6xl text-foreground leading-tight">
+          <Image
+            src="/logo.png"
+            alt="Stillpoint Tarot logo"
+            width={180}
+            height={180}
+            className="mx-auto rounded-full"
+            priority
+          />
+          <h1 className="mt-8 font-serif-display text-5xl md:text-6xl text-foreground leading-tight">
             {t("home.hero.title")}
           </h1>
           <p className="mt-6 text-lg text-muted max-w-2xl mx-auto">
