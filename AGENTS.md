@@ -92,3 +92,20 @@ Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. See any 
 - **Don't skip `npm run build`** — it's the only way to verify correctness.
 - **Don't use fortune-teller tone** — content should be reflective and grounded.
 - **Don't touch the `feature/shop-and-ai-payment` branch** unless specifically asked to work on payment/AI features.
+- **Don't commit structural changes without updating docs** — see below.
+
+## MANDATORY: Update docs on every structural change
+
+**Any commit that changes routes, data models, file structure, conventions, or pending work MUST update CLAUDE.md and/or AGENTS.md in the same commit.** This rule is non-negotiable.
+
+Checklist before every commit:
+- [ ] New/removed/renamed route? → Update route table here + file structure in CLAUDE.md
+- [ ] New/changed data type or field? → Update data model reference here
+- [ ] New/removed component or lib file? → Update file structure in CLAUDE.md
+- [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update CLAUDE.md architecture section
+- [ ] Completed or added a pending task? → Update CLAUDE.md "Pending work" section
+- [ ] Changed total page count? → Update "93 pages" references in both files
+- [ ] New convention or rule? → Update CLAUDE.md conventions + "Things to NOT do" here
+- [ ] Branch created/merged/deleted? → Update CLAUDE.md git branches table
+
+If none apply, no update needed. **When in doubt, update — stale docs are worse than no docs.**

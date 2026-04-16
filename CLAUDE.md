@@ -164,3 +164,22 @@ npm run dev      # Local dev server
 - **Always bilingual**: Every user-facing string must have both `en` and `zh` versions.
 - **Build must pass**: Always run `npm run build` after changes. All 93 pages must generate successfully.
 - **Commit to main**: Currently all work goes directly to `main` (no PR workflow).
+
+---
+
+## MANDATORY: Keep docs in sync
+
+**Every commit that changes project structure, routes, data models, conventions, or pending work MUST also update CLAUDE.md and/or AGENTS.md in the same commit.**
+
+This is not optional. Before committing, ask yourself:
+
+1. Did I add, remove, or rename a route? → Update the route table in AGENTS.md and the file structure in CLAUDE.md.
+2. Did I add or change a data type/field? → Update the data model reference in AGENTS.md.
+3. Did I change how i18n, card data, or SEO works? → Update the relevant architecture section in CLAUDE.md.
+4. Did I complete a pending task or add a new one? → Update the "Pending work" section in CLAUDE.md.
+5. Did I add a new convention or change an existing one? → Update "Important conventions" in CLAUDE.md and/or "Things to NOT do" in AGENTS.md.
+6. Did I add, merge, or delete a git branch? → Update the "Git branches" table in CLAUDE.md.
+7. Did I add a new component or lib file? → Update the file structure tree in CLAUDE.md.
+8. Did the total page count change? → Update the "93 pages" references in both files.
+
+**If none of the above apply, no doc update is needed.** But when in doubt, update the docs — stale docs are worse than no docs.
