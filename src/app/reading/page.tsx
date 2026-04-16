@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLang } from "@/lib/i18n";
 import {
   drawCards,
@@ -13,6 +14,7 @@ import {
   type DrawnCard,
   type TarotCard,
 } from "@/lib/cards";
+import { getCardExtras } from "@/lib/cardExtras";
 
 type SpreadKind = "single" | "three";
 type DeckKind = "major" | "full";
@@ -218,6 +220,7 @@ export default function ReadingPage() {
                 drawn={d}
                 positionIndex={drawn.length > 1 ? i : null}
                 delayMs={i * 150}
+                area={lockedAnswers.area}
               />
             ))}
           </div>
@@ -283,7 +286,7 @@ export default function ReadingPage() {
                 <div className="text-center text-xs uppercase tracking-wider text-accent mb-3">
                   {t("followup.clarify.label")}
                 </div>
-                <CardDisplay drawn={clarifier} positionIndex={null} delayMs={0} />
+                <CardDisplay drawn={clarifier} positionIndex={null} delayMs={0} area={lockedAnswers.area} />
               </div>
             )}
           </div>
@@ -391,12 +394,15 @@ function CardDisplay({
   drawn,
   positionIndex,
   delayMs,
+  area,
 }: {
   drawn: DrawnCard;
   positionIndex: number | null;
   delayMs: number;
+  area: Area;
 }) {
   const { t, lang } = useLang();
+  const extras = getCardExtras(drawn.card);
   const positionKey = positionIndex !== null ? POSITION_KEYS[positionIndex] : null;
   const positionLabel = positionKey
     ? t(`reading.position.${positionKey}` as never)
@@ -404,6 +410,21 @@ function CardDisplay({
   const positionIntro = positionKey
     ? t(`reading.position.intro.${positionKey}` as never)
     : null;
+
+  // Pick the area-relevant context section from cardExtras
+  const areaContext =
+    area === "love"
+      ? extras.inLove[lang]
+      : area === "work"
+        ? extras.inCareer[lang]
+        : extras.advice[lang]; // self, decision, general → advice
+
+  const areaLabel =
+    area === "love"
+      ? t("card.love.title")
+      : area === "work"
+        ? t("card.career.title")
+        : t("card.advice.title");
 
   return (
     <article
@@ -426,7 +447,12 @@ function CardDisplay({
         />
       </div>
       <h3 className="mt-5 font-serif-display text-2xl text-center">
-        {getName(drawn.card, lang)}
+        <Link
+          href={`/cards/${drawn.card.id}`}
+          className="hover:text-primary transition-colors"
+        >
+          {getName(drawn.card, lang)}
+        </Link>
       </h3>
       <div className="mt-2 text-center">
         <span
@@ -459,9 +485,38 @@ function CardDisplay({
           {positionIntro}
         </p>
       )}
+      {/* Core meaning */}
       <p className="mt-4 text-sm text-foreground/85 leading-relaxed">
         {getMeaning(drawn, lang)}
       </p>
+      {/* Area-specific context from cardExtras */}
+      <div className="mt-5 pt-4 border-t border-border">
+        <div className="text-[10px] uppercase tracking-wider text-accent">
+          {areaLabel}
+        </div>
+        <p className="mt-2 text-sm text-foreground/80 leading-relaxed">
+          {areaContext}
+        </p>
+      </div>
+      {/* Yes/no indicator */}
+      <div className="mt-4 flex items-center gap-2 text-xs text-muted">
+        <span className="uppercase tracking-wider">{t("card.yesno.title")}</span>
+        <span
+          className={`inline-block rounded-full px-2 py-0.5 text-[10px] font-medium ${
+            extras.yesNo.answer === "yes"
+              ? "bg-primary-soft text-primary"
+              : extras.yesNo.answer === "no"
+                ? "bg-accent-soft text-accent"
+                : "bg-surface-muted text-foreground/60"
+          }`}
+        >
+          {extras.yesNo.answer === "yes"
+            ? t("card.yesno.yes")
+            : extras.yesNo.answer === "no"
+              ? t("card.yesno.no")
+              : t("card.yesno.maybe")}
+        </span>
+      </div>
     </article>
   );
 }
