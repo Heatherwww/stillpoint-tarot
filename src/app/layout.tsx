@@ -22,13 +22,22 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.stillpointtarot.com"),
   title: "Stillpoint Tarot · 静点塔罗",
   description:
-    "A quiet space for tarot — learn, draw a reading, and gather your tools.",
+    "A quiet space for tarot — learn, draw a reading, and gather your tools. 塔罗的静谧之所——学习、解读、寻找工具。",
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+  alternates: {
+    languages: {
+      en: "https://www.stillpointtarot.com",
+      zh: "https://www.stillpointtarot.com",
+      "x-default": "https://www.stillpointtarot.com",
+    },
+  },
   openGraph: {
     siteName: "Stillpoint Tarot · 静点塔罗",
+    locale: "en_US",
+    alternateLocale: "zh_CN",
     images: [{ url: "/logo.png", width: 500, height: 500, alt: "Stillpoint Tarot logo" }],
   },
 };

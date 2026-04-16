@@ -61,6 +61,67 @@ export const dict: Dict = {
   "card.breadcrumb.home": { en: "Home", zh: "首页" },
   "card.breadcrumb.cards": { en: "Cards", zh: "牌库" },
 
+  // Suit & arcana landing pages
+  "suits.intro.title": {
+    en: "The four suits of the tarot",
+    zh: "塔罗的四大花色",
+  },
+  "suits.intro.subtitle": {
+    en: "Each suit governs a domain of human experience — fire, water, air, earth — and together they map the full terrain of daily life. The Major Arcana stands apart, tracing the soul's larger arc.",
+    zh: "每个花色掌管人类经验的一个领域——火、水、风、土——合在一起，它们绘制出日常生活的完整地形。大阿卡纳独立其外，追踪灵魂更宏大的弧线。",
+  },
+
+  "suit.major.title": {
+    en: "Major Arcana — The 22 Soul Cards",
+    zh: "大阿卡纳——22张灵魂之牌",
+  },
+  "suit.major.body": {
+    en: "The 22 Major Arcana are the backbone of the tarot. They do not belong to any suit or element; they belong to the journey itself. Beginning with The Fool — numberless, open, unformed — and closing with The World — complete, integrated, arrived — they trace the great passages every life must negotiate: innocence, authority, loss, surrender, rebirth. When a Major card appears in a reading, it speaks louder than the cards around it. It names not what is happening in your week, but what is happening in your life. These are the cards that stay with you long after the reading ends.",
+    zh: "22张大阿卡纳是塔罗的脊梁。它们不属于任何花色或元素；它们属于旅程本身。从愚者——无编号、敞开、未成形——开始，到世界——完整、圆融、抵达——结束，它们追踪着每个生命必须经历的重大转折：天真、权威、失去、臣服、重生。当一张大牌出现在解读中，它的声音比周围的牌更响亮。它命名的不是你这一周正在发生的事，而是你这一生正在发生的事。这些牌会在解读结束很久之后仍与你同在。",
+  },
+
+  "suit.wands.title": {
+    en: "Suit of Wands — Fire, Passion & Action",
+    zh: "权杖花色——火、激情与行动",
+  },
+  "suit.wands.body": {
+    en: "Wands carry the element of fire. They speak to what drives you — ambition, creativity, desire, the restless energy that starts things before the mind catches up. In a reading, Wands often point to projects, purpose, and the will to move. They ask whether you are creating from genuine passion or simply staying busy. The shadow side of fire is burnout: action without rest, desire without direction. When Wands dominate a spread, something in your life is asking to be built, expressed, or released. Pay attention to where the heat is — that is where the work wants to happen.",
+    zh: "权杖承载火的元素。它们言说驱动你之物——野心、创造力、渴望，那种在心智跟上之前便已启动的躁动能量。在解读中，权杖常指向项目、目标与行动的意志。它们追问你是出于真正的热情在创造，还是仅仅让自己忙碌。火的阴影面是倦怠：没有休息的行动，没有方向的渴望。当权杖在牌阵中占主导时，你生活中的某件事正请求被建造、表达或释放。留意热量所在之处——那里便是工作渴望发生的地方。",
+  },
+
+  "suit.cups.title": {
+    en: "Suit of Cups — Water, Emotion & Intuition",
+    zh: "圣杯花色——水、情感与直觉",
+  },
+  "suit.cups.body": {
+    en: "Cups belong to water. They govern the interior world — feelings, relationships, dreams, the quiet knowing that arrives before language. Where Wands push outward, Cups draw inward. They appear when a reading touches love, grief, longing, or creative imagination. Cups ask how open you are to receiving, not only giving. They reveal the difference between emotional depth and emotional avoidance. When many Cups surface in a spread, the question is rarely about what to do; it is about what to feel, and whether you are willing to feel it fully. Water finds its own level. The cards simply show you where the water is.",
+    zh: "圣杯属于水。它们掌管内在世界——感受、关系、梦境，那种在语言到来之前便已降临的静默知觉。权杖向外推进，而圣杯向内牵引。当解读触及爱、悲伤、渴望或创造性想象时，它们便会出现。圣杯追问你对接受——而非仅是给予——有多开放。它们揭示情感深度与情感回避之间的区别。当大量圣杯浮现在牌阵中，问题很少关于该做什么；而是关于该感受什么，以及你是否愿意完整地去感受。水会自己找到水平面。牌只是让你看见水在哪里。",
+  },
+
+  "suit.swords.title": {
+    en: "Suit of Swords — Air, Thought & Truth",
+    zh: "宝剑花色——风、思维与真相",
+  },
+  "suit.swords.body": {
+    en: "Swords cut through air. They belong to the mind — thought, communication, conflict, clarity. Of the four suits, Swords carry the most tension. They appear in readings about difficult truths, hard decisions, and the mental patterns that keep you circling. A Sword card does not comfort; it clarifies. It asks whether your thoughts are serving you or imprisoning you. The gift of this suit is discernment: the ability to see what is real and name it without flinching. The danger is overthinking — the blade turned inward. When Swords fill a reading, something needs to be said, decided, or released from the grip of the mind.",
+    zh: "宝剑切穿空气。它们属于心智——思维、沟通、冲突、清晰。在四个花色中，宝剑承载最多的张力。它们出现在关于困难真相、艰难决定，以及那些让你反复打转的思维模式的解读中。宝剑牌不安慰；它澄清。它追问你的思绪是在服务你还是在囚禁你。这个花色的天赋是辨别力：看见真实之物并毫不退缩地为之命名的能力。其危险则是过度思考——刀刃向内转。当宝剑充满一次解读时，有些事需要被说出、被决定，或从心智的紧握中被释放。",
+  },
+
+  "suit.pentacles.title": {
+    en: "Suit of Pentacles — Earth, Material & Body",
+    zh: "钱币花色——土、物质与身体",
+  },
+  "suit.pentacles.body": {
+    en: "Pentacles rest on earth. They speak to the material world — money, health, home, craft, the slow patient work of building something that lasts. Where other suits deal in spark or storm, Pentacles deal in seasons. They appear in readings about livelihood, physical wellbeing, and the question of what you are tending over time. Pentacles ask whether you are rooted or merely stuck, whether your labor is nourishing or depleting. The wisdom of this suit is that the body knows things the mind refuses to learn. When Pentacles gather in a spread, the answer lives not in ideas but in what your hands are already doing.",
+    zh: "钱币安于大地。它们言说物质世界——金钱、健康、居所、手艺，以及建造持久之物所需的缓慢而耐心的劳作。其他花色以火花或风暴示人，而钱币以季节度量。它们出现在关于生计、身体健康，以及你正在长期照料什么这一问题的解读中。钱币追问你是扎根还是仅仅停滞，你的劳动是在滋养还是在消耗。这个花色的智慧在于：身体知晓心智拒绝去学的事。当钱币在牌阵中聚集时，答案不在观念中，而在你的双手已经在做的事情里。",
+  },
+
+  "suit.explore": {
+    en: "Explore all cards in this suit",
+    zh: "浏览此花色的所有牌",
+  },
+  "suit.keywords.label": { en: "Core themes", zh: "核心主题" },
+
   "footer.tagline": {
     en: "A quiet space for tarot.",
     zh: "塔罗的静谧之所。",
