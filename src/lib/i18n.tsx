@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useEffect,
-  useState,
   ReactNode,
 } from "react";
 
@@ -459,32 +458,27 @@ export function t(key: keyof typeof dict, lang: Lang): string {
 
 interface LanguageContextValue {
   lang: Lang;
-  setLang: (l: Lang) => void;
   t: (key: keyof typeof dict) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>("en");
-
+export function LanguageProvider({
+  children,
+  initialLang,
+}: {
+  children: ReactNode;
+  initialLang: Lang;
+}) {
   useEffect(() => {
-    const saved = (typeof window !== "undefined" &&
-      window.localStorage.getItem("lumen-lang")) as Lang | null;
-    if (saved === "en" || saved === "zh") setLangState(saved);
-  }, []);
-
-  const setLang = (l: Lang) => {
-    setLangState(l);
-    if (typeof window !== "undefined") {
-      window.localStorage.setItem("lumen-lang", l);
-      document.documentElement.lang = l === "zh" ? "zh-CN" : "en";
+    if (typeof document !== "undefined") {
+      document.documentElement.lang = initialLang === "zh" ? "zh-CN" : "en";
     }
-  };
+  }, [initialLang]);
 
   return (
     <LanguageContext.Provider
-      value={{ lang, setLang, t: (key) => t(key, lang) }}
+      value={{ lang: initialLang, t: (key) => t(key, initialLang) }}
     >
       {children}
     </LanguageContext.Provider>
@@ -495,4 +489,12 @@ export function useLang() {
   const ctx = useContext(LanguageContext);
   if (!ctx) throw new Error("useLang must be used inside LanguageProvider");
   return ctx;
+}
+
+// Prefix an in-site path with /{lang}. Accepts either absolute paths ("/cards")
+// or already-prefixed paths. Returns "/{lang}/..." for use in <Link href>.
+export function localePath(lang: Lang, path: string): string {
+  if (path.startsWith(`/${lang}/`) || path === `/${lang}`) return path;
+  if (path === "/") return `/${lang}`;
+  return `/${lang}${path.startsWith("/") ? "" : "/"}${path}`;
 }

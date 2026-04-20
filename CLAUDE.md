@@ -34,25 +34,30 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 ```
 src/
 ├── app/
-│   ├── layout.tsx          # Root layout: fonts, metadata, LanguageProvider, Nav, Footer
-│   ├── page.tsx             # Homepage: hero, popular cards, browse-by-suit, what-is-tarot, how-it-works, arcana
+│   ├── layout.tsx           # Root HTML shell: fonts + <html lang="en"> (no LanguageProvider here)
+│   ├── page.tsx             # Root: redirects / to /en or /zh based on Accept-Language header
 │   ├── globals.css          # Tailwind + custom CSS variables (dark theme, starfield)
-│   ├── sitemap.ts           # Dynamic sitemap: static routes + all 78 card URLs
+│   ├── sitemap.ts           # Dynamic sitemap: all routes × {en, zh} with hreflang alternates
 │   ├── robots.ts            # robots.txt generation
-│   ├── reading/
-│   │   └── page.tsx         # Interactive reading page (single / 3-card, context questions, contextual narrative)
-│   ├── cards/
-│   │   ├── page.tsx         # Card library: filterable grid of all 78 cards
-│   │   ├── [id]/
-│   │   │   ├── page.tsx     # SSG card detail: metadata, JSON-LD (Article, Breadcrumb, FAQ), renders client component
-│   │   │   └── CardDetailClient.tsx  # 10-section card page + prev/next navigation
-│   │   ├── major/page.tsx   # Major Arcana suit landing page
-│   │   ├── wands/page.tsx   # Wands suit landing page
-│   │   ├── cups/page.tsx    # Cups suit landing page
-│   │   ├── swords/page.tsx  # Swords suit landing page
-│   │   └── pentacles/page.tsx # Pentacles suit landing page
-│   ├── shop/                # Shop page (visible but payment not wired)
-│   └── api/checkout/route.ts # Stripe checkout API (inactive, will switch to Airwallex)
+│   ├── api/checkout/route.ts # Stripe checkout API (inactive, will switch to Airwallex)
+│   └── [lang]/              # Bilingual segment — lang ∈ {en, zh}; generateStaticParams returns both
+│       ├── layout.tsx       # LanguageProvider(initialLang=lang) + Nav + Footer
+│       ├── page.tsx         # Homepage: hero, popular cards, browse-by-suit, what-is-tarot, how-it-works, arcana
+│       ├── reading/
+│       │   └── page.tsx     # Interactive reading page (single / 3-card, context questions, contextual narrative)
+│       ├── cards/
+│       │   ├── page.tsx     # Card library: filterable grid of all 78 cards
+│       │   ├── _suitMeta.ts # buildSuitMetadata() helper — bilingual metadata for suit landing pages
+│       │   ├── [id]/
+│       │   │   ├── page.tsx # SSG card detail: metadata, JSON-LD (Article, Breadcrumb, FAQ), renders client component
+│       │   │   └── CardDetailClient.tsx  # 10-section card page + prev/next navigation
+│       │   ├── major/page.tsx   # Major Arcana suit landing page
+│       │   ├── wands/page.tsx   # Wands suit landing page
+│       │   ├── cups/page.tsx    # Cups suit landing page
+│       │   ├── swords/page.tsx  # Swords suit landing page
+│       │   └── pentacles/page.tsx # Pentacles suit landing page
+│       └── shop/
+│           └── page.tsx     # Shop page (visible but payment not wired)
 ├── components/
 │   ├── Nav.tsx              # Sticky header: logo, nav links, language toggle
 │   ├── Footer.tsx           # Footer: logo, tagline, copyright
@@ -75,11 +80,13 @@ scripts/
 ## Key architecture decisions
 
 ### Bilingual system
+- **URL-based language routing**: Every page lives under `/[lang]/...` where lang is `en` or `zh`. `/` redirects to `/en` or `/zh` based on the visitor's `Accept-Language` header.
+- `LanguageProvider` receives `initialLang` as a prop from `[lang]/layout.tsx` (derived from the URL params). No localStorage, no client-side toggle state — language is the URL.
+- `LangToggle` renders two `<Link>`s that swap the first path segment between `en` and `zh` using `usePathname()`.
 - All UI strings live in `src/lib/i18n.tsx` as a flat `Dict` object (`Record<string, {en: string; zh: string}>`).
 - Card data (names, keywords, meanings) is bilingual in `cards.ts` via `BilingualText` / `BilingualList`.
 - Extended card content in `cardExtras.ts` is also bilingual.
-- Language stored in `localStorage("lumen-lang")`, toggled via `LangToggle`.
-- **No URL-based routing for language yet** (no `/zh/` prefix). Hreflang tags are set in layout metadata as a stop-gap.
+- Root `<html lang="en">` is static; `LanguageProvider` syncs `document.documentElement.lang` client-side on mount based on `initialLang` (plus each `[lang]/layout` wraps content in `<div lang="...">`).
 
 ### Card data flow
 1. `cards.ts` exports `fullDeck: TarotCard[]` (78 cards in order: 22 Major + 14 each of Wands, Cups, Swords, Pentacles).
@@ -87,16 +94,20 @@ scripts/
 3. Card detail pages (`[id]/page.tsx`) use both for metadata/JSON-LD (server) and `CardDetailClient.tsx` (client).
 
 ### Static generation
-- All 78 card pages are statically generated via `generateStaticParams()` in `[id]/page.tsx`.
-- Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, etc.) which take priority over the `[id]` dynamic segment.
-- `npm run build` generates 93 total pages.
+- `[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
+- `[lang]/cards/[id]/page.tsx` `generateStaticParams()` returns the cartesian product of `{en,zh}` × 78 cards = 156 card pages.
+- Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, etc.) which take priority over the `[id]` dynamic segment within each lang.
+- `npm run build` generates **181 total pages** (roughly: (homepage + reading + cards index + 5 suits + shop) × 2 + 78 × 2 + sitemap + robots + misc).
+- Old URLs (`/cards/:id`, `/reading`, `/shop`, `/cards`) 301-redirect to their `/en/...` equivalents via `next.config.ts` → `redirects()`, preserving link equity from already-indexed Google listings.
 
 ### SEO
-- Per-card `generateMetadata()` with targeted title, description, OG image, Twitter card, canonical URL, hreflang.
-- Three JSON-LD blocks per card page: `Article`, `BreadcrumbList`, `FAQPage`.
-- `CollectionPage` JSON-LD on each suit landing page.
-- Google Search Console verified via `metadata.verification.google` in layout.
-- Sitemap includes all static routes + all 78 card URLs.
+- Per-card `generateMetadata()` is **lang-aware**: emits bilingual title/description, proper `alternates.languages` (en + zh-CN + x-default), `og:locale` / `og:alternateLocale`, canonical URL pointing at the lang-specific URL.
+- Card page title format targets long-tail GSC queries seen in practice: `"[Card] Tarot Card Meaning — Upright, Reversed, Love & Yes or No (Yes|No|Maybe)"` / Chinese equivalent. Section H2s on the card page (e.g. `"Is Two of Swords a yes or no?"`, `"Two of Swords reversed meaning"`) are generated from the card name to rank on specific modifier queries.
+- Three JSON-LD blocks per card page: `Article`, `BreadcrumbList`, `FAQPage` — all rendered in the current lang with `inLanguage` set.
+- `CollectionPage` JSON-LD on each suit landing page, lang-aware.
+- Minor Arcana FAQ generator (`buildMinorExtras`) emits 6 entries tuned for GSC long-tails: *"Is the [Card] a yes or no?"*, *"What does [Card] upright mean — yes or no in love?"*, *"What does [Card] reversed mean in love?"*, *"What kind of person does [Card] represent?"*, plus general + reversed meaning. Major Arcana have hand-written FAQs in `majorExtras`.
+- Google Search Console verified via `metadata.verification.google` in root layout.
+- Sitemap emits every route twice (/en and /zh) with `alternates.languages` hreflang per entry.
 
 ### Reading page
 - User picks spread (single / 3-card) and deck (Major only / full 78).
@@ -151,7 +162,7 @@ npm run dev      # Local dev server
 ## Pending work (not yet implemented)
 
 1. **Image optimization**: Convert 78 JPGs to WebP format for faster loading.
-2. **Full bilingual URL routing**: Add `/zh/` URL prefix (currently only hreflang tags).
+2. **Dynamic `<html lang>` attribute**: Root layout hardcodes `lang="en"` on all pages; a middleware that sets it from URL (or moves `<html>` into a dynamic parent) would be cleaner for pre-hydration crawling of `/zh` pages. Inner `<div lang="zh-CN">` in `[lang]/layout.tsx` plus client-side `useEffect` sync + metadata hreflang are the current stop-gap.
 3. **Airwallex + DeepSeek integration**: Wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment` branch.
 4. **Shop page**: Currently visible but non-functional (checkout API points to inactive Stripe). Will switch to Airwallex.
 
@@ -162,7 +173,8 @@ npm run dev      # Local dev server
 - **Tone**: Reflective, grounded, no fortune-teller theatrics. Content reads like a thoughtful guide, not a prediction.
 - **No emojis in content** unless user explicitly requests.
 - **Always bilingual**: Every user-facing string must have both `en` and `zh` versions.
-- **Build must pass**: Always run `npm run build` after changes. All 93 pages must generate successfully.
+- **Build must pass**: Always run `npm run build` after changes. All 181 pages must generate successfully.
+- **Every in-site `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` in client components (via `useLang()`) or `` `/${lang}/...` `` in server components (derived from route params). A missed prefix 404s.
 - **Commit to main**: Currently all work goes directly to `main` (no PR workflow).
 
 ---

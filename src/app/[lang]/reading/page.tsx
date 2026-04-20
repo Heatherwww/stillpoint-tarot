@@ -432,7 +432,7 @@ function CardDisplay({
       </div>
       <h3 className="mt-5 font-serif-display text-2xl text-center">
         <Link
-          href={`/cards/${drawn.card.id}`}
+          href={`/${lang}/cards/${drawn.card.id}`}
           className="hover:text-primary transition-colors"
         >
           {getName(drawn.card, lang)}

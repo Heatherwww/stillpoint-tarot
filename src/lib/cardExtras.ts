@@ -1298,11 +1298,34 @@ function buildMinorExtras(card: TarotCard): CardExtras {
         : `也许——答案取决于一个仍在变动中的选择。`,
   };
 
+  const cardEn = `${capitalize(rank)} of ${capitalize(suit)}`;
+  const cardZh = `${suitName(suit, "zh")}${rankName(rank, "zh")}`;
+
+  const yesNoPhrase = {
+    en:
+      phase.yesNo === "yes"
+        ? `Yes. Upright, the ${cardEn} answers in the affirmative — the ${suit} energy of ${suitElement[suit].en.toLowerCase()} supports moving forward with the question.`
+        : phase.yesNo === "no"
+        ? `No. Upright, the ${cardEn} answers in the negative — the card is naming a cost, friction, or limit in the current direction.`
+        : `Maybe. Upright, the ${cardEn} sits between yes and no — the answer depends on a choice that is still in motion.`,
+    zh:
+      phase.yesNo === "yes"
+        ? `是。正位的${cardZh}给出肯定的答案——${suitElement[suit].zh}的能量支持你在此问题上前行。`
+        : phase.yesNo === "no"
+        ? `否。正位的${cardZh}给出否定的答案——牌正在为当前方向上的代价、摩擦或限制命名。`
+        : `也许。正位的${cardZh}介于是与否之间——答案取决于一个仍在变动中的选择。`,
+  };
+
+  const personDesc = {
+    en: `The ${cardEn} as a person is someone living ${phase.tone} through the lens of ${suit}. Expect traits tied to the suit's element of ${suitElement[suit].en.toLowerCase()} — the way this person meets the world is shaped by ${suit === "wands" ? "drive and impatience" : suit === "cups" ? "feeling and receptivity" : suit === "swords" ? "thought and words" : "steadiness and the long view"}.`,
+    zh: `作为一个人，${cardZh}代表一个通过${suitName(suit, "zh")}的视角活出「${phase.tone_zh}」的人。你可以预期与${suitElement[suit].zh}元素相关的特质——这个人面对世界的方式被${suit === "wands" ? "驱力与急切" : suit === "cups" ? "感受与接受" : suit === "swords" ? "思维与言语" : "稳定与长远的眼光"}所塑造。`,
+  };
+
   const faqs: FaqEntry[] = [
     {
       q: {
-        en: `What does the ${capitalize(rank)} of ${capitalize(suit)} mean?`,
-        zh: `${suitName(suit, "zh")}${rankName(rank, "zh")}是什么意思？`,
+        en: `What does the ${cardEn} mean?`,
+        zh: `${cardZh}是什么意思？`,
       },
       a: {
         en: `It marks ${phase.tone} within the ${suit} suit — ${card.upright.en}`,
@@ -1311,28 +1334,42 @@ function buildMinorExtras(card: TarotCard): CardExtras {
     },
     {
       q: {
-        en: `Is the ${capitalize(rank)} of ${capitalize(suit)} a positive card?`,
-        zh: `${suitName(suit, "zh")}${rankName(rank, "zh")}是正面的牌吗？`,
+        en: `Is the ${cardEn} a yes or no?`,
+        zh: `${cardZh}是「是」还是「否」？`,
+      },
+      a: yesNoPhrase,
+    },
+    {
+      q: {
+        en: `What does ${cardEn} upright mean — yes or no in love?`,
+        zh: `${cardZh}正位在爱情中是「是」还是「否」？`,
       },
       a: {
-        en:
-          phase.yesNo === "yes"
-            ? "Generally yes — it favors action and trusts the suit's energy."
-            : phase.yesNo === "no"
-            ? "It is challenging, but the difficulty is informative. The card is not punishing you."
-            : "It is neutral — supportive of careful thought, less so of sudden action.",
-        zh:
-          phase.yesNo === "yes"
-            ? "通常是——它支持行动并信任花色的能量。"
-            : phase.yesNo === "no"
-            ? "它具挑战性，但困难是有信息量的。这张牌不是在惩罚你。"
-            : "它是中性的——支持谨慎的思考，对突然的行动则不然。",
+        en: `${yesNoPhrase.en} In love specifically, read this through the suit's voice: ${suitLove[suit].en}`,
+        zh: `${yesNoPhrase.zh}具体在爱情中，通过花色的声音来读它：${suitLove[suit].zh}`,
       },
     },
     {
       q: {
-        en: `What does the ${capitalize(rank)} of ${capitalize(suit)} mean reversed?`,
-        zh: `${suitName(suit, "zh")}${rankName(rank, "zh")}逆位是什么意思？`,
+        en: `What does the ${cardEn} reversed mean in love?`,
+        zh: `${cardZh}逆位在爱情中是什么意思？`,
+      },
+      a: {
+        en: `Reversed, the ${cardEn} in a love reading points to the shadow side of the upright meaning — ${card.reversed.en} In a relationship context, this often shows up as the pattern the upright card was trying to avoid.`,
+        zh: `逆位的${cardZh}在爱情解读中指向正位含义的阴影面——${card.reversed.zh}在关系情境中，这常以正位所欲规避的模式出现。`,
+      },
+    },
+    {
+      q: {
+        en: `What kind of person does the ${cardEn} represent?`,
+        zh: `${cardZh}代表什么样的人？`,
+      },
+      a: personDesc,
+    },
+    {
+      q: {
+        en: `What does the ${cardEn} mean reversed?`,
+        zh: `${cardZh}逆位是什么意思？`,
       },
       a: {
         en: card.reversed.en,

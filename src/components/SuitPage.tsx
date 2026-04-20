@@ -24,11 +24,11 @@ export default function SuitPage({
     <div className="mx-auto max-w-6xl px-6 py-16">
       {/* Breadcrumb */}
       <nav className="text-sm text-muted" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link href={`/${lang}`} className="hover:text-primary transition-colors">
           {t("card.breadcrumb.home")}
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/cards" className="hover:text-primary transition-colors">
+        <Link href={`/${lang}/cards`} className="hover:text-primary transition-colors">
           {t("card.breadcrumb.cards")}
         </Link>
         <span className="mx-2">/</span>
@@ -74,7 +74,7 @@ export default function SuitPage({
           {cards.map((card) => (
             <Link
               key={card.id}
-              href={`/cards/${card.id}`}
+              href={`/${lang}/cards/${card.id}`}
               className="group rounded-2xl border border-border bg-surface p-4 hover:border-primary transition-colors"
             >
               <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
@@ -97,7 +97,7 @@ export default function SuitPage({
       {/* CTA */}
       <div className="mt-12 text-center">
         <Link
-          href="/reading"
+          href={`/${lang}/reading`}
           className="inline-block rounded-full bg-primary px-8 py-3 text-white font-medium hover:bg-primary-hover transition-colors"
         >
           {t("card.cta")}

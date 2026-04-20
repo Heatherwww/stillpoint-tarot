@@ -69,7 +69,7 @@ export default function CardsIndexPage() {
         {cards.map((card) => (
           <Link
             key={card.id}
-            href={`/cards/${card.id}`}
+            href={`/${lang}/cards/${card.id}`}
             className="group rounded-2xl border border-border bg-surface p-4 hover:border-primary transition-colors"
           >
             <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">

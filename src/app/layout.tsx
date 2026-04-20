@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
-import { LanguageProvider } from "@/lib/i18n";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,13 +27,6 @@ export const metadata: Metadata = {
     icon: "/logo.png",
     apple: "/logo.png",
   },
-  alternates: {
-    languages: {
-      en: "https://www.stillpointtarot.com",
-      zh: "https://www.stillpointtarot.com",
-      "x-default": "https://www.stillpointtarot.com",
-    },
-  },
   openGraph: {
     siteName: "Stillpoint Tarot · 静点塔罗",
     locale: "en_US",
@@ -54,11 +44,7 @@ export default function RootLayout({
       className={`${inter.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <LanguageProvider>
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </LanguageProvider>
+        {children}
       </body>
     </html>
   );

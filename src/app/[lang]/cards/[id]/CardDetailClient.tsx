@@ -48,11 +48,11 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
     <div className="mx-auto max-w-4xl px-6 py-16">
       {/* Breadcrumb (also rendered as JSON-LD on the server) */}
       <nav className="text-sm text-muted" aria-label="Breadcrumb">
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link href={`/${lang}`} className="hover:text-primary transition-colors">
           {t("card.breadcrumb.home")}
         </Link>
         <span className="mx-2">/</span>
-        <Link href="/cards" className="hover:text-primary transition-colors">
+        <Link href={`/${lang}/cards`} className="hover:text-primary transition-colors">
           {t("card.breadcrumb.cards")}
         </Link>
         <span className="mx-2">/</span>
@@ -130,7 +130,9 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         <div className="flex items-center gap-3">
           <div className="h-8 w-1 rounded-full bg-primary" />
           <h2 className="font-serif-display text-2xl text-primary">
-            {t("card.upright.title")}
+            {lang === "zh"
+              ? `${card.name.zh}正位含义`
+              : `${card.name.en} upright meaning`}
           </h2>
         </div>
         <p className="mt-4 text-foreground/85 leading-relaxed text-lg">
@@ -143,7 +145,9 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         <div className="flex items-center gap-3">
           <div className="h-8 w-1 rounded-full bg-accent" />
           <h2 className="font-serif-display text-2xl text-accent">
-            {t("card.reversed.title")}
+            {lang === "zh"
+              ? `${card.name.zh}逆位含义`
+              : `${card.name.en} reversed meaning`}
           </h2>
         </div>
         <p className="mt-4 text-foreground/85 leading-relaxed text-lg">
@@ -154,7 +158,9 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       {/* In love */}
       <section className="mt-6 rounded-2xl border border-border bg-surface p-8">
         <h2 className="font-serif-display text-2xl text-primary">
-          {t("card.love.title")}
+          {lang === "zh"
+            ? `${card.name.zh}在爱情与关系中`
+            : `${card.name.en} in love & relationships`}
         </h2>
         <p className="mt-4 text-foreground/85 leading-relaxed">
           {extras.inLove[lang]}
@@ -164,7 +170,9 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       {/* In career */}
       <section className="mt-6 rounded-2xl border border-border bg-surface p-8">
         <h2 className="font-serif-display text-2xl text-primary">
-          {t("card.career.title")}
+          {lang === "zh"
+            ? `${card.name.zh}在事业与金钱中`
+            : `${card.name.en} in career & money`}
         </h2>
         <p className="mt-4 text-foreground/85 leading-relaxed">
           {extras.inCareer[lang]}
@@ -185,7 +193,9 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       <section className="mt-6 rounded-2xl border border-border bg-surface-muted p-8">
         <div className="flex flex-wrap items-center gap-4">
           <h2 className="font-serif-display text-2xl text-primary">
-            {t("card.yesno.title")}
+            {lang === "zh"
+              ? `${card.name.zh}是「是」还是「否」？`
+              : `Is ${card.name.en} a yes or no?`}
           </h2>
           <span
             className={`inline-block rounded-full px-4 py-1.5 text-sm font-medium ${yesNoColor}`}
@@ -208,7 +218,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
             {relatedCards.map((rc) => (
               <Link
                 key={rc.id}
-                href={`/cards/${rc.id}`}
+                href={`/${lang}/cards/${rc.id}`}
                 className="group block text-center"
               >
                 <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
@@ -252,7 +262,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       <nav className="mt-12 flex items-stretch justify-between gap-4" aria-label="Card navigation">
         {prevCard ? (
           <Link
-            href={`/cards/${prevCard.id}`}
+            href={`/${lang}/cards/${prevCard.id}`}
             className="group flex-1 rounded-2xl border border-border bg-surface p-5 hover:border-primary transition-colors"
           >
             <div className="text-xs text-muted">{t("card.prev")}</div>
@@ -265,7 +275,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         )}
         {nextCard ? (
           <Link
-            href={`/cards/${nextCard.id}`}
+            href={`/${lang}/cards/${nextCard.id}`}
             className="group flex-1 rounded-2xl border border-border bg-surface p-5 text-right hover:border-primary transition-colors"
           >
             <div className="text-xs text-muted">{t("card.next")}</div>
@@ -281,7 +291,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       {/* CTA back to reading */}
       <div className="mt-8 text-center">
         <Link
-          href="/reading"
+          href={`/${lang}/reading`}
           className="inline-block rounded-full bg-primary px-8 py-3 text-white font-medium hover:bg-primary-hover transition-colors"
         >
           {t("card.cta")}
