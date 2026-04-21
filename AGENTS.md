@@ -1,24 +1,142 @@
-# Agent instructions for Stillpoint Tarot
+# Stillpoint Tarot — Agent & Project Guide
 
-<!-- BEGIN:nextjs-agent-rules -->
+This is the single source of truth for any AI coding agent working on this repo (Claude Code, Codex, or others). `CLAUDE.md` imports this file.
+
 ## Next.js version warning
 
-This project uses **Next.js 16.2.3** — APIs, conventions, and file structure may differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
-<!-- END:nextjs-agent-rules -->
+This project uses **Next.js 16.2.3** — APIs, conventions, and file structure may differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any Next.js code. Heed deprecation notices.
+
+## What this project is
+
+A bilingual (English / Chinese) tarot website at **https://www.stillpointtarot.com**. Users can browse all 78 Rider-Waite-Smith cards, draw readings (single or 3-card spread), and read rich SEO-optimized content per card. Deployed on **Vercel** from the `main` branch.
+
+Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosting portability.
+
+## Tech stack
+
+| Layer | Tool | Version |
+|-------|------|---------|
+| Framework | Next.js (App Router) | 16.2.3 |
+| React | React | 19.2.4 |
+| Styling | Tailwind CSS | 4.x |
+| Language | TypeScript | 5.x |
+| Fonts | Inter (body) + Cormorant Garamond (display) | Google Fonts |
+| Deploy | Vercel | auto-deploy on push to `main` |
+| Payment (future) | Airwallex | not yet wired — see `feature/shop-and-ai-payment` |
+| AI reading (future) | DeepSeek (`deepseek-chat`) | not yet wired — same branch |
+
+**No test framework is set up.** Validate changes with `npm run build` (static generation of 181 pages).
 
 ## Before making any change
 
-1. **Read the full CLAUDE.md** — it contains the project architecture, data flow, file map, and conventions.
+1. **Read this file in full** — it contains the architecture, data flow, file map, and conventions.
 2. **Run `npm run build`** after every change. The build statically generates 181 pages ({en,zh} × most routes + 156 card pages). If any page fails, the build fails. This is the only validation step (no test suite).
 3. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
 
-## Code style and patterns
+## Project structure
 
-- Components are either server components (default in App Router) or client components (marked `"use client"`).
-- Client components use `useLang()` hook from `@/lib/i18n` for translations.
-- Server components (like `[id]/page.tsx`) import `{ t }` function directly and pass `lang` as a parameter.
-- Tailwind classes use the project's custom design tokens: `bg-background`, `bg-surface`, `bg-surface-muted`, `text-foreground`, `text-muted`, `text-primary`, `text-accent`, `border-border`, `bg-primary`, `bg-primary-hover`, `font-serif-display` (Cormorant Garamond).
-- Card images are at `public/cards/<card-id>.jpg` and referenced as `/cards/<card-id>.jpg`.
+```
+src/
+├── app/
+│   ├── layout.tsx           # Root HTML shell: fonts + <html lang="en">
+│   ├── page.tsx             # / → redirects to /en or /zh based on Accept-Language
+│   ├── globals.css          # Tailwind + custom CSS variables (dark theme, starfield)
+│   ├── sitemap.ts           # Dynamic sitemap: all routes × {en, zh} with hreflang
+│   ├── robots.ts            # robots.txt generation
+│   ├── api/checkout/route.ts # Stripe checkout API (inactive, will switch to Airwallex)
+│   └── [lang]/              # Bilingual segment — lang ∈ {en, zh}
+│       ├── layout.tsx       # LanguageProvider(initialLang=lang) + Nav + Footer
+│       ├── page.tsx         # Homepage
+│       ├── reading/page.tsx # Interactive reading page
+│       ├── cards/
+│       │   ├── page.tsx         # Card library (filterable grid)
+│       │   ├── _suitMeta.ts     # buildSuitMetadata() helper
+│       │   ├── [id]/
+│       │   │   ├── page.tsx             # SSG card detail: metadata + JSON-LD
+│       │   │   └── CardDetailClient.tsx # 10-section card page + prev/next
+│       │   ├── major/page.tsx
+│       │   ├── wands/page.tsx
+│       │   ├── cups/page.tsx
+│       │   ├── swords/page.tsx
+│       │   └── pentacles/page.tsx
+│       └── shop/page.tsx    # Shop page (payment not wired)
+├── components/
+│   ├── Nav.tsx              # Sticky header: logo, nav links, language toggle
+│   ├── Footer.tsx           # Footer
+│   ├── LangToggle.tsx       # EN/中文 toggle (URL-swapping links)
+│   └── SuitPage.tsx         # Shared client component for 5 suit landing pages
+├── lib/
+│   ├── cards.ts             # Core data: TarotCard, majorArcana, minorArcana, fullDeck (78)
+│   ├── cardExtras.ts        # Extended bilingual content (love, career, FAQs, etc.)
+│   ├── i18n.tsx             # UI translations, LanguageProvider, useLang()
+│   └── products.ts          # Shop product data (inactive)
+public/
+├── logo.png
+├── cards/                   # 78 card images: <card-id>.jpg (500px wide)
+scripts/
+└── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
+```
+
+## Key architecture decisions
+
+### Bilingual system
+- **URL-based language routing**: every page lives under `/[lang]/...` where lang is `en` or `zh`. `/` redirects to `/en` or `/zh` based on `Accept-Language`.
+- `LanguageProvider` receives `initialLang` as a prop from `[lang]/layout.tsx` (derived from URL params). No localStorage, no client-side toggle state — language is the URL.
+- `LangToggle` renders two `<Link>`s that swap the first path segment between `en` and `zh` using `usePathname()`.
+- All UI strings live in `src/lib/i18n.tsx` as a flat `Dict` (`Record<string, {en, zh}>`).
+- Card data (names, keywords, meanings) is bilingual in `cards.ts` via `BilingualText` / `BilingualList`.
+- Extended card content in `cardExtras.ts` is also bilingual.
+- Root `<html lang="en">` is static; `LanguageProvider` syncs `document.documentElement.lang` client-side on mount (plus each `[lang]/layout` wraps content in `<div lang="...">`).
+
+### Card data flow
+1. `cards.ts` exports `fullDeck: TarotCard[]` (78 cards: 22 Major + 14 each of Wands, Cups, Swords, Pentacles).
+2. `cardExtras.ts` exports `getCardExtras(card)` — Major Arcana are hand-written; Minor Arcana generated from suit voice + rank phase templates via `buildMinorExtras()`.
+3. Card detail pages use both for metadata/JSON-LD (server) and `CardDetailClient.tsx` (client).
+
+### Static generation
+- `[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
+- `[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
+- Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
+- `npm run build` generates **181 total pages**.
+- Legacy URLs (`/cards`, `/cards/:id`, `/reading`, `/shop`) 301-redirect to `/en/...` via `next.config.ts` to preserve Google-indexed link equity.
+
+### SEO
+- Per-card `generateMetadata()` is lang-aware: bilingual title/description, `alternates.languages` (en + zh-CN + x-default), `og:locale` / `og:alternateLocale`, canonical URL pointing at the lang-specific URL.
+- Card page title format targets long-tail GSC queries: `"[Card] Tarot Card Meaning — Upright, Reversed, Love & Yes or No (Yes|No|Maybe)"` / Chinese equivalent. Section H2s (e.g. `"Is Two of Swords a yes or no?"`) are generated from the card name to rank on modifier queries.
+- Three JSON-LD blocks per card page: `Article`, `BreadcrumbList`, `FAQPage` — rendered in current lang with `inLanguage` set.
+- `CollectionPage` JSON-LD on each suit landing page, lang-aware.
+- Minor Arcana FAQ generator emits 6 entries tuned for GSC long-tails: *"Is the [Card] a yes or no?"*, *"[Card] upright — yes or no in love?"*, *"[Card] reversed in love?"*, *"What kind of person does [Card] represent?"*, plus general + reversed. Major Arcana have hand-written FAQs in `majorExtras`.
+- Google Search Console verified via `metadata.verification.google` in root layout.
+- Sitemap emits every route × 2 locales with hreflang alternates per entry.
+
+### Reading page
+- User picks spread (single / 3-card) and deck (Major only / full 78).
+- Pre-draw: 3 context questions (area, situation, intent) personalize the narrative.
+- Cards drawn client-side with shuffle animation.
+- Narrative: area-specific opener → card meanings + area extras (love/career/advice + yes/no) → situation bridge → intent closer.
+- "Go deeper" section with contextual follow-up prompts + clarifying card draw.
+
+## Route structure
+
+| Route | Type | Description |
+|-------|------|-------------|
+| `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
+| `/[lang]` | SSG (2) | Homepage hub, per locale |
+| `/[lang]/reading` | SSG (2) | Interactive reading page |
+| `/[lang]/cards` | SSG (2) | Filterable card library |
+| `/[lang]/cards/[id]` | SSG (156) | Individual card detail (78 × 2 locales) |
+| `/[lang]/cards/major` | SSG (2) | Major Arcana landing |
+| `/[lang]/cards/wands` | SSG (2) | Wands landing |
+| `/[lang]/cards/cups` | SSG (2) | Cups landing |
+| `/[lang]/cards/swords` | SSG (2) | Swords landing |
+| `/[lang]/cards/pentacles` | SSG (2) | Pentacles landing |
+| `/[lang]/shop` | SSG (2) | Shop (payment not wired) |
+| `/sitemap.xml` | Generated | XML sitemap (all locales, with hreflang alternates) |
+| `/robots.txt` | Generated | robots.txt |
+
+**Legacy 301 redirects** in `next.config.ts`: `/cards`, `/cards/:id`, `/reading`, `/shop` → `/en/...`.
+
+**Important**: Suit landing pages use static route folders (`cards/major/`) not a dynamic `[suit]` segment, because static routes take priority over `[id]` in Next.js App Router.
 
 ## Data model quick reference
 
@@ -46,70 +164,101 @@ CardExtras {
 }
 ```
 
-- `fullDeck` (78 cards) is exported from `src/lib/cards.ts`, ordered: 22 Major, then Wands, Cups, Swords, Pentacles (14 each).
-- `getCardExtras(card)` from `src/lib/cardExtras.ts` returns extended content. Major Arcana extras are hand-written; Minor Arcana are template-generated.
+- `fullDeck` (78 cards) exported from `src/lib/cards.ts`, ordered: 22 Major, then Wands, Cups, Swords, Pentacles (14 each).
+- `getCardExtras(card)` from `src/lib/cardExtras.ts` returns extended content.
 
-## Route structure
+## Code style and patterns
 
-| Route | Type | Description |
-|-------|------|-------------|
-| `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
-| `/[lang]` | SSG (2) | Homepage hub, per locale |
-| `/[lang]/reading` | SSG (2) | Interactive reading page |
-| `/[lang]/cards` | SSG (2) | Filterable card library |
-| `/[lang]/cards/[id]` | SSG (156) | Individual card detail (78 cards × 2 locales) |
-| `/[lang]/cards/major` | SSG (2) | Major Arcana landing |
-| `/[lang]/cards/wands` | SSG (2) | Wands landing |
-| `/[lang]/cards/cups` | SSG (2) | Cups landing |
-| `/[lang]/cards/swords` | SSG (2) | Swords landing |
-| `/[lang]/cards/pentacles` | SSG (2) | Pentacles landing |
-| `/[lang]/shop` | SSG (2) | Shop (payment not wired) |
-| `/sitemap.xml` | Generated | XML sitemap (all locales, with hreflang alternates) |
-| `/robots.txt` | Generated | robots.txt |
-
-**Legacy redirects** (301 in `next.config.ts`): `/cards`, `/cards/:id`, `/reading`, `/shop` → `/en/...` to preserve Google-indexed URLs.
-
-**Important**: Suit landing pages use static route folders (`cards/major/`) not a dynamic `[suit]` segment, because static routes take priority over `[id]` in Next.js App Router.
+- Components are either server components (default in App Router) or client components (marked `"use client"`).
+- Client components use `useLang()` hook from `@/lib/i18n` for translations.
+- Server components import `{ t }` function directly and pass `lang` as a parameter.
+- Tailwind classes use the project's custom design tokens: `bg-background`, `bg-surface`, `bg-surface-muted`, `text-foreground`, `text-muted`, `text-primary`, `text-accent`, `border-border`, `bg-primary`, `bg-primary-hover`, `font-serif-display` (Cormorant Garamond).
+- Card images are at `public/cards/<card-id>.jpg` and referenced as `/cards/<card-id>.jpg`.
 
 ## Common tasks
 
 ### Edit a card's detail page layout
-Edit `src/app/[lang]/cards/[id]/CardDetailClient.tsx`. Bilingual H2s are driven by `lang` prop. Sections: breadcrumb, hero, at-a-glance, upright, reversed, love, career, advice, yes/no, related cards, FAQ, prev/next nav, CTA.
+Edit `src/app/[lang]/cards/[id]/CardDetailClient.tsx`. Bilingual H2s are driven by `lang` prop.
 
 ### Edit card page metadata / SEO
-Edit `src/app/[lang]/cards/[id]/page.tsx`. It contains bilingual `generateMetadata()` (with `alternates.languages` hreflang) and three JSON-LD script blocks (Article, BreadcrumbList, FAQPage).
+Edit `src/app/[lang]/cards/[id]/page.tsx`. Contains bilingual `generateMetadata()` (with hreflang) and three JSON-LD script blocks.
 
 ### Edit the reading experience
-Edit `src/app/[lang]/reading/page.tsx`. It's a large client component (~500 lines) handling spread selection, context questions, card drawing with animation, and narrative generation.
+Edit `src/app/[lang]/reading/page.tsx`. Large client component (~500 lines): spread selection, context questions, card drawing, narrative generation.
 
 ### Edit homepage sections
-Edit `src/app/[lang]/page.tsx`. Sections: hero, popular cards, browse by suit, what-is-tarot, how-it-works, two-halves-of-deck. (The root `src/app/page.tsx` is just an Accept-Language redirect.)
+Edit `src/app/[lang]/page.tsx`. (The root `src/app/page.tsx` is just an Accept-Language redirect.)
 
 ### Add a suit landing page
-Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. See any existing suit page (e.g., `src/app/[lang]/cards/wands/page.tsx`) as a template. Build metadata via `buildSuitMetadata()` in `src/app/[lang]/cards/_suitMeta.ts`. Remember to add the route to `sitemap.ts`.
+Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build metadata via `buildSuitMetadata()` in `src/app/[lang]/cards/_suitMeta.ts`. Add the route to `sitemap.ts`.
+
+### Add a new i18n string
+1. Add the key to `dict` in `src/lib/i18n.tsx` with both `en` and `zh` values.
+2. Use via `t("your.key")` in any client component that calls `useLang()`.
+3. For server components, import `{ t }` from `@/lib/i18n` and pass the lang explicitly.
+
+### Add or edit card content
+- **Card names, keywords, upright/reversed meanings**: edit `src/lib/cards.ts`.
+- **Love, career, advice, yes/no, element, numerology, FAQs, related cards**: edit `src/lib/cardExtras.ts`. Major → `majorExtras` directly; Minor → the suit/rank tables inside `buildMinorExtras()`.
+
+## Multi-agent workflow
+
+Multiple AI agents (Claude Code, Codex, others) can work on this repo. Rules to avoid collisions:
+
+- **One shared brief**: this file. Both agents read it. If you need agent-specific guidance, add a `## Claude-specific` or `## Codex-specific` section here rather than splitting docs.
+- **Branch naming**: prefix with the agent — `claude/<short-name>` or `codex/<short-name>`. Keeps attribution clear and prevents accidental overlap.
+- **Worktree per task**: each branch gets its own worktree under `.claude/worktrees/` (Claude) or your equivalent. Never edit the same files from two worktrees at once.
+- **Commits**: whoever ships a structural change updates this file in the same commit (see "MANDATORY" section below).
+- **Handoff**: when asking a second agent to continue work, link the branch + the PR or commit range — don't assume shared memory.
+- **Second opinion**: it's fine to ask one agent to review another's diff before merge. Different models catch different things.
+
+## Git branches
+
+| Branch | Purpose |
+|--------|---------|
+| `main` | Production — auto-deploys to Vercel |
+| `feature/shop-and-ai-payment` | Preserved shop + AI reading code (Airwallex + DeepSeek). Hidden from main until finance is set up. |
+
+Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and be deleted after merge.
+
+## Pending work
+
+1. **Image optimization**: convert 78 card JPGs to WebP for faster loading.
+2. **Dynamic `<html lang>` attribute**: root layout hardcodes `lang="en"`; middleware that sets it from URL (or moves `<html>` into a dynamic parent) would be cleaner for pre-hydration crawling of `/zh` pages. Current stop-gap: inner `<div lang="zh-CN">` + client-side `useEffect` sync + metadata hreflang.
+3. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
+4. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). Will switch to Airwallex.
+
+## Important conventions
+
+- **Tone**: reflective, grounded, no fortune-teller theatrics. Content reads like a thoughtful guide, not a prediction.
+- **No emojis in content** unless the user explicitly requests.
+- **Always bilingual**: every user-facing string needs both `en` and `zh`.
+- **Build must pass**: always run `npm run build` after changes. All 181 pages must generate successfully.
+- **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
+- **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
 
 ## Things to NOT do
 
 - **Don't create a `cards/[suit]/` dynamic route** — it conflicts with `cards/[id]/`. Use static folders.
 - **Don't forget Chinese translations** — every i18n key needs both `en` and `zh`.
-- **Don't use unprefixed `<Link href>`** — every internal link must start with `/${lang}/...`. Unprefixed hrefs land on the root redirect and bounce the user.
-- **Don't skip `npm run build`** — it's the only way to verify correctness.
+- **Don't use unprefixed `<Link href>`** — every internal link must start with `/${lang}/...`.
+- **Don't skip `npm run build`** — it's the only validation step.
 - **Don't use fortune-teller tone** — content should be reflective and grounded.
 - **Don't touch the `feature/shop-and-ai-payment` branch** unless specifically asked to work on payment/AI features.
-- **Don't commit structural changes without updating docs** — see below.
+- **Don't commit structural changes without updating this file** — see below.
 
-## MANDATORY: Update docs on every structural change
+## MANDATORY: Update this file on every structural change
 
-**Any commit that changes routes, data models, file structure, conventions, or pending work MUST update CLAUDE.md and/or AGENTS.md in the same commit.** This rule is non-negotiable.
+**Any commit that changes routes, data models, file structure, conventions, or pending work MUST update `AGENTS.md` in the same commit.** This rule is non-negotiable. (Because `CLAUDE.md` imports this file, both agents see the update.)
 
 Checklist before every commit:
-- [ ] New/removed/renamed route? → Update route table here + file structure in CLAUDE.md
-- [ ] New/changed data type or field? → Update data model reference here
-- [ ] New/removed component or lib file? → Update file structure in CLAUDE.md
-- [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update CLAUDE.md architecture section
-- [ ] Completed or added a pending task? → Update CLAUDE.md "Pending work" section
-- [ ] Changed total page count? → Update "181 pages" references in both files
-- [ ] New convention or rule? → Update CLAUDE.md conventions + "Things to NOT do" here
-- [ ] Branch created/merged/deleted? → Update CLAUDE.md git branches table
+- [ ] New/removed/renamed route? → Update route table + file structure
+- [ ] New/changed data type or field? → Update data model reference
+- [ ] New/removed component or lib file? → Update file structure
+- [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update architecture section
+- [ ] Completed or added a pending task? → Update "Pending work"
+- [ ] Changed total page count? → Update "181 pages" references
+- [ ] New convention or rule? → Update "Important conventions" / "Things to NOT do"
+- [ ] Branch created/merged/deleted? → Update "Git branches" table
 
 If none apply, no update needed. **When in doubt, update — stale docs are worse than no docs.**
