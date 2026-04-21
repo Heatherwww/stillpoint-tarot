@@ -3,7 +3,25 @@
     "allow": [
       "Bash(npm --version)",
       "Read(//c/Users/heather.wang/personal/**)",
-      "Bash(npx --yes create-next-app@latest tarrot --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --no-turbopack --use-npm --yes)"
+      "Bash(npx --yes create-next-app@latest tarrot --typescript --tailwind --app --eslint --src-dir --import-alias \"@/*\" --no-turbopack --use-npm --yes)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "WebSearch",
+      "Bash(gh auth:*)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git remote:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(curl -sLo public/cards/_test_fool.jpg \"https://commons.wikimedia.org/wiki/Special:FilePath/RWS_Tarot_00_Fool.jpg\")",
+      "Bash(curl -sLo public/cards/_test_fool.jpg \"https://commons.wikimedia.org/wiki/Special:FilePath/RWS_Tarot_00_Fool.jpg?width=500\")",
+      "Bash(curl -sLo public/cards/_test_wands.jpg \"https://commons.wikimedia.org/wiki/Special:FilePath/Wands01.jpg?width=500\")",
+      "Bash(node scripts/download-cards.mjs)",
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)"
     ]
-  }
+  },
+  "model": "claude-opus-4-5-20251001"
 }

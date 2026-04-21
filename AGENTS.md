@@ -38,28 +38,30 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 ```
 src/
 ├── app/
-│   ├── layout.tsx           # Root HTML shell: fonts + <html lang="en">
-│   ├── page.tsx             # / → redirects to /en or /zh based on Accept-Language
 │   ├── globals.css          # Tailwind + custom CSS variables (dark theme, starfield)
 │   ├── sitemap.ts           # Dynamic sitemap: all routes × {en, zh} with hreflang
 │   ├── robots.ts            # robots.txt generation
 │   ├── api/checkout/route.ts # Stripe checkout API (inactive, will switch to Airwallex)
-│   └── [lang]/              # Bilingual segment — lang ∈ {en, zh}
-│       ├── layout.tsx       # LanguageProvider(initialLang=lang) + Nav + Footer
-│       ├── page.tsx         # Homepage
-│       ├── reading/page.tsx # Interactive reading page
-│       ├── cards/
-│       │   ├── page.tsx         # Card library (filterable grid)
-│       │   ├── _suitMeta.ts     # buildSuitMetadata() helper
-│       │   ├── [id]/
-│       │   │   ├── page.tsx             # SSG card detail: metadata + JSON-LD
-│       │   │   └── CardDetailClient.tsx # 10-section card page + prev/next
-│       │   ├── major/page.tsx
-│       │   ├── wands/page.tsx
-│       │   ├── cups/page.tsx
-│       │   ├── swords/page.tsx
-│       │   └── pentacles/page.tsx
-│       └── shop/page.tsx    # Shop page (payment not wired)
+│   ├── (redirect)/
+│   │   ├── layout.tsx       # Root layout for `/` redirect
+│   │   └── page.tsx         # / → redirects to /en or /zh based on Accept-Language
+│   └── (site)/
+│       └── [lang]/          # Bilingual segment — lang ∈ {en, zh}; root layout lives here
+│           ├── layout.tsx       # Root HTML shell + LanguageProvider(initialLang=lang) + Nav + Footer
+│           ├── page.tsx         # Homepage
+│           ├── reading/page.tsx # Interactive reading page
+│           ├── cards/
+│           │   ├── page.tsx         # Card library (filterable grid)
+│           │   ├── _suitMeta.ts     # buildSuitMetadata() helper
+│           │   ├── [id]/
+│           │   │   ├── page.tsx             # SSG card detail: metadata + JSON-LD
+│           │   │   └── CardDetailClient.tsx # 10-section card page + prev/next
+│           │   ├── major/page.tsx
+│           │   ├── wands/page.tsx
+│           │   ├── cups/page.tsx
+│           │   ├── swords/page.tsx
+│           │   └── pentacles/page.tsx
+│           └── shop/page.tsx    # Shop page (payment not wired)
 ├── components/
 │   ├── Nav.tsx              # Sticky header: logo, nav links, language toggle
 │   ├── Footer.tsx           # Footer
@@ -81,12 +83,13 @@ scripts/
 
 ### Bilingual system
 - **URL-based language routing**: every page lives under `/[lang]/...` where lang is `en` or `zh`. `/` redirects to `/en` or `/zh` based on `Accept-Language`.
+- The localized site uses a dynamic-segment root layout at `src/app/(site)/[lang]/layout.tsx`, so `<html lang>` is correct in the initial HTML for both `/en` and `/zh`.
 - `LanguageProvider` receives `initialLang` as a prop from `[lang]/layout.tsx` (derived from URL params). No localStorage, no client-side toggle state — language is the URL.
 - `LangToggle` renders two `<Link>`s that swap the first path segment between `en` and `zh` using `usePathname()`.
 - All UI strings live in `src/lib/i18n.tsx` as a flat `Dict` (`Record<string, {en, zh}>`).
 - Card data (names, keywords, meanings) is bilingual in `cards.ts` via `BilingualText` / `BilingualList`.
 - Extended card content in `cardExtras.ts` is also bilingual.
-- Root `<html lang="en">` is static; `LanguageProvider` syncs `document.documentElement.lang` client-side on mount (plus each `[lang]/layout` wraps content in `<div lang="...">`).
+- `LanguageProvider` no longer needs client-side `document.documentElement.lang` sync because the localized root layout sets `<html lang>` server-side.
 
 ### Card data flow
 1. `cards.ts` exports `fullDeck: TarotCard[]` (78 cards: 22 Major + 14 each of Wands, Cups, Swords, Pentacles).
@@ -94,8 +97,8 @@ scripts/
 3. Card detail pages use both for metadata/JSON-LD (server) and `CardDetailClient.tsx` (client).
 
 ### Static generation
-- `[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
-- `[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
+- `src/app/(site)/[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
+- `src/app/(site)/[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
 - Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
 - `npm run build` generates **181 total pages**.
 - Legacy URLs (`/cards`, `/cards/:id`, `/reading`, `/shop`) 301-redirect to `/en/...` via `next.config.ts` to preserve Google-indexed link equity.
@@ -173,24 +176,24 @@ CardExtras {
 - Client components use `useLang()` hook from `@/lib/i18n` for translations.
 - Server components import `{ t }` function directly and pass `lang` as a parameter.
 - Tailwind classes use the project's custom design tokens: `bg-background`, `bg-surface`, `bg-surface-muted`, `text-foreground`, `text-muted`, `text-primary`, `text-accent`, `border-border`, `bg-primary`, `bg-primary-hover`, `font-serif-display` (Cormorant Garamond).
-- Card images are at `public/cards/<card-id>.jpg` and referenced as `/cards/<card-id>.jpg`.
+- Card images are at `public/cards/<card-id>.webp` and referenced as `/cards/<card-id>.webp`.
 
 ## Common tasks
 
 ### Edit a card's detail page layout
-Edit `src/app/[lang]/cards/[id]/CardDetailClient.tsx`. Bilingual H2s are driven by `lang` prop.
+Edit `src/app/(site)/[lang]/cards/[id]/CardDetailClient.tsx`. Bilingual H2s are driven by `lang` prop.
 
 ### Edit card page metadata / SEO
-Edit `src/app/[lang]/cards/[id]/page.tsx`. Contains bilingual `generateMetadata()` (with hreflang) and three JSON-LD script blocks.
+Edit `src/app/(site)/[lang]/cards/[id]/page.tsx`. Contains bilingual `generateMetadata()` (with hreflang) and three JSON-LD script blocks.
 
 ### Edit the reading experience
-Edit `src/app/[lang]/reading/page.tsx`. Large client component (~500 lines): spread selection, context questions, card drawing, narrative generation.
+Edit `src/app/(site)/[lang]/reading/page.tsx`. Large client component (~500 lines): spread selection, context questions, card drawing, narrative generation.
 
 ### Edit homepage sections
-Edit `src/app/[lang]/page.tsx`. (The root `src/app/page.tsx` is just an Accept-Language redirect.)
+Edit `src/app/(site)/[lang]/page.tsx`. (The root `/` redirect lives in `src/app/(redirect)/page.tsx`.)
 
 ### Add a suit landing page
-Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build metadata via `buildSuitMetadata()` in `src/app/[lang]/cards/_suitMeta.ts`. Add the route to `sitemap.ts`.
+Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build metadata via `buildSuitMetadata()` in `src/app/(site)/[lang]/cards/_suitMeta.ts`. Add the route to `sitemap.ts`.
 
 ### Add a new i18n string
 1. Add the key to `dict` in `src/lib/i18n.tsx` with both `en` and `zh` values.
@@ -223,10 +226,8 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 
 ## Pending work
 
-1. **Image optimization**: convert 78 card JPGs to WebP for faster loading.
-2. **Dynamic `<html lang>` attribute**: root layout hardcodes `lang="en"`; middleware that sets it from URL (or moves `<html>` into a dynamic parent) would be cleaner for pre-hydration crawling of `/zh` pages. Current stop-gap: inner `<div lang="zh-CN">` + client-side `useEffect` sync + metadata hreflang.
-3. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
-4. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). Will switch to Airwallex.
+1. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
+2. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). Will switch to Airwallex.
 
 ## Important conventions
 

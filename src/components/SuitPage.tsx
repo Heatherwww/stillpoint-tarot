@@ -79,7 +79,7 @@ export default function SuitPage({
             >
               <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
                 <Image
-                  src={`/cards/${card.id}.jpg`}
+                  src={`/cards/${card.id}.webp`}
                   alt={card.name[lang]}
                   width={500}
                   height={833}

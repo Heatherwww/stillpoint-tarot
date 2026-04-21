@@ -1,12 +1,13 @@
 // One-off script: download Rider-Waite-Smith card scans from Wikimedia Commons.
 // Pamela Colman Smith, 1909 — public domain.
-// Writes to public/cards/<card-id>.jpg at ~500px wide.
+// Writes to public/cards/<card-id>.webp at ~500px wide.
 //
 // Run with:  node scripts/download-cards.mjs
 
 import { writeFile, mkdir } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
+import sharp from "sharp";
 
 const OUT_DIR = path.resolve("public/cards");
 const WIDTH = 500;
@@ -96,7 +97,7 @@ async function tryFetch(file) {
 }
 
 async function downloadOne({ id, files }) {
-  const out = path.join(OUT_DIR, `${id}.jpg`);
+  const out = path.join(OUT_DIR, `${id}.webp`);
   if (existsSync(out)) {
     return { id, status: "skipped" };
   }
@@ -121,8 +122,9 @@ async function downloadOne({ id, files }) {
         lastReason = `too small (${buf.length}B)`;
         break;
       }
-      await writeFile(out, buf);
-      return { id, status: "ok", size: buf.length, file };
+      const webp = await sharp(buf).resize({ width: WIDTH }).webp({ quality: 80 }).toBuffer();
+      await writeFile(out, webp);
+      return { id, status: "ok", size: webp.length, file };
     }
   }
   return { id, status: "failed", reason: lastReason, url: lastUrl };
