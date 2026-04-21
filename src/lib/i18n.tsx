@@ -3,7 +3,6 @@
 import {
   createContext,
   useContext,
-  useEffect,
   ReactNode,
 } from "react";
 
@@ -470,12 +469,6 @@ export function LanguageProvider({
   children: ReactNode;
   initialLang: Lang;
 }) {
-  useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = initialLang === "zh" ? "zh-CN" : "en";
-    }
-  }, [initialLang]);
-
   return (
     <LanguageContext.Provider
       value={{ lang: initialLang, t: (key) => t(key, initialLang) }}

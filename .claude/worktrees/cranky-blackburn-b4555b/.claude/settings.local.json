@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/heather.wang/personal/tarrot/.claude/worktrees/**)",
+      "Bash(rmdir cranky-blackburn-b4555b *)"
+    ]
+  }
+}

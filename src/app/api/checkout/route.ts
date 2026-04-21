@@ -40,8 +40,8 @@ export async function POST(req: Request) {
           quantity: 1,
         },
       ],
-      success_url: `${origin}/shop?status=success`,
-      cancel_url: `${origin}/shop?status=cancelled`,
+      success_url: `${origin}/${lang}/shop?status=success`,
+      cancel_url: `${origin}/${lang}/shop?status=cancelled`,
       locale: lang === "zh" ? "zh" : "en",
     });
 
