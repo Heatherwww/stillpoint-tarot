@@ -1,4 +1,5 @@
 @AGENTS.md
+@TRACKER.md
 
 <!--
   AGENTS.md is the shared technical brief for all coding agents.

@@ -1,6 +1,6 @@
 # Stillpoint Tarot — Agent & Project Guide
 
-This is the single source of truth for any AI coding agent working on this repo (Claude Code, Codex, or others). `CLAUDE.md` imports this file.
+This is the shared technical brief for any AI coding agent working on this repo (Claude Code, Codex, or others). `CLAUDE.md` imports this file alongside `TRACKER.md`.
 
 Current roadmap items, product TODOs, and follow-up decisions live in `TRACKER.md`. `AGENTS.md` covers codebase structure, implementation conventions, and agent workflow; `TRACKER.md` covers what to do next.
 
@@ -27,13 +27,13 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 | Payment (future) | Airwallex | not yet wired — see `feature/shop-and-ai-payment` |
 | AI reading (future) | DeepSeek (`deepseek-chat`) | not yet wired — same branch |
 
-**No test framework is set up.** Validate changes with `npm run build` (static generation of 205 pages).
+**No test framework is set up.** Validate changes with `npm run build`.
 
 ## Before making any change
 
 1. **Read this file in full** — it contains the architecture, data flow, file map, and conventions.
 2. **Check `TRACKER.md`** when the task touches roadmap, backlog, prioritization, SEO follow-up, or open product decisions.
-3. **Run `npm run build`** after every change. The build statically generates 205 pages ({en,zh} × most routes + 156 card pages + 24 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
+3. **Run `npm run build`** after every change. It validates the full statically generated route set. If any page fails, the build fails. This is the only validation step (no test suite).
 4. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
 
 ## Project structure
@@ -95,7 +95,7 @@ scripts/
 └── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
 AGENTS.md                    # Codebase architecture, conventions, and agent workflow
 TRACKER.md                   # Product tracker, roadmap, and follow-up TODOs
-CLAUDE.md                    # Claude entrypoint that imports AGENTS.md
+CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKER.md
 ```
 
 ## Key architecture decisions
@@ -117,10 +117,10 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md
 
 ### Static generation
 - `src/app/(site)/[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
-- `src/app/(site)/[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
-- `src/app/(site)/[lang]/guides/[slug]/page.tsx` returns the cartesian product {en,zh} × 12 guide slugs = 24 guide pages.
+- `src/app/(site)/[lang]/cards/[id]/page.tsx` statically generates every card detail route across both locales.
+- `src/app/(site)/[lang]/guides/[slug]/page.tsx` statically generates every guide hub route across both locales.
 - Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
-- `npm run build` generates **205 total pages**.
+- `npm run build` validates the full statically generated route set.
 - Legacy URLs (`/cards`, `/cards/:id`, `/reading`, `/shop`) 301-redirect to `/en/...` via `next.config.ts` to preserve Google-indexed link equity.
 
 ### SEO
@@ -149,17 +149,17 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md
 | Route | Type | Description |
 |-------|------|-------------|
 | `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
-| `/[lang]` | SSG (2) | Homepage hub, per locale |
-| `/[lang]/guides/[slug]` | SSG (24) | SEO guide hubs for broader search intent |
-| `/[lang]/reading` | SSG (2) | Interactive reading page |
-| `/[lang]/cards` | SSG (2) | Filterable card library |
-| `/[lang]/cards/[id]` | SSG (156) | Individual card detail (78 × 2 locales) |
-| `/[lang]/cards/major` | SSG (2) | Major Arcana landing |
-| `/[lang]/cards/wands` | SSG (2) | Wands landing |
-| `/[lang]/cards/cups` | SSG (2) | Cups landing |
-| `/[lang]/cards/swords` | SSG (2) | Swords landing |
-| `/[lang]/cards/pentacles` | SSG (2) | Pentacles landing |
-| `/[lang]/shop` | SSG (2) | Shop preview only (payment not wired, `noindex`) |
+| `/[lang]` | SSG | Homepage hub, per locale |
+| `/[lang]/guides/[slug]` | SSG | SEO guide hubs for broader search intent |
+| `/[lang]/reading` | SSG | Interactive reading page |
+| `/[lang]/cards` | SSG | Filterable card library |
+| `/[lang]/cards/[id]` | SSG | Individual card detail routes across all cards and both locales |
+| `/[lang]/cards/major` | SSG | Major Arcana landing |
+| `/[lang]/cards/wands` | SSG | Wands landing |
+| `/[lang]/cards/cups` | SSG | Cups landing |
+| `/[lang]/cards/swords` | SSG | Swords landing |
+| `/[lang]/cards/pentacles` | SSG | Pentacles landing |
+| `/[lang]/shop` | SSG | Shop preview only (payment not wired, `noindex`) |
 | `/sitemap.xml` | Generated | XML sitemap (all locales, with hreflang alternates) |
 | `/robots.txt` | Generated | robots.txt |
 
@@ -260,12 +260,15 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 
 Roadmap items, backlog, and operational follow-up tasks now live in `TRACKER.md`.
 
+Do not store transient outputs here: build page counts, recent command output, and one-off status notes belong in commit history, PRs, or the tracker if they affect next actions.
+
 ## Important conventions
 
 - **Tone**: reflective, grounded, no fortune-teller theatrics. Content reads like a thoughtful guide, not a prediction.
 - **No emojis in content** unless the user explicitly requests.
 - **Always bilingual**: every user-facing string needs both `en` and `zh`.
-- **Build must pass**: always run `npm run build` after changes. All 205 pages must generate successfully.
+- **Build must pass**: always run `npm run build` after changes.
+- **Keep docs separated by purpose**: `AGENTS.md` is for stable codebase knowledge and workflow; `TRACKER.md` is for active priorities, decisions, and follow-up.
 - **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
 - **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
 
@@ -277,11 +280,12 @@ Roadmap items, backlog, and operational follow-up tasks now live in `TRACKER.md`
 - **Don't skip `npm run build`** — it's the only validation step.
 - **Don't use fortune-teller tone** — content should be reflective and grounded.
 - **Don't touch the `feature/shop-and-ai-payment` branch** unless specifically asked to work on payment/AI features.
+- **Don't record transient output in `AGENTS.md`** — page counts, build logs, and session-specific notes go elsewhere.
 - **Don't commit structural changes without updating this file** — see below.
 
 ## MANDATORY: Update this file on every structural change
 
-**Any commit that changes routes, data models, file structure, conventions, or the tracker relationship MUST update `AGENTS.md` in the same commit.** This rule is non-negotiable. (Because `CLAUDE.md` imports this file, both agents see the update.)
+**Any commit that changes routes, data models, file structure, conventions, or the tracker relationship MUST update `AGENTS.md` in the same commit.** This rule is non-negotiable. (Because `CLAUDE.md` imports both `AGENTS.md` and `TRACKER.md`, both agents see the update.)
 
 Checklist before every commit:
 - [ ] New/removed/renamed route? → Update route table + file structure
@@ -289,7 +293,6 @@ Checklist before every commit:
 - [ ] New/removed component or lib file? → Update file structure
 - [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update architecture section
 - [ ] Completed or added a roadmap / TODO item? → Update `TRACKER.md`
-- [ ] Changed total page count? → Update the page-count references
 - [ ] New convention or rule? → Update "Important conventions" / "Things to NOT do"
 - [ ] Branch created/merged/deleted? → Update "Git branches" table
 
