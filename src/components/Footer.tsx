@@ -38,7 +38,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <p className="mt-4">漏 {year} 路 {t("footer.rights")}</p>
+        <p className="mt-4">&copy; {year} &middot; {t("footer.rights")}</p>
       </div>
     </footer>
   );
