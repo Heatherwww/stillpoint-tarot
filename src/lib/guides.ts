@@ -1187,6 +1187,357 @@ export const guides: Guide[] = [
     relatedCardIds: ["the-fool", "the-hermit", "death", "the-world"],
     relatedGuideSlugs: ["tarot-card-meanings", "how-to-read-reversed-tarot-cards", "three-card-tarot-spread"],
   },
+  {
+    ...summaryBySlug["questions-to-ask-tarot"],
+    intro: {
+      en: [
+        "A weak tarot reading often starts with a weak question. Not because the cards failed, but because the prompt was too big, too vague, or secretly trying to force the deck into giving certainty it cannot honestly give. Questions like What will happen to my whole life? or Does this person love me forever? usually create noise before they create clarity.",
+        "A strong tarot question does not need to sound mystical. It needs to be specific enough to locate the decision, the timing, or the emotional pressure point. The better the question, the less you need to over-interpret the answer.",
+      ],
+      zh: [
+        "一次读不清的塔罗，往往不是因为牌失灵，而是因为问题本身就太大、太糊，或者偷偷在逼牌给出它根本不适合给的确定性。像“我这一生会怎么样”或“这个人会不会永远爱我”这种问法，通常在带来清楚之前，先带来噪音。",
+        "一个好问题并不需要听起来神秘，它只需要足够具体，能把真正的决定点、时间点，或情绪受力点找出来。问题越好，答案就越不需要靠过度解释来撑。",
+      ],
+    },
+    sections: [
+      {
+        id: "what-makes-a-good-question",
+        title: {
+          en: "What makes a tarot question good",
+          zh: "什么样的问题，才算是好问题",
+        },
+        paragraphs: {
+          en: [
+            "Good tarot questions are usually about something close enough to your life that you can respond to it. They are often specific, time-bounded, and grounded in reality. Instead of asking Will I ever be happy?, ask What needs attention in my life this month so I can feel more grounded? The second question gives the spread something workable to map.",
+            "The point is not to make every question small. It is to make it readable. A question can still be emotionally deep while being structurally clear. Clear questions invite clearer cards.",
+          ],
+          zh: [
+            "好的塔罗问题，通常都离你的真实生活足够近，近到你可以对它做出回应。它们往往更具体、有时间边界，也更贴地。与其问“我这辈子会不会幸福”，不如问“这个月我的生活里有哪些部分需要被照顾，才能让我更稳”。后者才给了牌阵一个真正能展开的对象。",
+            "重点不是把所有问题都缩小，而是让它变得可读。一个问题完全可以很深，但结构上依然清楚。问题清楚，牌通常也会清楚。",
+          ],
+        },
+      },
+      {
+        id: "questions-that-work-best",
+        title: {
+          en: "The kinds of questions tarot handles best",
+          zh: "塔罗最擅长回答哪些问题",
+        },
+        paragraphs: {
+          en: [
+            "Tarot tends to work best on orientation questions: What is really going on here? What am I not seeing? What energy am I bringing into this situation? What would be wiser than my first impulse? These questions let the deck clarify patterns, timing, and blind spots.",
+            "It is also strong with next-step questions. What conversation matters most now? What is the real obstacle in this decision? What would help this situation move? These are the kinds of prompts that can change behavior, not just satisfy curiosity.",
+          ],
+          zh: [
+            "塔罗通常最擅长的是定向类问题：这里真正发生的是什么？我没有看见的是什么？我正带着怎样的能量进入这件事？什么做法会比我的第一反应更明智？这种问题会让牌阵去澄清模式、时机和盲点。",
+            "它也很擅长回答“下一步”类问题：现在最重要的那场对话是什么？这个决定里真正的阻碍是什么？什么会帮助这件事移动？这种提问能改变行为，而不只是暂时满足好奇。",
+          ],
+        },
+      },
+      {
+        id: "questions-to-avoid",
+        title: {
+          en: "Questions that usually create bad readings",
+          zh: "哪些问法最容易把解读带偏",
+        },
+        paragraphs: {
+          en: [
+            "The least useful tarot questions are usually the ones that are absolute, invasive, or impossible to test. Forever questions, destiny questions, and prompts that try to control another person's inner world often create shaky readings. They can produce intense emotion, but not necessarily usable insight.",
+            "A bad question is often trying to outsource your agency. If the prompt is secretly asking the cards to decide your whole future for you, the reading will usually become dramatic long before it becomes wise.",
+          ],
+          zh: [
+            "最没帮助的塔罗问题，通常是那些绝对化、越界，或者根本无法被检验的问题。关于“永远”的问题、关于“命定”的问题，以及那种试图完全控制他人内在世界的提问，最容易把牌阵带到虚处。它们可能带来强烈情绪，但不一定带来可用洞见。",
+            "一个坏问题，很多时候是在偷偷把自己的行动力外包出去。如果你真正想问的是“请牌替我决定整个人生”，那这次解读通常会先变得戏剧化，然后才轮到它尝试变得有智慧。",
+          ],
+        },
+      },
+      {
+        id: "better-examples",
+        title: {
+          en: "Examples of better tarot questions",
+          zh: "一些更好用的塔罗提问示例",
+        },
+        paragraphs: {
+          en: [
+            "For love: What dynamic is most shaping this relationship right now? For work: What is the real pressure I am responding to in this job? For timing: What needs to be true before this is ready? For self-reflection: What pattern am I repeating that I am finally ready to see more clearly?",
+            "If you are stuck, add a timeframe or a decision layer. This week, this conversation, this offer, this season, this transition. Small anchors often transform a vague reading into a useful one.",
+          ],
+          zh: [
+            "感情里可以问：这段关系此刻最关键的动力是什么？工作里可以问：我在这份工作里真正回应的压力是什么？时机问题可以问：在这件事成熟之前，还需要什么条件？自我探索可以问：我正在重复什么模式，而我其实已经准备好把它看清了？",
+            "如果你还是卡住，就给问题加一个时间锚点或决定层。比如这周、这场对话、这个机会、这个阶段、这次转折。小小的锚点，常常足以把一个模糊问题变成一个有用问题。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "What is the best question to ask tarot?",
+          zh: "最适合拿来问塔罗的问题是什么？",
+        },
+        a: {
+          en: "The best question is usually specific, grounded, and close enough to your real life that you can respond to it. Questions about what is happening, what you are not seeing, and what your next step is are usually the most useful.",
+          zh: "最好的问题通常具体、贴地，而且离你的真实生活足够近，近到你可以据此行动。像“这里发生了什么”“我没看见什么”“我的下一步是什么”这类问题，往往最有用。",
+        },
+      },
+      {
+        q: {
+          en: "Should tarot questions be yes or no?",
+          zh: "塔罗问题一定要问成是或否吗？",
+        },
+        a: {
+          en: "Not usually. Yes-or-no questions can work when the decision is concrete, but open questions often create richer and more accurate readings, especially for relationships, work, and personal growth.",
+          zh: "通常不需要。是或否问题在决策很具体时可以成立，但对关系、工作和成长类问题来说，开放式问题往往会带来更丰富也更准确的解读。",
+        },
+      },
+      {
+        q: {
+          en: "What should I avoid asking tarot?",
+          zh: "哪些问题最好不要拿来问塔罗？",
+        },
+        a: {
+          en: "Avoid absolute, invasive, or agency-replacing questions. Forever questions, destiny questions, and prompts that try to force certainty out of another person's inner world usually create poor readings.",
+          zh: "尽量避开绝对化、越界，或试图用牌代替你行动力的问题。关于“永远”“命定”，以及强逼他人内在世界给出确定答案的提问，通常最容易带来差的解读。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-high-priestess", "the-hermit", "seven-of-cups", "judgement"],
+    relatedGuideSlugs: ["yes-no-tarot", "three-card-tarot-spread", "tarot-card-meanings"],
+  },
+  {
+    ...summaryBySlug["tarot-card-combinations-for-beginners"],
+    intro: {
+      en: [
+        "The hardest jump in tarot is often not learning individual card meanings. It is learning how to stop reading each card as a separate speech. The moment two or three cards appear together, the task changes. You are no longer translating symbols one by one. You are reading a relationship.",
+        "Beginners often freeze because they know what each card could mean, but they do not know how to let the cards influence one another. The good news is that combinations do not require psychic fireworks. They require pattern recognition, sequence, and a willingness to notice what gets stronger, softer, repeated, or contradicted.",
+      ],
+      zh: [
+        "塔罗里最难跨过去的一步，往往不是记住单牌含义，而是学会不再把每张牌都读成一段独立演讲。只要两三张牌一起出现，任务就变了。你不再是在逐个翻译符号，而是在读它们之间的关系。",
+        "很多初学者会卡住，不是因为他们不知道每张牌“可能”是什么意思，而是因为他们不知道牌与牌之间该怎样互相影响。好消息是，牌组组合并不需要什么通灵烟火，它更需要的是模式识别、顺序感，以及你愿不愿意去看：哪些东西被放大了、被缓和了、被重复了，或被彼此顶住了。",
+      ],
+    },
+    sections: [
+      {
+        id: "stop-reading-in-isolation",
+        title: {
+          en: "Stop reading each card in isolation",
+          zh: "先停止把每张牌单独拆开来读",
+        },
+        paragraphs: {
+          en: [
+            "A combination is not card one plus card two plus card three. It is card one changing the emotional weight of card two, and card three changing what the pair is leaning toward. The same Two of Cups will feel different beside the Devil than beside Temperance. Context does not decorate a card; it changes its center of gravity.",
+            "The first move is simple: after you identify each card, ask what they are doing to one another. Which card is leading? Which one is softening the mood? Which one is making the situation sharper, slower, or more conflicted?",
+          ],
+          zh: [
+            "牌组组合不是“第一张加第二张加第三张”的机械相加。它更像是：第一张改变了第二张的情感重量，而第三张又改变了前两张最终倾向的方向。同一张圣杯二，放在恶魔旁边，和放在节制旁边，气质完全不同。情境不是装饰牌，而是在改变它的重心。",
+            "第一步其实很简单：在你认出每张牌之后，立刻去问它们正在彼此做什么。哪一张在带头？哪一张在缓和气氛？哪一张让局面变得更尖、更慢，或更冲突？",
+          ],
+        },
+      },
+      {
+        id: "look-for-repetition-and-contrast",
+        title: {
+          en: "Look for repetition and contrast",
+          zh: "先看重复，再看对比",
+        },
+        paragraphs: {
+          en: [
+            "Repeated suits, repeated ranks, or repeated emotional tone often tell you what the spread is insisting on. Several Cups cards together may deepen the emotional layer. Several Swords cards may sharpen fear, conflict, or overthinking. Repetition creates emphasis.",
+            "Contrast matters just as much. A warm emotional card beside a cold mental card often tells you that feeling and behavior are out of sync. A hopeful card beside a heavy card may show that possibility exists, but it is not yet free of pressure. Contrast tells you where the tension lives.",
+          ],
+          zh: [
+            "重复的花色、重复的位阶，或者重复的语气，往往就是整副牌阵正在强调的东西。几张圣杯一起出现，通常会把情感层次加深；几张宝剑一起出现，则常常把恐惧、冲突或过度思考推到前面。重复会制造重点。",
+            "对比同样重要。一个温热的情感牌旁边放着一张冷硬的心智牌，常常是在说感受和行为不同步；一张带着希望的牌旁边压着一张很重的牌，则可能是在说可能性存在，但它还没有脱离压力。对比会告诉你，真正的张力住在哪里。",
+          ],
+        },
+      },
+      {
+        id: "read-the-sequence",
+        title: {
+          en: "Read the sequence and direction of movement",
+          zh: "去读顺序，也去读移动方向",
+        },
+        paragraphs: {
+          en: [
+            "Even when a spread does not use explicit positions, cards still create sequence. You can often feel whether the line is moving toward clarity or deeper confusion, toward commitment or withdrawal, toward momentum or exhaustion. The cards are not static. They lean.",
+            "Try asking whether the combination gets lighter or heavier as it moves. Does the middle card complicate what comes before it, or explain it? Does the last card resolve tension, intensify it, or redirect it? Sequence often gives you the sentence that single-card meanings never could.",
+          ],
+          zh: [
+            "即使一个牌阵没有明说过去、现在、未来，牌之间也依然会自然形成顺序。你通常能感觉到，这条线是朝更清楚走，还是朝更混乱走；朝承诺走，还是朝抽离走；朝推进走，还是朝耗尽走。牌不是静止的，它们会倾斜。",
+            "试着去问：这个组合是越走越轻，还是越走越重？中间那张牌是在复杂化前面的内容，还是在解释它？最后那张牌是在缓解张力、加重张力，还是把方向直接拐走？很多时候，顺序给你的那句话，是单牌含义永远拼不出来的。",
+          ],
+        },
+      },
+      {
+        id: "beginner-combination-method",
+        title: {
+          en: "A beginner-friendly method for reading combinations",
+          zh: "一套适合初学者的组合阅读方法",
+        },
+        paragraphs: {
+          en: [
+            "Start with the center card or the card that feels emotionally loudest. Name its core function in one short phrase. Then ask what the neighboring card supports, blocks, complicates, or redirects. Finally, say the whole line back in plain language, not card language.",
+            "If you can paraphrase the spread as one living sentence, you are reading combinations correctly. The goal is not to sound impressive. The goal is to reach a coherent human statement that could actually help someone choose, pause, or understand.",
+          ],
+          zh: [
+            "可以先从中间那张，或你直觉里最响亮的那张开始。先用一句很短的话，说出它的核心功能。然后去看旁边的牌是在支持它、阻挡它、让它复杂化，还是直接把它拐向别处。最后，再把整条线翻译成人话，而不是牌话。",
+            "只要你能把整个组合复述成一句活的句子，你就已经在正确地读组合了。重点不是听起来厉害，而是最后能落成一个连贯的人类陈述，真的帮助人做选择、暂停，或理解。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "How do beginners read tarot card combinations?",
+          zh: "初学者该怎么读塔罗牌组合？",
+        },
+        a: {
+          en: "Start by naming each card simply, then compare them. Look for repetition, contrast, and movement. Ask what one card is doing to the next rather than treating them as separate definitions.",
+          zh: "先把每张牌简单认出来，再开始比较。去看重复、对比和移动方向。重点不是分开背定义，而是去问一张牌正在对另一张牌做什么。",
+        },
+      },
+      {
+        q: {
+          en: "What matters more in a combination: card meanings or positions?",
+          zh: "读牌组组合时，单牌含义和牌位哪个更重要？",
+        },
+        a: {
+          en: "Both matter, but the relationship between them is what creates the reading. Meanings give you vocabulary; positions and neighboring cards tell you how that vocabulary turns into a living statement.",
+          zh: "两者都重要，但真正生成解读的是它们之间的关系。单牌含义给你词汇，牌位和邻近的牌则决定这些词汇怎样变成一句活的话。",
+        },
+      },
+      {
+        q: {
+          en: "Why do my tarot combinations feel confusing?",
+          zh: "为什么我一读塔罗牌组合就觉得乱？",
+        },
+        a: {
+          en: "Usually because you are trying to hold too many possible meanings at once. Simplify first: what repeats, what contrasts, what direction the line is moving, and what sentence the spread seems to be building.",
+          zh: "通常是因为你在同时抓太多可能含义。先把事情简化：什么在重复，什么在对比，这条线在往哪边走，以及整副牌阵正在拼出怎样一句话。",
+        },
+      },
+    ],
+    relatedCardIds: ["two-of-cups", "three-of-swords", "eight-of-pentacles", "wheel-of-fortune"],
+    relatedGuideSlugs: ["three-card-tarot-spread", "tarot-card-meanings", "questions-to-ask-tarot"],
+  },
+  {
+    ...summaryBySlug["tarot-for-self-love"],
+    intro: {
+      en: [
+        "Self-love tarot can become shallow very quickly if it is treated as nothing more than feel-good reassurance. Sometimes the cards do offer softness, rest, and affirmation. But often what they offer first is honesty: where you are abandoning yourself, where your inner voice has become cruel, where your boundaries are weak, or where you keep measuring your worth through someone else's attention.",
+        "That honesty is not the opposite of self-love. It is part of it. Tarot becomes useful in self-love practice when it helps you rebuild trust with yourself through clear seeing, not through empty praise.",
+      ],
+      zh: [
+        "自爱塔罗最容易变浅的地方，在于它一不小心就会只剩下“哄自己开心”的感觉。有时候，牌确实会给你柔软、休息和安慰；但更多时候，它先给你的其实是诚实：你是在哪里丢下了自己、内在声音是在哪里变得过分苛刻、边界是在哪里松掉了，或者你又是在哪里把自己的价值感系在别人的回应上。",
+        "这种诚实不是自爱的反面，它本来就是自爱的一部分。塔罗在自爱练习里真正有用的时候，是它帮助你通过看清现实，重新和自己建立信任，而不是只给你空泛赞美。",
+      ],
+    },
+    sections: [
+      {
+        id: "self-love-is-not-flattery",
+        title: {
+          en: "Self-love is not the same as flattery",
+          zh: "自爱不等于给自己灌糖",
+        },
+        paragraphs: {
+          en: [
+            "Cards like the Empress, Strength, or Queen of Cups can certainly support themes of care, worth, tenderness, and nourishment. But self-love is not only about comfort cards. Sometimes it is Four of Swords asking you to stop. Sometimes it is Nine of Swords showing how harsh your inner world has become. Sometimes it is Justice asking whether the way you judge yourself would be acceptable if spoken to anyone else.",
+            "A mature self-love reading does not just tell you that you deserve more. It shows you what habits, beliefs, or patterns make it hard to receive that truth in daily life.",
+          ],
+          zh: [
+            "像皇后、力量、圣杯皇后这样的牌，当然很适合谈照顾、价值感、温柔和滋养。但自爱并不只属于“舒服的牌”。有时候，它是宝剑四在叫你停；有时候，是宝剑九在让你看见自己内在世界已经苛刻到什么程度；有时候，则是正义在问：如果你用这种语气对别人说话，你自己会不会觉得过分？",
+            "成熟的自爱解读，不会只是告诉你“你值得更好的”。它还会继续往下看：到底是什么习惯、信念或模式，让你在日常里很难真正接住这个事实。",
+          ],
+        },
+      },
+      {
+        id: "cards-that-support-healing",
+        title: {
+          en: "How tarot shows care, healing, and self-trust",
+          zh: "塔罗怎么显示照顾、疗愈与重新信任自己",
+        },
+        paragraphs: {
+          en: [
+            "Different cards support self-love in different ways. The Empress may show nourishment and receiving. Strength may show gentleness with your own fear. The Star may show hope after depletion. Queen of Cups may show emotional attunement, while Four of Swords may show that care begins with stopping the system from running nonstop.",
+            "These cards matter not because they are all pleasant, but because they show forms of self-relationship. Self-love is not one feeling. It is a pattern of how you hold yourself through stress, shame, grief, desire, ambition, and rest.",
+          ],
+          zh: [
+            "不同的牌会以不同方式支持自爱。皇后可能在讲滋养与接收，力量可能在讲如何对自己的恐惧温柔一点，星星可能在讲耗尽之后的修复希望，圣杯皇后可能在讲对自己情绪的细致对齐，而宝剑四则可能是在提醒：照顾自己，有时就是先把系统停下来。",
+            "这些牌之所以重要，不是因为它们都“舒服”，而是因为它们展示了不同的自我关系方式。自爱不是一种单一感觉，它更像是你怎样陪自己穿过压力、羞耻、悲伤、欲望、野心和休息的整体模式。",
+          ],
+        },
+      },
+      {
+        id: "where-self-worth-gets-lost",
+        title: {
+          en: "Where self-worth usually gets lost in a spread",
+          zh: "一副牌里，价值感通常是怎么丢掉的",
+        },
+        paragraphs: {
+          en: [
+            "In self-love readings, difficult cards often show the mechanism of self-abandonment. A reversed Queen of Cups may show emotional over-giving or neglect of your own needs. Nine of Swords may show the voice of inner punishment. The Devil may show attachment to external validation. Seven of Cups may show how fantasy scatters you away from your own center.",
+            "This is useful because it turns shame into pattern recognition. Instead of concluding that you are broken, the reading can show exactly where your attention leaves your own body, boundaries, or truth.",
+          ],
+          zh: [
+            "在自爱牌阵里，难牌常常是在展示“自我丢失”的机制。逆位圣杯皇后可能在讲情绪过度给出、却忘了自己的需要；宝剑九可能在讲内在惩罚的声音；恶魔可能在讲对外部认可的黏着；圣杯七则可能在讲幻想怎样把你从自己的中心带走。",
+            "这很有用，因为它会把羞耻翻译成模式识别。你不需要直接得出“我是不是有问题”的结论，牌阵可以更准确地告诉你：你的注意力是在哪里离开了自己的身体、边界，或真实感。",
+          ],
+        },
+      },
+      {
+        id: "self-love-reading-prompts",
+        title: {
+          en: "Better self-love prompts for tarot",
+          zh: "更适合拿来做自爱解读的提问",
+        },
+        paragraphs: {
+          en: [
+            "Questions like How can I love myself more? can be useful, but they are often too broad. Stronger prompts include: What part of me most needs care right now? What pattern is exhausting my self-trust? What boundary would make my life feel safer? What would support repair instead of self-criticism this week?",
+            "Tarot becomes especially strong here when the prompt leads to practice. The reading should help you rest, speak, pause, ask, or stop in one concrete way. Self-love becomes real when it changes behavior, not just mood.",
+          ],
+          zh: [
+            "像“我该怎样更爱自己”这种问题并不是不能问，但它通常还是太宽。更强一点的问法是：我现在最需要被照顾的是哪一部分？什么模式正在消耗我的自我信任？什么边界会让我的生活更安全？这周什么做法更支持修复，而不是继续自我攻击？",
+            "塔罗在这里最有力量的时候，是它把问题导向练习。一次解读最好最后能落实成一个动作：休息、开口、暂停、请求，或停止某种消耗。自爱一旦改变了行为，它才会真的发生，而不只是暂时改善情绪。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Can tarot help with self-love?",
+          zh: "塔罗真的能帮助自爱吗？",
+        },
+        a: {
+          en: "Yes, especially when it helps you see patterns clearly. Tarot can show where you need rest, softer self-talk, stronger boundaries, emotional honesty, or practical care.",
+          zh: "可以，尤其是当它帮助你把模式看清时。塔罗可以点出你需要的是休息、更柔软的自我对话、更清楚的边界、情绪诚实，还是现实层面的照顾。",
+        },
+      },
+      {
+        q: {
+          en: "Which tarot cards are good for self-love readings?",
+          zh: "哪些塔罗牌适合拿来自爱解读？",
+        },
+        a: {
+          en: "Cards like the Empress, Strength, the Star, Queen of Cups, and Four of Swords often support themes of worth, healing, care, gentleness, and rest. But difficult cards can be just as important because they show where self-love is being blocked.",
+          zh: "像皇后、力量、星星、圣杯皇后、宝剑四这些牌，常常支持价值感、疗愈、照顾、温柔和休息的主题。但难牌同样重要，因为它们更容易看见自爱是被什么卡住的。",
+        },
+      },
+      {
+        q: {
+          en: "What if a self-love reading feels harsh?",
+          zh: "如果一场自爱解读读起来很刺，会不会说明我做错了？",
+        },
+        a: {
+          en: "Not necessarily. A sharp reading may be naming an important truth: overwork, self-criticism, weak boundaries, dependence on validation, or grief that has not been given space. Honest does not mean harmful.",
+          zh: "不一定。读起来刺，很多时候是在点出一个重要真相：你可能过劳、自责、边界太弱、太依赖外部认可，或有些悲伤一直没被允许展开。诚实不等于伤害。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-empress", "queen-of-cups", "strength", "four-of-swords"],
+    relatedGuideSlugs: ["tarot-for-feelings", "questions-to-ask-tarot", "how-to-read-reversed-tarot-cards"],
+  },
 ];
 
 export function getGuide(slug: string) {

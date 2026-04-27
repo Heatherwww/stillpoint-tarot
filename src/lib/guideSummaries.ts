@@ -11,7 +11,10 @@ export type GuideSlug =
   | "court-cards-tarot-meanings"
   | "tarot-for-feelings"
   | "career-tarot-spreads"
-  | "major-arcana-guide";
+  | "major-arcana-guide"
+  | "questions-to-ask-tarot"
+  | "tarot-card-combinations-for-beginners"
+  | "tarot-for-self-love";
 
 export interface GuideSummary {
   slug: GuideSlug;
@@ -117,6 +120,39 @@ export const guideSummaries: GuideSummary[] = [
     description: {
       en: "Understand the 22 Major Arcana as one larger arc: turning points, life lessons, spiritual pressure, and why these tarot cards often speak louder than the rest of the spread.",
       zh: "把 22 张大阿尔卡那放回同一条弧线上理解：转折、生命课题、灵魂压力，以及为什么它们常常比周围的牌更响亮。",
+    },
+  },
+  {
+    slug: "questions-to-ask-tarot",
+    title: {
+      en: "Questions to Ask Tarot: Better Prompts for Clearer Readings",
+      zh: "塔罗该怎么提问：更好的问题，才有更清楚的答案",
+    },
+    description: {
+      en: "Learn how to ask tarot better questions for love, work, timing, decisions, and self-reflection so your readings stay specific, grounded, and actually useful.",
+      zh: "学会怎样为爱情、工作、时机、决策与自我探索提出更好的塔罗问题，让解读更具体、更落地，也更真正有用。",
+    },
+  },
+  {
+    slug: "tarot-card-combinations-for-beginners",
+    title: {
+      en: "Tarot Card Combinations for Beginners: How to Read Cards Together",
+      zh: "塔罗牌组合入门：初学者怎么把牌连起来读",
+    },
+    description: {
+      en: "Learn a beginner-friendly way to read tarot card combinations: repeated suits, contrast, flow, supporting cards, and how to stop reading each card in isolation.",
+      zh: "用一套适合初学者的方法学习塔罗牌组合：重复花色、对比、流向、支撑牌，以及怎样停止把每张牌单独拆开来读。",
+    },
+  },
+  {
+    slug: "tarot-for-self-love",
+    title: {
+      en: "Tarot for Self-Love: Readings for Worth, Care, and Healing",
+      zh: "自爱塔罗：关于价值感、照顾自己与疗愈的读法",
+    },
+    description: {
+      en: "Use tarot for self-love without empty affirmations: learn how the cards speak about worth, boundaries, rest, inner criticism, healing, and rebuilding trust with yourself.",
+      zh: "不用空泛鼓励，也能用塔罗做自爱练习：看清牌如何谈价值感、边界、休息、内在批评、疗愈，以及和自己重新建立信任。",
     },
   },
 ];
