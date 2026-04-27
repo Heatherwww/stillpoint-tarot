@@ -8,7 +8,10 @@ export type GuideSlug =
   | "three-card-tarot-spread"
   | "love-tarot-card-meanings"
   | "how-to-read-reversed-tarot-cards"
-  | "court-cards-tarot-meanings";
+  | "court-cards-tarot-meanings"
+  | "tarot-for-feelings"
+  | "career-tarot-spreads"
+  | "major-arcana-guide";
 
 export interface GuideSummary {
   slug: GuideSlug;
@@ -81,6 +84,39 @@ export const guideSummaries: GuideSummary[] = [
     description: {
       en: "Understand tarot court cards without guessing: how to read them as people, roles, energies, or relationship dynamics across all four suits.",
       zh: "不用靠猜，也能读懂塔罗宫廷牌：它们什么时候代表人物、角色、能量，或关系中的互动方式。",
+    },
+  },
+  {
+    slug: "tarot-for-feelings",
+    title: {
+      en: "Tarot for Feelings: How to Read Someone's Emotions Clearly",
+      zh: "感情塔罗怎么读：如何看清一个人的情绪",
+    },
+    description: {
+      en: "Learn how to read feelings in tarot without forcing certainty: attraction, hesitation, avoidance, emotional availability, and what the suits reveal about someone's inner state.",
+      zh: "学会怎样用塔罗读感受而不硬逼结论：吸引、犹疑、回避、情感可得性，以及四种花色如何透露一个人的内在状态。",
+    },
+  },
+  {
+    slug: "career-tarot-spreads",
+    title: {
+      en: "Career Tarot Spreads: Best Layouts for Work, Money, and Next Steps",
+      zh: "事业塔罗牌阵：工作、金钱与下一步怎么问",
+    },
+    description: {
+      en: "Use tarot spreads for career questions with more structure: job decisions, burnout, money pressure, workplace dynamics, and the next practical move.",
+      zh: "用更有结构的方法处理事业问题：工作去留、倦怠、金钱压力、职场关系，以及下一步现实动作。",
+    },
+  },
+  {
+    slug: "major-arcana-guide",
+    title: {
+      en: "Major Arcana Guide: The 22 Tarot Cards and the Fool's Journey",
+      zh: "大阿尔卡那指南：22 张塔罗牌与愚者之旅",
+    },
+    description: {
+      en: "Understand the 22 Major Arcana as one larger arc: turning points, life lessons, spiritual pressure, and why these tarot cards often speak louder than the rest of the spread.",
+      zh: "把 22 张大阿尔卡那放回同一条弧线上理解：转折、生命课题、灵魂压力，以及为什么它们常常比周围的牌更响亮。",
     },
   },
 ];

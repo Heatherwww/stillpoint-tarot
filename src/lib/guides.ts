@@ -810,6 +810,383 @@ export const guides: Guide[] = [
     relatedCardIds: ["page-of-cups", "knight-of-wands", "queen-of-swords", "king-of-pentacles"],
     relatedGuideSlugs: ["tarot-card-meanings", "three-card-tarot-spread", "how-to-read-reversed-tarot-cards"],
   },
+  {
+    ...summaryBySlug["tarot-for-feelings"],
+    intro: {
+      en: [
+        "Feelings readings are some of the most emotionally loaded tarot questions. People do not just want to know what someone feels; they want to know whether that feeling is deep enough, clear enough, safe enough, or likely to turn into action. That pressure is exactly why feelings spreads are so easy to overread.",
+        "Tarot can help with feelings, but it works best when you stop asking for mind-reading certainty. A better goal is to describe emotional climate: attraction, warmth, fear, withdrawal, longing, confusion, emotional availability. Once the climate is clear, you can make better decisions about what to say, what to wait for, and what not to chase.",
+      ],
+      zh: [
+        "感受类问题是塔罗里最容易让人上头的一类。大多数人并不只是想知道“他有没有感觉”，而是想知道这种感觉够不够深、够不够清楚、够不够安全，或者会不会真的落到行动上。正因为这个压力太大，感受牌阵也最容易被读过头。",
+        "塔罗当然可以帮你看感受，但它最适合做的，不是替你完成读心术，而是帮你描述情绪气候：吸引、温度、恐惧、抽离、想念、混乱、情感可得性。当这个气候被看清之后，你才更容易决定要不要开口、要不要等、以及哪些东西根本不值得追。",
+      ],
+    },
+    sections: [
+      {
+        id: "feelings-vs-intentions",
+        title: {
+          en: "Feelings are not the same as intentions",
+          zh: "有感觉，不等于有打算",
+        },
+        paragraphs: {
+          en: [
+            "One of the biggest mistakes in feelings readings is assuming emotion automatically becomes behavior. Someone can feel drawn to you and still stay silent. They can care and still avoid closeness. They can miss you and still not be ready to return. Tarot often becomes much clearer when you separate feelings from action, and action from long-term capacity.",
+            "This distinction protects you from romantic inflation. A spread can show tenderness without stability, desire without honesty, or nostalgia without real readiness. If you collapse all of that into a single yes-or-no verdict, you lose the part of the reading that is actually useful.",
+          ],
+          zh: [
+            "感受牌阵里最常见的误区之一，就是默认“有情绪”就会自动变成“有行动”。一个人可以被你吸引，却依然沉默；可以在乎你，却还是回避靠近；可以想你，却并没有准备好回来。把“感受”跟“行动”分开，再把“行动”跟“长期能力”分开，塔罗通常就会清楚很多。",
+            "这个区分很重要，因为它能防止你把关系过度浪漫化。牌阵可能显示温柔，但没有稳定；显示欲望，但没有诚实；显示怀念，但没有真正准备好。如果你把这些都压成一个简单结论，就会错过牌阵最有用的部分。",
+          ],
+        },
+      },
+      {
+        id: "suits-and-emotional-state",
+        title: {
+          en: "What the suits reveal about someone's emotional state",
+          zh: "四种花色怎样透露一个人的内在状态",
+        },
+        paragraphs: {
+          en: [
+            "Cups are the obvious suit for feelings, but they are not the only one that matters. Wands can show desire, excitement, attraction, and pursuit. Swords can show fear, self-protection, overthinking, conflict, or emotional distance. Pentacles can show steadiness, patience, loyalty, and whether someone can actually sustain what they feel in real life.",
+            "When a feelings spread contains very few Cups, that is often meaningful. It may show that the situation is being run more by chemistry, anxiety, practicality, or avoidance than by emotional openness. The question is not just whether someone feels something, but how that feeling is being carried.",
+          ],
+          zh: [
+            "圣杯当然是最直观的感受花色，但它不是唯一重要的。权杖会讲欲望、兴奋、吸引和追逐；宝剑会讲害怕、自我保护、过度思考、冲突或情感距离；星币会讲稳定、耐心、忠诚，以及一个人能不能在现实里承托住他感受到的东西。",
+            "所以，一副感受牌阵里如果圣杯很少，这件事本身就很值得注意。它可能说明这段关系更多是被化学反应、焦虑、现实考量，或者回避模式推动，而不是被真正敞开的情绪推动。重点不只是“有没有感觉”，而是这份感觉正被什么方式承载。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Cups: tenderness, intimacy, openness, emotional exchange",
+            "Wands: desire, pursuit, heat, chemistry",
+            "Swords: worry, distance, defensiveness, mixed signals",
+            "Pentacles: steadiness, loyalty, pacing, real-world follow-through",
+          ],
+          zh: [
+            "圣杯：温柔、亲密、开放、情感交换",
+            "权杖：欲望、追逐、热度、化学反应",
+            "宝剑：担忧、距离、防御、混乱信号",
+            "星币：稳定、忠诚、节奏感、现实跟进",
+          ],
+        },
+      },
+      {
+        id: "difficult-cards-feelings",
+        title: {
+          en: "How to read difficult cards in feelings spreads",
+          zh: "感受问题里，难牌到底在说什么",
+        },
+        paragraphs: {
+          en: [
+            "Difficult cards do not always mean the person feels nothing. Often they mean the feeling is entangled with fear, grief, guilt, shame, indecision, or self-protection. The Moon can show confusion, projection, or private longing. Eight of Swords can show emotional paralysis. Four of Cups can show withdrawal, numbness, or someone failing to respond to what is being offered.",
+            "This matters because a painful card may still describe a very real inner experience. But a real inner experience is not the same as a healthy relationship offer. Tarot can tell you there is emotion present while also showing that the emotional container is unstable.",
+          ],
+          zh: [
+            "难牌并不总是在说“对方没感觉”。更多时候，它是在说这份感觉被恐惧、悲伤、愧疚、羞耻、犹疑或自我保护缠住了。月亮可能是在讲混乱、投射，或某种不愿明说的想念；宝剑八可能是在讲情绪瘫住了；圣杯四则可能是在讲抽离、麻木，或对眼前的情感供给反应不过来。",
+            "这很重要，因为一张痛的牌，依然可能在描述一种真实的内在体验。但真实的内在体验，不等于健康的关系提案。塔罗完全可以一边告诉你“这里有情绪”，一边也告诉你“这个情绪容器并不稳定”。",
+          ],
+        },
+      },
+      {
+        id: "ask-better-feelings-questions",
+        title: {
+          en: "Ask better feelings questions",
+          zh: "怎样把“他怎么想”问得更有用",
+        },
+        paragraphs: {
+          en: [
+            "The best feelings questions are narrow enough to reveal a state, not to force a final answer. Instead of asking What does this person feel about me forever?, ask What emotional state is this person currently in toward me? or What is this person able to express right now? These questions give the spread room to be accurate.",
+            "You can also split a feelings reading into layers: what is felt, what is shown, what is feared, and what is possible next. That structure is often much more useful than pulling card after card hoping one will finally reveal a secret certainty.",
+          ],
+          zh: [
+            "感受问题问得越窄，牌阵通常越有用。与其问“这个人永远会怎么想我”，不如问“他现在对我是怎样一种情绪状态”，或者“他此刻能表达出来的情感到哪里”。这种问题给了牌阵更准确的空间。",
+            "你也可以把感受问题拆成层次：真实感受是什么、表面表现是什么、害怕的是什么、下一步可能出现什么。这样的结构，往往比一张接一张地追问“他到底有没有感觉”要有用得多。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Can tarot accurately read someone's feelings?",
+          zh: "塔罗真的能看一个人的感受吗？",
+        },
+        a: {
+          en: "Tarot can describe emotional climate surprisingly well, but it is not mind-reading proof. It is most useful for showing patterns like attraction, fear, hesitation, warmth, emotional distance, and availability.",
+          zh: "塔罗很擅长描述情绪气候，但它不是证据级别的读心术。它最有用的地方，是点出吸引、害怕、犹疑、温度、距离感和情感可得性这类模式。",
+        },
+      },
+      {
+        q: {
+          en: "What if the cards show feelings but no action?",
+          zh: "如果牌显示有感觉，但没有行动，代表什么？",
+        },
+        a: {
+          en: "It usually means emotion and capacity are out of sync. Someone may feel a lot and still be unavailable, avoidant, frightened, or unable to move. That mismatch is often the most important part of the reading.",
+          zh: "这通常表示情绪和能力不同步。一个人可以感受很多，却依然不可得、回避、害怕，或者根本动不起来。这个不同步，本身往往就是整次解读最重要的部分。",
+        },
+      },
+      {
+        q: {
+          en: "Which tarot cards are common in feelings readings?",
+          zh: "感受类问题里，哪些牌最常见？",
+        },
+        a: {
+          en: "Cups cards are the most obvious, especially Two of Cups, Queen of Cups, and Page of Cups. But Wands often show desire, Swords show fear or conflict, and Pentacles show emotional steadiness or practical commitment.",
+          zh: "最直观的当然是圣杯牌，像圣杯二、圣杯皇后、圣杯侍从都很常见。但权杖常常讲欲望，宝剑常常讲恐惧或冲突，星币则常常讲稳定感和现实层面的承接。",
+        },
+      },
+    ],
+    relatedCardIds: ["page-of-cups", "queen-of-cups", "the-moon", "four-of-cups"],
+    relatedGuideSlugs: ["love-tarot-card-meanings", "yes-no-tarot", "three-card-tarot-spread"],
+  },
+  {
+    ...summaryBySlug["career-tarot-spreads"],
+    intro: {
+      en: [
+        "Career questions usually become muddy when they are asked too broadly. People want to know whether they should stay, leave, ask for more money, change direction, recover from burnout, or trust an opportunity. One card can point to the mood, but a spread is often what makes the situation workable.",
+        "A career spread is useful because work decisions usually involve more than desire. They involve timing, money pressure, skill, energy, politics, stability, and the difference between short-term relief and long-term direction. The right spread helps you separate those layers instead of collapsing them into one anxious question.",
+      ],
+      zh: [
+        "事业问题一旦问得太大，就很容易糊。大多数人真正想问的是：我要不要留下、要不要离开、要不要谈涨薪、要不要换方向、现在是不是倦怠了，或者这个机会值不值得信。单张牌可以点出气氛，但真正让局面变得可操作的，往往还是牌阵。",
+        "事业牌阵之所以有用，是因为工作决定通常不只跟“想不想”有关。它还牵涉到时机、金钱压力、能力、精力、职场政治、稳定性，以及短期缓解和长期方向之间的差别。好的牌阵能把这些层次拆开，而不是把一切压进一个焦虑的大问号里。",
+      ],
+    },
+    sections: [
+      {
+        id: "best-career-questions",
+        title: {
+          en: "Start with a better career question",
+          zh: "先把事业问题问得更像问题",
+        },
+        paragraphs: {
+          en: [
+            "Should I quit? is often too blunt to be useful. A stronger question is: what is actually draining me here, what is still viable, and what kind of next move would be realistic? The more clearly you name the decision layer, the more clearly tarot can respond.",
+            "Career readings work best when they stay close to lived conditions. Ask about workload, money, recognition, leadership, fit, skill development, and timing. If the question stays grounded, the reading usually stays grounded too.",
+          ],
+          zh: [
+            "“我要不要辞职？”通常太钝了，不足以产生有用答案。更好的问法是：这里真正消耗我的是什么、还有什么其实可行、下一步现实的动作是什么。你把问题拆得越清楚，塔罗越有机会给出清楚回应。",
+            "事业解读最适合贴着真实条件来问。去问工作量、金钱、被看见的程度、领导方式、岗位适配、技能成长和时机。问题越贴地，解读通常也越贴地。",
+          ],
+        },
+      },
+      {
+        id: "three-useful-layouts",
+        title: {
+          en: "Three career spread layouts that actually help",
+          zh: "3 个真正好用的事业牌阵",
+        },
+        paragraphs: {
+          en: [
+            "The simplest useful layout is situation, pressure, next practical move. It works well for burnout, money stress, or uncertainty about whether the current role is still sustainable. Another strong layout is stay, leave, what you need to know, which helps when you are caught between relief and responsibility.",
+            "A third layout is skill, obstacle, opportunity. This is especially helpful when the question is less about quitting and more about growth: promotion, freelancing, pivoting, or rebuilding confidence after a difficult season.",
+          ],
+          zh: [
+            "最简单也最好用的一个结构，是：现状、压力源、下一步现实动作。它很适合处理倦怠、金钱焦虑，或者“这份工作还能不能撑”的问题。另一个很实用的结构是：留下、离开、你真正需要知道的事。它适合那种夹在责任和想逃之间的局面。",
+            "第三个常用结构是：优势技能、主要障碍、正在出现的机会。这个特别适合那些重点不在“辞不辞”，而在“怎么长”的问题，比如升职、转自由职业、转方向，或者从一段难熬时期里把信心重新搭回来。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Situation / Pressure / Next practical move",
+            "Stay / Leave / What you need to know",
+            "Skill / Obstacle / Opportunity",
+          ],
+          zh: [
+            "现状 / 压力源 / 下一步现实动作",
+            "留下 / 离开 / 你需要知道的事",
+            "优势技能 / 主要障碍 / 正在出现的机会",
+          ],
+        },
+      },
+      {
+        id: "career-suits",
+        title: {
+          en: "What the suits usually mean at work",
+          zh: "四种花色在工作问题里常怎么说话",
+        },
+        paragraphs: {
+          en: [
+            "Pentacles are often the backbone of career readings because they speak to money, craft, workload, stability, and real-world building. Wands speak to ambition, risk, initiative, and momentum. Swords speak to politics, conflict, contracts, analysis, and mental pressure. Cups speak to morale, culture, care, creative meaning, and emotional alignment.",
+            "Suit balance tells you what kind of problem you are really dealing with. A Pentacles-heavy spread may be materially solid but emotionally dead. A Wands-heavy spread may be exciting but unsustainable. A Swords-heavy spread may show sharp politics or overthinking, while a Cups-heavy spread may show a meaningful role that still lacks structure.",
+          ],
+          zh: [
+            "事业问题里，星币通常是主干，因为它们最直接地讲钱、手艺、工作量、稳定性和现实建设。权杖讲野心、风险、主动和推进力。宝剑讲政治、冲突、合同、分析和精神压力。圣杯讲士气、氛围、被照顾感、创造意义，以及情感上的对齐。",
+            "花色的比例，经常会直接告诉你：你遇到的到底是哪一种问题。星币很多，可能现实很稳，但人已经麻了；权杖很多，可能很刺激，却不可持续；宝剑很多，可能是职场政治太锋利，或者你已经过度思考；圣杯很多，则可能是在说这份工作有意义，但结构还不够。",
+          ],
+        },
+      },
+      {
+        id: "turn-career-reading-into-action",
+        title: {
+          en: "Turn the reading into one concrete move",
+          zh: "把事业解读落成一个具体动作",
+        },
+        paragraphs: {
+          en: [
+            "A good career spread should end with a move, not a mood. That move might be updating a portfolio, asking one hard question, taking a quiet week before resigning, renegotiating scope, or sending one application instead of spiraling over twenty possibilities.",
+            "Tarot is especially useful in work questions when it reduces noise. If the spread is clear, you should leave with one next step that is concrete enough to do this week. Not forever. Not perfectly. Just clearly enough to change the situation.",
+          ],
+          zh: [
+            "好的事业牌阵，最后应该落成一个动作，而不是只留下一个情绪。这个动作可能是更新作品集、问出一个难问的问题、先给自己一周安静期再辞职、重新谈工作范围，或者先投出一份申请，而不是围着二十个可能性一起打转。",
+            "塔罗在工作问题里最有价值的时候，往往就是它替你降噪的那一刻。如果这次解读是清楚的，你离开时应该能带走一个这周就能做的下一步。不是永远的答案，也不是完美方案，而是足够清楚、足够能改变局面的那个动作。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "What is the best tarot spread for career questions?",
+          zh: "事业问题最适合用什么塔罗牌阵？",
+        },
+        a: {
+          en: "A simple three-card structure is usually enough: situation, pressure, next move; or stay, leave, what you need to know. The best spread is the one that matches the actual decision you are facing.",
+          zh: "通常一个简单的三张牌结构就够用了，比如现状、压力源、下一步动作，或者留下、离开、你需要知道的事。最好的牌阵，不是最复杂的，而是最贴合你眼前决策的那个。",
+        },
+      },
+      {
+        q: {
+          en: "Can tarot tell me whether I should quit my job?",
+          zh: "塔罗能直接告诉我要不要辞职吗？",
+        },
+        a: {
+          en: "It can help clarify the forces around the decision, but it is usually more useful for showing what is draining you, what is viable, and what kind of next move is realistic than for giving a blunt command.",
+          zh: "它能帮助你看清这个决定周围的力量，但比起直接下命令，更有用的通常是点出：真正消耗你的是什么、还有什么可行，以及现实的下一步是什么。",
+        },
+      },
+      {
+        q: {
+          en: "Which tarot suits matter most in work readings?",
+          zh: "工作问题里，哪些花色最关键？",
+        },
+        a: {
+          en: "Pentacles often dominate because they speak to money, labor, stability, and tangible results. But Wands show ambition, Swords show politics and pressure, and Cups show morale and meaning. All four matter.",
+          zh: "星币往往最常出现，因为它们直接讲钱、劳动、稳定和现实结果。但权杖讲野心，宝剑讲政治和压力，圣杯讲士气与意义。四种花色都重要。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-emperor", "three-of-wands", "eight-of-pentacles", "two-of-pentacles"],
+    relatedGuideSlugs: ["three-card-tarot-spread", "tarot-card-meanings", "how-to-read-reversed-tarot-cards"],
+  },
+  {
+    ...summaryBySlug["major-arcana-guide"],
+    intro: {
+      en: [
+        "The Major Arcana are the cards people notice first because they sound bigger, and often they are. When one appears in a spread, it usually carries more symbolic weight than an ordinary daily event. It points to turning points, deep patterns, spiritual pressure, identity change, or a life lesson that is asking not to be skipped.",
+        "But the Major Arcana are not just twenty-two separate dramatic images. They also form a larger sequence often called the Fool's Journey: innocence, skill, desire, power, surrender, loss, integration. Reading them as one arc makes the individual cards easier to understand and much harder to flatten into cliches.",
+      ],
+      zh: [
+        "大阿尔卡那之所以最容易先被人记住，是因为它们听起来更“大”，而且很多时候也的确如此。它们出现在牌阵里时，往往比普通日常事件承载更多象征重量，常常指向转折、深层模式、灵魂压力、身份变化，或某个不该被跳过的人生课题。",
+        "但大阿尔卡那并不是 22 张彼此孤立的戏剧化图片。它们也可以被放回一条更大的弧线上理解，也就是常说的“愚者之旅”：天真、能力、欲望、权力、臣服、失去、整合。把它们当成一条路去看，每张牌反而更容易读，也更不容易被压扁成陈词滥调。",
+      ],
+    },
+    sections: [
+      {
+        id: "what-major-arcana-signals",
+        title: {
+          en: "What a Major Arcana card usually signals",
+          zh: "大阿尔卡那通常在提示什么",
+        },
+        paragraphs: {
+          en: [
+            "A Major card often means the reading is not only about logistics. It may still involve a job, relationship, or concrete decision, but underneath that surface there is a larger pattern shaping the moment. The Lovers can be about romance, but also about alignment. Justice can be about a legal process, but also about truth, consequence, and proportion.",
+            "This is why Major Arcana cards tend to feel memorable. They name the chapter behind the event. When they repeat across multiple readings, it often means the lesson is not finished yet.",
+          ],
+          zh: [
+            "大牌出现时，往往说明这次解读不只是在处理表层事务。它当然可能依然跟工作、关系或现实决定有关，但在这些表层问题下面，还有一条更大的模式正在塑造此刻。恋人可以讲爱情，但它也在讲对齐；正义可以讲法律或公平，但它也在讲真相、后果和比例。",
+            "这也是为什么大阿尔卡那会让人特别难忘。它们点出的，通常不是事件本身，而是事件背后的章节。如果同一张大牌在几次解读里反复出现，往往说明这个功课还没有走完。",
+          ],
+        },
+      },
+      {
+        id: "fools-journey",
+        title: {
+          en: "The Fool's Journey as a reading framework",
+          zh: "把愚者之旅当成一个阅读框架",
+        },
+        paragraphs: {
+          en: [
+            "The Fool's Journey is useful not because every life is perfectly linear, but because it gives you a living map. The Fool opens the path with innocence and risk. The Magician and High Priestess establish power and inner knowing. Cards like the Chariot, Strength, and Justice ask how power is directed and disciplined. Then the middle and later cards move through rupture, surrender, death, rebuilding, and integration.",
+            "You do not need to memorize the whole sequence rigidly. It is enough to notice that the Major Arcana keep circling questions of identity, choice, surrender, truth, transformation, and completion. Once you feel that arc, each card stops being random drama and becomes part of a larger human pattern.",
+          ],
+          zh: [
+            "愚者之旅之所以有用，不是因为每个人生都真的会线性经过这 22 站，而是因为它给了你一张活地图。愚者用天真和风险打开道路；魔术师与女祭司分别建立外在意志和内在知觉；战车、力量、正义开始追问：力量要怎么被驱动、驯服、校准。接着，中后段的牌会带你穿过崩裂、臣服、死亡、重建与整合。",
+            "你不需要死记整条顺序，只要慢慢感觉到：大阿尔卡那一直在围绕身份、选择、臣服、真相、转化和完成这些问题打转。只要这条弧线被感觉到，每张牌就不再只是单独的戏剧，而会变成一条更大的人类经验脉络。",
+          ],
+        },
+      },
+      {
+        id: "major-vs-minor",
+        title: {
+          en: "Major Arcana vs Minor Arcana in a spread",
+          zh: "大牌和小牌在牌阵里有什么差别",
+        },
+        paragraphs: {
+          en: [
+            "Minor Arcana usually speak in the language of daily life: messages, money, mood, conflict, work, habits, and the texture of what is happening right now. Major Arcana speak to the deeper chapter. Together they give scale. The Minor cards tell you what is happening. The Major cards tell you why it matters so much.",
+            "When a spread contains several Major cards, that usually means the issue is larger than the surface story. When only one Major appears, it often marks the pressure point of the spread: the one place where a practical issue touches a deeper life pattern.",
+          ],
+          zh: [
+            "小阿尔卡那通常用日常生活的语言说话：消息、金钱、情绪、冲突、工作、习惯，以及眼下正在发生的具体纹理。大阿尔卡那则更像在说深层章节。两者放在一起，刚好给了你尺度：小牌告诉你事情正在怎么发生，大牌告诉你为什么这件事会让你觉得这么重。",
+            "如果一个牌阵里大牌很多，通常说明这个问题比表面故事更大；如果只出现一张大牌，它往往就是整副牌阵的受力点，也就是那个“现实问题碰到了更深模式”的地方。",
+          ],
+        },
+      },
+      {
+        id: "reading-major-cards-well",
+        title: {
+          en: "How to read Major Arcana cards without over-dramatizing them",
+          zh: "怎样读大阿尔卡那，才不会读得太戏剧化",
+        },
+        paragraphs: {
+          en: [
+            "The mistake with Major Arcana is not under-reading them but overinflating them. Death does not mean literal death. The Tower does not mean life is over. Judgement does not mean cosmic punishment. These cards are powerful because they describe psychological and spiritual processes with unusual clarity, not because they are there to terrify you.",
+            "A grounded reading keeps the card large without making it theatrical. Ask what major theme is being named, what part of life it is touching, and what response the card seems to ask of the querent. That is usually enough to keep the reading meaningful and sane at the same time.",
+          ],
+          zh: [
+            "读大阿尔卡那最常见的错误，不是读轻了，而是读炸了。死神不等于字面死亡，高塔不等于人生完蛋，审判也不等于宇宙惩罚。它们之所以有力量，是因为它们把心理和灵魂过程讲得异常清楚，而不是因为它们专门用来吓人。",
+            "一个稳的读法，是既承认这张牌很大，又不把它读得戏剧化。先问：它正在点名哪一个核心主题？它触到的是生活的哪个部分？它似乎在要求提问者作出怎样的回应？通常问到这里，已经足够让解读既有重量，又不失控。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Why are Major Arcana cards considered more important?",
+          zh: "为什么大阿尔卡那通常会被看得更重要？",
+        },
+        a: {
+          en: "Because they often point to larger life themes, turning points, identity shifts, or spiritual pressure. They tend to describe the chapter underneath the event, not just the event itself.",
+          zh: "因为它们通常在指向更大的生命主题、关键转折、身份变化或灵魂压力。它们讲的往往是事件下面的章节，而不只是事件表面。",
+        },
+      },
+      {
+        q: {
+          en: "What is the Fool's Journey in tarot?",
+          zh: "塔罗里的愚者之旅是什么？",
+        },
+        a: {
+          en: "It is a way of reading the 22 Major Arcana as one larger arc of human development, from innocence and risk through power, crisis, surrender, transformation, and integration.",
+          zh: "它是一种把 22 张大阿尔卡那放回同一条成长弧线里理解的方法：从天真与冒险，经过力量、危机、臣服、转化，走向整合。",
+        },
+      },
+      {
+        q: {
+          en: "Does a Major Arcana card always overpower the rest of the spread?",
+          zh: "大阿尔卡那出现时，一定会压过周围所有牌吗？",
+        },
+        a: {
+          en: "Not always, but it usually marks the part of the reading with the deepest symbolic weight. It tells you where the practical situation is touching a larger life lesson or turning point.",
+          zh: "不一定，但它通常会标出整次解读里象征重量最深的那一块。它告诉你：现实问题是在什么地方碰到了更大的生命课题或转折。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-fool", "the-hermit", "death", "the-world"],
+    relatedGuideSlugs: ["tarot-card-meanings", "how-to-read-reversed-tarot-cards", "three-card-tarot-spread"],
+  },
 ];
 
 export function getGuide(slug: string) {
