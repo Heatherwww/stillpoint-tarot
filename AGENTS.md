@@ -25,12 +25,12 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 | Payment (future) | Airwallex | not yet wired — see `feature/shop-and-ai-payment` |
 | AI reading (future) | DeepSeek (`deepseek-chat`) | not yet wired — same branch |
 
-**No test framework is set up.** Validate changes with `npm run build` (static generation of 187 pages).
+**No test framework is set up.** Validate changes with `npm run build` (static generation of 193 pages).
 
 ## Before making any change
 
 1. **Read this file in full** — it contains the architecture, data flow, file map, and conventions.
-2. **Run `npm run build`** after every change. The build statically generates 187 pages ({en,zh} × most routes + 156 card pages + 6 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
+2. **Run `npm run build`** after every change. The build statically generates 193 pages ({en,zh} × most routes + 156 card pages + 12 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
 3. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
 
 ## Project structure
@@ -112,9 +112,9 @@ scripts/
 ### Static generation
 - `src/app/(site)/[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
 - `src/app/(site)/[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
-- `src/app/(site)/[lang]/guides/[slug]/page.tsx` returns the cartesian product {en,zh} × 3 guide slugs = 6 guide pages.
+- `src/app/(site)/[lang]/guides/[slug]/page.tsx` returns the cartesian product {en,zh} × 6 guide slugs = 12 guide pages.
 - Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
-- `npm run build` generates **187 total pages**.
+- `npm run build` generates **193 total pages**.
 - Legacy URLs (`/cards`, `/cards/:id`, `/reading`, `/shop`) 301-redirect to `/en/...` via `next.config.ts` to preserve Google-indexed link equity.
 
 ### SEO
@@ -144,7 +144,7 @@ scripts/
 |-------|------|-------------|
 | `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
 | `/[lang]` | SSG (2) | Homepage hub, per locale |
-| `/[lang]/guides/[slug]` | SSG (6) | SEO guide hubs for broader search intent |
+| `/[lang]/guides/[slug]` | SSG (12) | SEO guide hubs for broader search intent |
 | `/[lang]/reading` | SSG (2) | Interactive reading page |
 | `/[lang]/cards` | SSG (2) | Filterable card library |
 | `/[lang]/cards/[id]` | SSG (156) | Individual card detail (78 × 2 locales) |
@@ -260,7 +260,7 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 - **Tone**: reflective, grounded, no fortune-teller theatrics. Content reads like a thoughtful guide, not a prediction.
 - **No emojis in content** unless the user explicitly requests.
 - **Always bilingual**: every user-facing string needs both `en` and `zh`.
-- **Build must pass**: always run `npm run build` after changes. All 187 pages must generate successfully.
+- **Build must pass**: always run `npm run build` after changes. All 193 pages must generate successfully.
 - **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
 - **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
 

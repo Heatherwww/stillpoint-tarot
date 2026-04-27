@@ -415,6 +415,401 @@ export const guides: Guide[] = [
     relatedCardIds: ["the-hermit", "wheel-of-fortune", "three-of-wands", "judgement"],
     relatedGuideSlugs: ["tarot-card-meanings", "yes-no-tarot"],
   },
+  {
+    ...summaryBySlug["love-tarot-card-meanings"],
+    intro: {
+      en: [
+        "Love readings are rarely asking for a generic card meaning. Most people are trying to understand closeness, timing, reciprocity, fear, desire, or whether a bond is growing into something steadier. The same card that feels ambitious in work can feel avoidant in love. Context changes the emotional center of the interpretation.",
+        "That is why love tarot works best when you stop asking whether a card is simply good or bad for relationships. A stronger question is: what kind of emotional movement is this card describing? Is it opening, hesitating, deepening, withdrawing, idealizing, or ending? Once you read for movement, love meanings become much clearer.",
+      ],
+      zh: [
+        "爱情解读很少真的在问一张牌的“通用含义”。大多数人想弄清楚的，其实是靠近、时机、互相回应、恐惧、欲望，或者一段关系有没有在朝更稳定的方向发展。同一张牌，放在工作里可能像野心，放进爱情里却可能像回避。情境会改变解读的情感重心。",
+        "所以，爱情塔罗最好不要只问这张牌对关系来说“好不好”。更好的问题是：它正在描述什么样的情感流动？是在打开、犹疑、加深、抽离、理想化，还是在结束？当你开始读“流动”而不是只贴标签，爱情牌义会清楚很多。",
+      ],
+    },
+    sections: [
+      {
+        id: "why-love-meanings-shift",
+        title: {
+          en: "Why a card changes in love readings",
+          zh: "为什么同一张牌进了爱情问题会变",
+        },
+        paragraphs: {
+          en: [
+            "A tarot card does not become a different card in a love spread, but the pressure point changes. The Chariot in career can be about ambition, discipline, and forward drive. In love, the same card may point to pursuit, emotional control, or two people pulling in different directions while trying to stay in motion.",
+            "That shift matters because relationship readings are rarely only about events. They are about attachment patterns, availability, honesty, pacing, and the emotional cost of staying or leaving. A good love reading keeps one foot in the image and one foot in the relationship dynamic.",
+          ],
+          zh: [
+            "一张牌进入爱情牌阵后，并不会变成另一张牌，但它受力的位置会变。战车在事业里可以是野心、纪律和推进力；可一旦放进爱情，它也可能指向追逐、情感控制，或者两个人一边前进、一边朝不同方向拉扯。",
+            "这件事很重要，因为关系解读通常不只是在讲事件，更是在讲依附模式、可得性、诚实度、节奏感，以及继续留下或离开的情感成本。好的爱情解读，会一只脚踩在牌面图像上，另一只脚踩在关系动力上。",
+          ],
+        },
+      },
+      {
+        id: "suits-in-relationships",
+        title: {
+          en: "How the four suits speak in relationships",
+          zh: "四种花色在关系里分别在说什么",
+        },
+        paragraphs: {
+          en: [
+            "The suits are one of the fastest ways to orient a love reading. Wands show chemistry, pursuit, excitement, friction, and the will to move. Cups show feeling, intimacy, vulnerability, and emotional exchange. Swords show distance, conflict, truth, anxiety, and the stories people tell themselves. Pentacles show consistency, embodiment, trust-building, shared routines, and long-term reality.",
+            "When one suit dominates, it tells you what the relationship is currently made of. A Cups-heavy spread may feel emotionally rich but unclear in action. A Pentacles-heavy spread may show loyalty and steady building, but less spark. Suit balance often explains why a connection feels strong in one area and thin in another.",
+          ],
+          zh: [
+            "花色是爱情解读里最快的定位方式之一。权杖讲化学反应、追逐、兴奋、摩擦和推进意志。圣杯讲情感、亲密、脆弱与彼此交换。宝剑讲距离、冲突、真相、焦虑，以及人们给自己讲的故事。星币讲稳定、身体感、信任累积、共同日常，以及长期现实。",
+            "当某一种花色明显占上风时，它其实在告诉你，这段关系此刻主要由什么组成。圣杯很多，可能情感很满，但行动不够清楚；星币很多，可能忠诚和长期建设很强，但火花没有那么亮。花色的分布，常常能解释一段关系为什么某方面很强、某方面却很薄。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Wands: desire, flirtation, pursuit, heat",
+            "Cups: closeness, tenderness, reciprocity, feeling",
+            "Swords: conflict, uncertainty, boundaries, truth",
+            "Pentacles: commitment, patience, consistency, real-life fit",
+          ],
+          zh: [
+            "权杖：欲望、暧昧、追逐、热度",
+            "圣杯：靠近、温柔、互相回应、感受",
+            "宝剑：冲突、不确定、边界、真相",
+            "星币：承诺、耐心、一致性、现实适配",
+          ],
+        },
+      },
+      {
+        id: "upright-reversed-love",
+        title: {
+          en: "Upright and reversed cards in love",
+          zh: "正位和逆位在爱情问题里怎么区分",
+        },
+        paragraphs: {
+          en: [
+            "In love readings, upright often shows the direct expression of the card's energy. Reversed does not automatically mean breakup or rejection. More often, it points to hesitation, blocked expression, emotional mismatch, private fear, or timing that is not yet ready.",
+            "This is why reversed Cups may show difficulty expressing tenderness, reversed Swords may show suppressed truth, and reversed Pentacles may show inconsistency or practical instability. The reversal tells you how the feeling is moving, not just whether the feeling exists.",
+          ],
+          zh: [
+            "在爱情解读里，正位通常代表这张牌的能量在比较直接地表达出来。逆位并不自动等于分手或拒绝。它更常在说犹疑、表达受阻、情感不同步、私下的恐惧，或者时机还没成熟。",
+            "所以逆位圣杯可能是在说温柔表达不出来，逆位宝剑可能是在说真相被压着不讲，逆位星币可能是在说不稳定或现实层面的失衡。逆位告诉你的，是这份感情怎么流动，而不只是它存不存在。",
+          ],
+        },
+      },
+      {
+        id: "read-for-relationship-movement",
+        title: {
+          en: "Read for movement, not verdict",
+          zh: "先读关系的流动，不要急着判结果",
+        },
+        paragraphs: {
+          en: [
+            "Beginners often want one fast verdict: Is this good? Is this bad? But love spreads become more useful when you name the movement before the outcome. A relationship can be meaningful and still unstable. It can be loving and still badly timed. It can be intense and still unsustainable.",
+            "Try describing what the cards are doing first. Are they opening intimacy, slowing things down, asking for honesty, exposing imbalance, or returning someone to themselves? Once you can name the movement, questions about commitment, reconciliation, or walking away become easier to answer.",
+          ],
+          zh: [
+            "初学者最容易想要一个快速结论：这段关系好不好？能不能成？但爱情牌阵真正有用的地方，往往在于你先说清楚它在怎么动，而不是马上判决它的结局。一个关系可以很有意义，却依然不稳定；可以有爱，却时机不对；可以很强烈，却不可持续。",
+            "试着先描述牌在做什么。它是在打开亲密、放慢节奏、要求诚实、暴露失衡，还是把一个人带回他自己？当你能先说出这种流动，关于承诺、复合或离开的判断，反而会更容易。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Do tarot cards mean something different in love readings?",
+          zh: "塔罗牌在爱情解读里会变成不同的意思吗？",
+        },
+        a: {
+          en: "The core card does not change, but the emotional center does. In love, the reading pays more attention to closeness, reciprocity, fear, timing, boundaries, and whether two people are actually moving together.",
+          zh: "牌的核心不会变，但情感重心会变。到了爱情问题里，解读会更关注靠近、互相回应、恐惧、时机、边界，以及两个人有没有真的朝同一个方向移动。",
+        },
+      },
+      {
+        q: {
+          en: "What are the best tarot cards for love?",
+          zh: "哪些塔罗牌最常被看作爱情好牌？",
+        },
+        a: {
+          en: "Cards like The Lovers, Two of Cups, Ten of Cups, and Queen of Cups are often read positively in relationships. But no card is good in every context, and even a strong love card can still point to imbalance, fantasy, or poor timing if the spread supports that reading.",
+          zh: "恋人、圣杯二、圣杯十、圣杯皇后这些牌，常常会被读成关系中的积极信号。但没有哪张牌在所有情境里都一定是“好牌”，再强的爱情牌，也可能在牌阵里指向失衡、理想化或时机不对。",
+        },
+      },
+      {
+        q: {
+          en: "Do difficult cards always mean breakup in tarot love readings?",
+          zh: "爱情解读里抽到难牌，就一定代表分手吗？",
+        },
+        a: {
+          en: "No. Difficult cards can show distance, grief, conflict, fear, incompatibility, or a truth that needs to be faced. Sometimes they do point to ending, but often they are naming the exact pressure the relationship is under.",
+          zh: "不一定。难牌可能在说距离、伤心、冲突、恐惧、不适配，或者一段关系必须面对的真相。有时它们会指向结束，但更多时候，它们是在准确点出这段关系当前承受的压力。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-lovers", "two-of-cups", "queen-of-cups", "knight-of-cups"],
+    relatedGuideSlugs: ["tarot-card-meanings", "yes-no-tarot", "three-card-tarot-spread"],
+  },
+  {
+    ...summaryBySlug["how-to-read-reversed-tarot-cards"],
+    intro: {
+      en: [
+        "Reversed cards intimidate beginners because they look like an extra rule layer. People worry that every reversal means something bad, or that they need to memorize a second meaning for all 78 cards before they can read properly. In practice, neither is true.",
+        "A reversal is best understood as a change in flow. The energy of the card is still present, but it may be blocked, delayed, internalized, exaggerated, or beginning to release. Once you learn a small handful of repeatable reversal patterns, the deck becomes much less confusing.",
+      ],
+      zh: [
+        "逆位最容易吓到初学者，因为它看起来像在原本的规则之外又多了一层。很多人会担心：是不是每张逆位都代表坏事？是不是要把 78 张牌再背一遍，才能算会读？其实都不是。",
+        "更实用的理解方式，是把逆位看成“流动方式变了”。这张牌的能量还在，只是它可能被卡住了、延迟了、往内走了、过头了，或者开始松动释放。只要抓住几种重复出现的逆位模式，整副牌就会一下子没那么难。",
+      ],
+    },
+    sections: [
+      {
+        id: "reversal-is-not-bad",
+        title: {
+          en: "A reversed card is not automatically bad",
+          zh: "逆位不是自动等于坏",
+        },
+        paragraphs: {
+          en: [
+            "The simplest mistake is to treat upright as good and reversed as bad. Tarot is not that flat. A reversed card may show blocked expression, but that same blockage can sometimes be protective. A reversed Tower may feel less explosive outwardly because the collapse is happening privately first. A reversed Death may show resistance to change, but it can also reveal exactly why a transition is taking so long.",
+            "The real question is not whether reversal is negative. The real question is what has changed in the card's direction, speed, honesty, or visibility. Once you ask that, reversals stop feeling random.",
+          ],
+          zh: [
+            "最常见的错误，就是把正位等于好、逆位等于坏。塔罗没有这么扁平。逆位可能代表表达受阻，但这种阻滞有时反而是一种保护。逆位高塔未必比正位轻，只是崩塌可能先在内部发生。逆位死神也不只是坏，它可能更准确地告诉你：为什么这场转变拖了这么久。",
+            "真正该问的，不是逆位负不负面，而是这张牌在方向、速度、诚实度或可见性上，到底发生了什么变化。问到这里，逆位就不会再像随机噪音。",
+          ],
+        },
+      },
+      {
+        id: "five-reversal-patterns",
+        title: {
+          en: "Five practical ways to read reversals",
+          zh: "5 种最实用的逆位读法",
+        },
+        paragraphs: {
+          en: [
+            "Most reversals can be read through a small set of repeatable patterns. You do not need all five every time. You only need to test which one best fits the question, the spread position, and the surrounding cards.",
+            "Blocked energy means the card wants to move, but cannot move cleanly. Inward energy means the theme is active privately before it becomes visible. Delay means the timing is not ready. Excess means the card's quality has tipped too far. Release means something that was stuck is finally beginning to loosen.",
+          ],
+          zh: [
+            "大多数逆位，其实都可以落回几种会重复出现的模式里。你不需要每次把五种都用上，只需要判断：哪一种最符合这次的问题、牌位和周围的牌。",
+            "受阻，表示这股能量想动却动不顺；内化，表示主题先在内部运作，还没完全显形；延迟，表示时机未到；过度，表示这张牌的品质走过了头；释放，则表示原本卡住的东西开始松开了。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Blocked: the energy is present but cannot land cleanly",
+            "Inward: the theme is active privately or psychologically",
+            "Delayed: the timing is not ready yet",
+            "Excess: the card's quality has become too much",
+            "Release: tension is loosening and movement is returning",
+          ],
+          zh: [
+            "受阻：能量还在，但落不下来",
+            "内化：主题先在内里发生，尚未外显",
+            "延迟：不是没有，只是还没到时机",
+            "过度：这张牌的品质已经用过头",
+            "释放：紧绷正在松开，流动开始回来",
+          ],
+        },
+      },
+      {
+        id: "pick-one-system",
+        title: {
+          en: "Pick one reversal system and stay consistent",
+          zh: "先选一套逆位系统，再保持一致",
+        },
+        paragraphs: {
+          en: [
+            "Beginners often get lost because they mix too many reversal theories at once. One book says opposite meaning, another says weakened energy, another says karmic delay, and suddenly the reading becomes guesswork. Consistency matters more than complexity.",
+            "Choose one working framework for a while. For example, you might read every reversal first as blocked or inward, and only switch to excess or release when the spread strongly supports it. The point is to build recognition, not to sound mystical.",
+          ],
+          zh: [
+            "很多初学者会在逆位上越读越乱，不是因为直觉不够，而是因为一次混用了太多系统。一本书说要读反义，一本书说是能量削弱，另一本书又说是业力延迟，最后就只剩猜。",
+            "更好的做法，是先选一套能稳定工作的框架，至少用一段时间。比如你可以先把所有逆位都优先读成“受阻”或“内化”，只有当牌阵非常明确时，才读成“过度”或“释放”。重点是建立识别力，不是听起来更玄。",
+          ],
+        },
+      },
+      {
+        id: "context-before-reversal",
+        title: {
+          en: "Read the spread before you over-read the reversal",
+          zh: "先读牌阵，再细读逆位",
+        },
+        paragraphs: {
+          en: [
+            "A reversal should never be interpreted in isolation. A reversed Two of Cups beside The Devil reads differently from a reversed Two of Cups beside Temperance. The spread tells you whether the reversal is about fear, mismatch, pause, healing, private processing, or something else entirely.",
+            "If you are confused, zoom out instead of zooming in. Ask what role this card is playing in the spread first. Only then decide whether the reversal is blocking, delaying, internalizing, exaggerating, or releasing that role.",
+          ],
+          zh: [
+            "逆位绝对不能脱离牌阵单独解释。逆位圣杯二放在恶魔旁边，和放在节制旁边，读法完全不同。牌阵会告诉你，这个逆位更像是在讲恐惧、不匹配、暂停、疗愈，还是某种私下进行中的处理过程。",
+            "如果你读乱了，不要继续往里钻，先往外退一步。先问这张牌在整个牌阵里扮演什么角色，再决定这个逆位是在阻挡、延后、内化、放大，还是释放这个角色。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Are reversed tarot cards always negative?",
+          zh: "逆位塔罗牌一定都是负面的吗？",
+        },
+        a: {
+          en: "No. Reversals often show blocked, delayed, inward, excessive, or releasing energy. They describe how the card is moving, not simply whether it is good or bad.",
+          zh: "不是。逆位更常在说受阻、延迟、内化、过度或释放。它描述的是这张牌怎么运作，而不只是它好还是坏。",
+        },
+      },
+      {
+        q: {
+          en: "Can I read tarot without using reversals?",
+          zh: "不读逆位，也可以学会塔罗吗？",
+        },
+        a: {
+          en: "Yes. Many readers do not use reversals at all. If your upright-only readings are already clear and nuanced, you may not need them. Reversals are a tool, not a requirement.",
+          zh: "可以。很多读者本来就不使用逆位。如果你只用正位也已经能读得清楚细腻，逆位并不是必须。它是工具，不是门槛。",
+        },
+      },
+      {
+        q: {
+          en: "What if many cards in a spread are reversed?",
+          zh: "如果一個牌阵里很多牌都逆位，代表什么？",
+        },
+        a: {
+          en: "A reversal-heavy spread often suggests inwardness, blocked movement, delay, or a lot happening below the surface. It usually means the situation is less direct and more psychologically or privately charged.",
+          zh: "如果一个牌阵里逆位很多，往往表示这件事更内向、更受阻、更延迟，或有大量过程在水面下进行。它通常说明情况没有表面看起来那么直接。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-hanged-man", "death", "the-tower", "eight-of-swords"],
+    relatedGuideSlugs: ["tarot-card-meanings", "yes-no-tarot", "three-card-tarot-spread"],
+  },
+  {
+    ...summaryBySlug["court-cards-tarot-meanings"],
+    intro: {
+      en: [
+        "Court cards confuse beginners because they do not behave like the numbered cards. An Eight of Pentacles clearly shows practice; a Queen of Swords feels less concrete. Is she a person, an energy, a role, a tone, or a decision-making style? The answer is often: any of those, depending on context.",
+        "You do not need to guess wildly. Court cards become much easier once you stop treating them as mysterious personalities and start reading them as patterns. Rank tells you how the energy moves. Suit tells you what domain it moves through. The spread tells you where that pattern is landing.",
+      ],
+      zh: [
+        "宫廷牌最容易让初学者卡住，因为它们不像数字牌那样直接。星币八很清楚是在讲练习和工艺；可一张宝剑皇后出现时，你很容易开始犹豫：她到底是某个人、某种能量、一种角色，还是一种做决定的方式？答案通常是：都可能，要看情境。",
+        "但这不代表你只能靠猜。宫廷牌真正变简单，是从你不再把它们当成神秘人物开始，而是把它们读成一种模式。位阶告诉你能量怎么动，花色告诉你它在哪个领域里动，牌阵则告诉你这个模式落在什么位置上。",
+      ],
+    },
+    sections: [
+      {
+        id: "what-court-cards-can-be",
+        title: {
+          en: "What a court card can represent",
+          zh: "宫廷牌到底可以代表什么",
+        },
+        paragraphs: {
+          en: [
+            "A court card can represent an actual person, but it can also represent a role, a way of behaving, or the energy you are being asked to embody. A Page of Cups may be a literal young person, but it may also describe curiosity, tenderness, and a message arriving in an emotionally unguarded form.",
+            "The fastest way to avoid confusion is to ask which reading makes the spread more coherent. If the card as a person makes the story clearer, use that. If the card as a behavioral pattern makes more sense, use that. Court cards reward usefulness, not rigid rules.",
+          ],
+          zh: [
+            "宫廷牌可以是某个具体人物，但也可以是一个角色、一种行为方式，或者你此刻被要求发展出来的能量。比如圣杯侍从当然可能指向某个年轻人，但它也可能是在讲好奇、温柔，或一条以情感为入口的消息。",
+            "避免混乱最快的方法，是问：哪一种读法能让整个牌阵更连贯？如果把它读成人物，故事更清楚，那就这么读；如果把它读成行为模式更合理，那就用后者。宫廷牌奖励的是“有用”，不是死规则。",
+          ],
+        },
+      },
+      {
+        id: "rank-language",
+        title: {
+          en: "How the ranks move: Page, Knight, Queen, King",
+          zh: "四个位阶怎么动：侍从、骑士、皇后、国王",
+        },
+        paragraphs: {
+          en: [
+            "Rank is the most important layer. Pages are openings: they bring messages, study, curiosity, and first contact. Knights move: they pursue, test, push, and carry energy forward. Queens deepen: they internalize, hold, nurture, refine, and stabilize. Kings direct: they decide, structure, command, and set the tone of the environment.",
+            "When you understand the rank first, the suit becomes much easier to apply. A Knight of Cups is not just romantic; it is feeling in motion. A Queen of Swords is not just cold; it is discernment held with consistency. Rank tells you the verb before the suit supplies the subject matter.",
+          ],
+          zh: [
+            "位阶是读宫廷牌时最重要的一层。侍从是打开：带来消息、学习、好奇和第一次接触。骑士是推进：追逐、试探、施压，把能量往前送。皇后是加深：内化、承托、滋养、提炼、稳定。国王是定向：决定、组织、发号施令，并为环境定调。",
+            "当你先抓住位阶，花色就会变得好读很多。圣杯骑士不只是浪漫，而是“情感在移动”；宝剑皇后不只是冷，而是“一种稳定持有的辨别力”。位阶先给你动词，花色再告诉你这个动词发生在什么主题上。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Page: message, beginning, openness, study",
+            "Knight: movement, pursuit, testing, momentum",
+            "Queen: holding, maturing, refining, sustaining",
+            "King: direction, authority, mastery, decision",
+          ],
+          zh: [
+            "侍从：消息、开始、开放、学习",
+            "骑士：移动、追逐、试探、推进",
+            "皇后：承托、成熟、提炼、维系",
+            "国王：定向、权威、掌握、决定",
+          ],
+        },
+      },
+      {
+        id: "suit-language",
+        title: {
+          en: "How suits change the court card",
+          zh: "花色怎样改变宫廷牌的表达",
+        },
+        paragraphs: {
+          en: [
+            "Once rank is clear, ask what suit is moving through it. Wands court cards move through fire: desire, initiative, charisma, volatility. Cups court cards move through feeling: empathy, affection, imagination, emotional permeability. Swords move through mind and truth: clarity, conflict, analysis, distance. Pentacles move through reality: embodiment, patience, resources, work, and reliability.",
+            "This is why two court cards with the same rank can feel completely different. A Queen of Cups holds emotion softly; a Queen of Swords holds judgment cleanly. A Page of Pentacles studies slowly and practically; a Page of Wands enters with instinct and spark.",
+          ],
+          zh: [
+            "当位阶已经清楚，下一步就问：是哪一种花色在通过它表达自己？权杖宫廷牌通过火来移动，讲欲望、主动、魅力和不稳定。圣杯宫廷牌通过情感移动，讲同理、亲近、想象和情绪渗透。宝剑通过心智与真相移动，讲清楚、冲突、分析与距离。星币通过现实移动，讲身体感、耐心、资源、工作和可靠性。",
+            "这也是为什么同一位阶的两张宫廷牌会给人完全不同的感觉。圣杯皇后是柔软地承接情感，宝剑皇后则是清楚地持守判断；星币侍从是慢而务实地学习，权杖侍从则是凭着直觉和火花闯进来。",
+          ],
+        },
+      },
+      {
+        id: "read-court-in-spread",
+        title: {
+          en: "Read the court card where it lands",
+          zh: "宫廷牌要放回牌阵位置里读",
+        },
+        paragraphs: {
+          en: [
+            "A court card in a feelings position is not the same as a court card in an advice position. In feelings, it may describe emotional style or private attitude. In advice, it may describe the energy you need to adopt. In an obstacle position, it may show immaturity, over-control, avoidance, or mismatch.",
+            "This is why context should decide whether the court card is a person, a role, or a pattern. Let the spread position do some of the interpretive work for you. Court cards become much less slippery when you stop trying to identify a character before you understand the function.",
+          ],
+          zh: [
+            "一张宫廷牌落在“感受”位置，和落在“建议”位置，根本不是同一回事。放在感受里，它可能是在讲一个人的情绪风格或私下态度；放在建议里，它可能是在说你需要长出来的能量；放在阻碍位，它则可能是在点出幼稚、过度控制、回避，或根本不匹配。",
+            "所以，真正决定宫廷牌是人物、角色还是模式的，不只是牌本身，还有它落在哪个位置上。先看功能，再猜人物。只要顺序对了，宫廷牌就不会再那么滑。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Do court cards always represent people?",
+          zh: "宫廷牌一定都代表人物吗？",
+        },
+        a: {
+          en: "No. They can represent people, but they can also show attitudes, roles, communication styles, relationship dynamics, or the energy you are being asked to step into.",
+          zh: "不一定。它们可以代表人物，但也可以表示态度、角色、沟通方式、关系动力，或你此刻需要进入的一种能量状态。",
+        },
+      },
+      {
+        q: {
+          en: "What is the difference between a Page and a Knight in tarot?",
+          zh: "塔罗里的侍从和骑士有什么区别？",
+        },
+        a: {
+          en: "Pages open and learn; Knights move and test. A Page usually brings curiosity, a message, or a beginning. A Knight pushes the energy outward through action, pursuit, or momentum.",
+          zh: "侍从偏向打开和学习，骑士偏向移动和试探。侍从通常带来好奇、消息或开始；骑士则把这股能量通过行动、追逐和推进往外送。",
+        },
+      },
+      {
+        q: {
+          en: "What does it mean when many court cards appear in one spread?",
+          zh: "如果一个牌阵里出现很多宫廷牌，通常说明什么？",
+        },
+        a: {
+          en: "A court-card-heavy spread often points to interpersonal complexity. Multiple people, multiple roles, mixed communication styles, or questions of maturity and emotional availability may be central to the reading.",
+          zh: "如果一个牌阵里宫廷牌很多，往往说明这次解读的重点在人际复杂度上。它可能涉及多人、多种角色、不同的沟通方式，或者成熟度与情感可得性的问题。",
+        },
+      },
+    ],
+    relatedCardIds: ["page-of-cups", "knight-of-wands", "queen-of-swords", "king-of-pentacles"],
+    relatedGuideSlugs: ["tarot-card-meanings", "three-card-tarot-spread", "how-to-read-reversed-tarot-cards"],
+  },
 ];
 
 export function getGuide(slug: string) {

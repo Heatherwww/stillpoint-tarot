@@ -5,7 +5,10 @@ type LocalizedText = Record<Lang, string>;
 export type GuideSlug =
   | "tarot-card-meanings"
   | "yes-no-tarot"
-  | "three-card-tarot-spread";
+  | "three-card-tarot-spread"
+  | "love-tarot-card-meanings"
+  | "how-to-read-reversed-tarot-cards"
+  | "court-cards-tarot-meanings";
 
 export interface GuideSummary {
   slug: GuideSlug;
@@ -45,6 +48,39 @@ export const guideSummaries: GuideSummary[] = [
     description: {
       en: "Learn the best three-card position systems, how cards influence each other, and how to turn a spread into one practical next step.",
       zh: "学会三张牌牌阵的常见读法：牌位怎么设、牌与牌如何互相影响，以及怎样把结果落成一个现实的下一步。",
+    },
+  },
+  {
+    slug: "love-tarot-card-meanings",
+    title: {
+      en: "Love Tarot Card Meanings: What the 78 Cards Say About Relationships",
+      zh: "爱情塔罗牌义：78 张牌在关系里怎么读",
+    },
+    description: {
+      en: "Learn how tarot cards shift in love readings: attraction, distance, commitment, conflict, reconciliation, and what upright or reversed cards can mean in relationships.",
+      zh: "看清塔罗牌进入爱情问题后会怎样变化：吸引、疏离、承诺、冲突、复合，以及正位和逆位在关系里分别怎么读。",
+    },
+  },
+  {
+    slug: "how-to-read-reversed-tarot-cards",
+    title: {
+      en: "How to Read Reversed Tarot Cards: 5 Practical Ways",
+      zh: "逆位塔罗牌怎么读：5 种最实用的方法",
+    },
+    description: {
+      en: "Learn a practical system for tarot reversals: blocked energy, inward movement, delay, excess, release, and when you may not need reversals at all.",
+      zh: "用一套实用方法理解塔罗逆位：受阻、内化、延迟、过度、释放，以及什么时候其实不用逆位也能读。",
+    },
+  },
+  {
+    slug: "court-cards-tarot-meanings",
+    title: {
+      en: "Court Cards Tarot Meanings: Pages, Knights, Queens, and Kings",
+      zh: "宫廷牌塔罗牌义：侍从、骑士、皇后与国王",
+    },
+    description: {
+      en: "Understand tarot court cards without guessing: how to read them as people, roles, energies, or relationship dynamics across all four suits.",
+      zh: "不用靠猜，也能读懂塔罗宫廷牌：它们什么时候代表人物、角色、能量，或关系中的互动方式。",
     },
   },
 ];
