@@ -5,3 +5,4 @@ Bilingual tarot site for English and Chinese readers, live at [stillpointtarot.c
 Run locally with `npm run dev`. Validate changes with `npm run build`.
 
 For architecture, conventions, and agent instructions, see `AGENTS.md`.
+For roadmap items and TODO tracking, see `TRACKER.md`.

@@ -2,6 +2,8 @@
 
 This is the single source of truth for any AI coding agent working on this repo (Claude Code, Codex, or others). `CLAUDE.md` imports this file.
 
+Current roadmap items, product TODOs, and follow-up decisions live in `TRACKER.md`. `AGENTS.md` covers codebase structure, implementation conventions, and agent workflow; `TRACKER.md` covers what to do next.
+
 ## Next.js version warning
 
 This project uses **Next.js 16.2.3** — APIs, conventions, and file structure may differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any Next.js code. Heed deprecation notices.
@@ -30,8 +32,9 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 ## Before making any change
 
 1. **Read this file in full** — it contains the architecture, data flow, file map, and conventions.
-2. **Run `npm run build`** after every change. The build statically generates 205 pages ({en,zh} × most routes + 156 card pages + 24 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
-3. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
+2. **Check `TRACKER.md`** when the task touches roadmap, backlog, prioritization, SEO follow-up, or open product decisions.
+3. **Run `npm run build`** after every change. The build statically generates 205 pages ({en,zh} × most routes + 156 card pages + 24 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
+4. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
 
 ## Project structure
 
@@ -90,6 +93,9 @@ public/
 ├── cards/                   # 78 card images: <card-id>.jpg (500px wide)
 scripts/
 └── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
+AGENTS.md                    # Codebase architecture, conventions, and agent workflow
+TRACKER.md                   # Product tracker, roadmap, and follow-up TODOs
+CLAUDE.md                    # Claude entrypoint that imports AGENTS.md
 ```
 
 ## Key architecture decisions
@@ -234,7 +240,7 @@ Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build me
 
 Multiple AI agents (Claude Code, Codex, others) can work on this repo. Rules to avoid collisions:
 
-- **One shared brief**: this file. Both agents read it. If you need agent-specific guidance, add a `## Claude-specific` or `## Codex-specific` section here rather than splitting docs.
+- **One shared technical brief + one shared tracker**: `AGENTS.md` for codebase and workflow, `TRACKER.md` for roadmap and TODOs. Both agents should treat those two files as the shared source of context.
 - **Branch naming**: prefix with the agent — `claude/<short-name>` or `codex/<short-name>`. Keeps attribution clear and prevents accidental overlap.
 - **Worktree per task**: each branch gets its own worktree under `.claude/worktrees/` (Claude) or your equivalent. Never edit the same files from two worktrees at once.
 - **Commits**: whoever ships a structural change updates this file in the same commit (see "MANDATORY" section below).
@@ -250,12 +256,9 @@ Multiple AI agents (Claude Code, Codex, others) can work on this repo. Rules to 
 
 Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and be deleted after merge.
 
-## Pending work
+## Tracker
 
-1. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
-2. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). It is `noindex` and excluded from the sitemap until Airwallex is wired.
-3. **SEO follow-up**: request indexing for the newest guide hubs in Google Search Console, then review impressions / CTR after a 1-2 week window before making another round of metadata changes.
-4. **SEO iteration choice**: use GSC data to decide whether the next content batch should keep expanding the love / feelings clusters or switch back to CTR work on homepage, `/cards`, `/reading`, and the top-impression single-card pages.
+Roadmap items, backlog, and operational follow-up tasks now live in `TRACKER.md`.
 
 ## Important conventions
 
@@ -278,14 +281,14 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 
 ## MANDATORY: Update this file on every structural change
 
-**Any commit that changes routes, data models, file structure, conventions, or pending work MUST update `AGENTS.md` in the same commit.** This rule is non-negotiable. (Because `CLAUDE.md` imports this file, both agents see the update.)
+**Any commit that changes routes, data models, file structure, conventions, or the tracker relationship MUST update `AGENTS.md` in the same commit.** This rule is non-negotiable. (Because `CLAUDE.md` imports this file, both agents see the update.)
 
 Checklist before every commit:
 - [ ] New/removed/renamed route? → Update route table + file structure
 - [ ] New/changed data type or field? → Update data model reference
 - [ ] New/removed component or lib file? → Update file structure
 - [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update architecture section
-- [ ] Completed or added a pending task? → Update "Pending work"
+- [ ] Completed or added a roadmap / TODO item? → Update `TRACKER.md`
 - [ ] Changed total page count? → Update the page-count references
 - [ ] New convention or rule? → Update "Important conventions" / "Things to NOT do"
 - [ ] Branch created/merged/deleted? → Update "Git branches" table
