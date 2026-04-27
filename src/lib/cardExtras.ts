@@ -1187,7 +1187,7 @@ const suitLove: Record<Suit, BilingualText> = {
   },
   pentacles: {
     en: "In love, Pentacles cards are about steadiness — shared resources, daily routines, the quiet trust built by showing up consistently rather than dramatically.",
-    zh: "在爱中，钱币牌关乎稳定——共享的资源、日常的惯例、借由始终如一而非戏剧性地出现所建立的安静信任。",
+    zh: "在爱中，星币牌关乎稳定——共享的资源、日常的惯例，以及由始终如一而非戏剧性表现所建立的安静信任。",
   },
 };
 
@@ -1207,7 +1207,7 @@ const suitCareer: Record<Suit, BilingualText> = {
   },
   pentacles: {
     en: "At work, Pentacles cards favor patient, material building — money, contracts, resources, long-term skill. The slow path is the right one this season.",
-    zh: "在工作中，钱币牌支持耐心的、物质性的建造——金钱、合同、资源、长期技能。这个季节，慢路是对的那条。",
+    zh: "在工作中，星币牌支持耐心而务实的建造——金钱、合同、资源、长期技能。这个阶段，走慢一点反而更对。",
   },
 };
 
@@ -1412,7 +1412,7 @@ function suitName(suit: Suit, lang: "en" | "zh"): string {
     wands: { en: "Wands", zh: "权杖" },
     cups: { en: "Cups", zh: "圣杯" },
     swords: { en: "Swords", zh: "宝剑" },
-    pentacles: { en: "Pentacles", zh: "钱币" },
+    pentacles: { en: "Pentacles", zh: "星币" },
   };
   return map[suit][lang];
 }

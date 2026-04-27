@@ -22,17 +22,17 @@ export const dict: Dict = {
   "cards.title": { en: "The Card Library", zh: "塔罗牌库" },
   "cards.subtitle": {
     en: "All 78 cards of the Rider-Waite-Smith deck. Tap any card to read its full meaning, upright and reversed.",
-    zh: "莱德-韦特-史密斯牌组的全部 78 张。点击任意一张牌，查看其正位与逆位的完整含义。",
+    zh: "莱德-韦特-史密斯牌组共 78 张。点击任意一张牌，查看它的正位、逆位与完整牌义。",
   },
   "cards.filter.all": { en: "All", zh: "全部" },
-  "cards.filter.major": { en: "Major Arcana", zh: "大阿卡纳" },
+  "cards.filter.major": { en: "Major Arcana", zh: "大阿尔卡那" },
   "cards.filter.wands": { en: "Wands", zh: "权杖" },
   "cards.filter.cups": { en: "Cups", zh: "圣杯" },
   "cards.filter.swords": { en: "Swords", zh: "宝剑" },
   "cards.filter.pentacles": { en: "Pentacles", zh: "星币" },
 
-  "card.arcana.major": { en: "Major Arcana", zh: "大阿卡纳" },
-  "card.arcana.minor": { en: "Minor Arcana", zh: "小阿卡纳" },
+  "card.arcana.major": { en: "Major Arcana", zh: "大阿尔卡那" },
+  "card.arcana.minor": { en: "Minor Arcana", zh: "小阿尔卡那" },
   "card.number.label": { en: "Number", zh: "编号" },
   "card.suit.label": { en: "Suit", zh: "花色" },
   "card.upright.title": { en: "Upright meaning", zh: "正位含义" },
@@ -68,16 +68,16 @@ export const dict: Dict = {
   },
   "suits.intro.subtitle": {
     en: "Each suit governs a domain of human experience — fire, water, air, earth — and together they map the full terrain of daily life. The Major Arcana stands apart, tracing the soul's larger arc.",
-    zh: "每个花色掌管人类经验的一个领域——火、水、风、土——合在一起，它们绘制出日常生活的完整地形。大阿卡纳独立其外，追踪灵魂更宏大的弧线。",
+    zh: "每个花色都对应人类经验的一个领域——火、水、风、土——合在一起，构成日常生活的完整地形。大阿尔卡那独立其外，勾勒灵魂更宏大的轨迹。",
   },
 
   "suit.major.title": {
     en: "Major Arcana — The 22 Soul Cards",
-    zh: "大阿卡纳——22张灵魂之牌",
+    zh: "大阿尔卡那——22 张灵魂之牌",
   },
   "suit.major.body": {
     en: "The 22 Major Arcana are the backbone of the tarot. They do not belong to any suit or element; they belong to the journey itself. Beginning with The Fool — numberless, open, unformed — and closing with The World — complete, integrated, arrived — they trace the great passages every life must negotiate: innocence, authority, loss, surrender, rebirth. When a Major card appears in a reading, it speaks louder than the cards around it. It names not what is happening in your week, but what is happening in your life. These are the cards that stay with you long after the reading ends.",
-    zh: "22张大阿卡纳是塔罗的脊梁。它们不属于任何花色或元素；它们属于旅程本身。从愚者——无编号、敞开、未成形——开始，到世界——完整、圆融、抵达——结束，它们追踪着每个生命必须经历的重大转折：天真、权威、失去、臣服、重生。当一张大牌出现在解读中，它的声音比周围的牌更响亮。它命名的不是你这一周正在发生的事，而是你这一生正在发生的事。这些牌会在解读结束很久之后仍与你同在。",
+    zh: "22 张大阿尔卡那是塔罗的脊梁。它们不属于任何花色或元素；它们属于旅程本身。从愚者——无编号、敞开、未成形——开始，到世界——完整、圆融、抵达——结束，它们追踪着每个生命必须经历的重大转折：天真、权威、失去、臣服、重生。当一张大牌出现在解读中，它的声音会比周围的牌更响亮。它命名的不是你这一周正在发生的事，而是你这一生正在经历的事。这些牌会在解读结束很久之后，仍与你同在。",
   },
 
   "suit.wands.title": {
@@ -109,11 +109,11 @@ export const dict: Dict = {
 
   "suit.pentacles.title": {
     en: "Suit of Pentacles — Earth, Material & Body",
-    zh: "钱币花色——土、物质与身体",
+    zh: "星币花色——土、物质与身体",
   },
   "suit.pentacles.body": {
     en: "Pentacles rest on earth. They speak to the material world — money, health, home, craft, the slow patient work of building something that lasts. Where other suits deal in spark or storm, Pentacles deal in seasons. They appear in readings about livelihood, physical wellbeing, and the question of what you are tending over time. Pentacles ask whether you are rooted or merely stuck, whether your labor is nourishing or depleting. The wisdom of this suit is that the body knows things the mind refuses to learn. When Pentacles gather in a spread, the answer lives not in ideas but in what your hands are already doing.",
-    zh: "钱币安于大地。它们言说物质世界——金钱、健康、居所、手艺，以及建造持久之物所需的缓慢而耐心的劳作。其他花色以火花或风暴示人，而钱币以季节度量。它们出现在关于生计、身体健康，以及你正在长期照料什么这一问题的解读中。钱币追问你是扎根还是仅仅停滞，你的劳动是在滋养还是在消耗。这个花色的智慧在于：身体知晓心智拒绝去学的事。当钱币在牌阵中聚集时，答案不在观念中，而在你的双手已经在做的事情里。",
+    zh: "星币安于大地。它们言说物质世界——金钱、健康、家园、手艺，以及建造持久之物所需的缓慢与耐心。其他花色以火花或风暴示人，而星币以季节计时。它们出现在关于生计、身体状态，以及你正在长期照料什么的问题里。星币追问你是扎根，还是只是停住不动；你的劳动是在滋养你，还是在消耗你。这个花色的智慧在于：身体往往知道那些心智迟迟不肯承认的事。当星币在牌阵中聚集时，答案不在观念里，而在你的双手已经在做的事情里。",
   },
 
   "suit.explore": {
@@ -135,7 +135,7 @@ export const dict: Dict = {
   },
   "home.hero.subtitle": {
     en: "Learn the language of tarot, draw a reading, and find tools to keep your practice grounded.",
-    zh: "学习塔罗的语言，抽取一次解读，并寻找让你的修习扎根的工具。",
+    zh: "学习塔罗的语言，在线抽牌，并用更清楚的方式理解爱情、工作与人生问题。",
   },
   "home.hero.cta": { en: "Draw a card", zh: "抽一张牌" },
   "home.hero.shop": { en: "Visit shop", zh: "进入商店" },
@@ -151,14 +151,14 @@ export const dict: Dict = {
   "home.suits.title": { en: "Browse by suit", zh: "按花色浏览" },
   "home.suits.subtitle": {
     en: "The deck divides into five groups — the Major Arcana and four elemental suits. Explore each one.",
-    zh: "牌组分为五组——大阿卡纳与四个元素花色。逐一探索。",
+    zh: "牌组分为五组——大阿尔卡那与四个元素花色。逐一探索。",
   },
   "home.suits.cards": { en: "cards", zh: "张牌" },
 
   "home.what.title": { en: "What is tarot?", zh: "什么是塔罗？" },
   "home.what.body": {
     en: "Tarot is a deck of 78 illustrated cards used as a tool for reflection. The 22 Major Arcana describe the great themes of a life — love, change, endings, beginnings — while the 56 Minor Arcana speak to the texture of daily experience. A tarot reading is not a forecast; it is a conversation with your own intuition.",
-    zh: "塔罗是一副由78张图绘卡组成的牌，用作内省的工具。22张大阿卡纳描绘人生的宏大主题——爱、变化、结束与开始；56张小阿卡纳则诉说日常经验的纹理。塔罗解读并非预测，而是一场与你直觉的对话。",
+    zh: "塔罗是一套由 78 张图像牌组成的系统，用来帮助反思与梳理。22 张大阿尔卡那描绘人生的宏大主题——爱、变化、结束与开始；56 张小阿尔卡那则诉说日常经验的纹理。塔罗解读不是预言，而是一场与你直觉的对话。",
   },
 
   "home.how.title": { en: "How a reading works", zh: "解读如何进行" },
@@ -179,12 +179,12 @@ export const dict: Dict = {
   },
 
   "home.arcana.title": { en: "Two halves of the deck", zh: "牌组的两半" },
-  "home.arcana.major.title": { en: "Major Arcana · 22", zh: "大阿卡纳 · 22" },
+  "home.arcana.major.title": { en: "Major Arcana · 22", zh: "大阿尔卡那 · 22" },
   "home.arcana.major.body": {
     en: "The Fool's journey through archetypal forces — from innocence to integration.",
     zh: "愚者从天真走向圆满，穿越原型力量的旅程。",
   },
-  "home.arcana.minor.title": { en: "Minor Arcana · 56", zh: "小阿卡纳 · 56" },
+  "home.arcana.minor.title": { en: "Minor Arcana · 56", zh: "小阿尔卡那 · 56" },
   "home.arcana.minor.body": {
     en: "Four suits — Wands, Cups, Swords, Pentacles — for fire, water, air, and earth in everyday life.",
     zh: "四个花色——权杖、圣杯、宝剑、星币——对应日常生活中的火、水、风、土。",
@@ -194,7 +194,7 @@ export const dict: Dict = {
   "reading.title": { en: "A Tarot Reading", zh: "塔罗解读" },
   "reading.subtitle": {
     en: "Choose a spread and a deck, breathe, then draw.",
-    zh: "选择牌阵与牌组，深呼吸，然后抽牌。",
+    zh: "选好牌阵与牌组，先静一静，再开始抽牌。",
   },
   "reading.spread.label": { en: "Spread", zh: "牌阵" },
   "reading.spread.single": { en: "Single card", zh: "单张牌" },
@@ -211,11 +211,11 @@ export const dict: Dict = {
     zh: "适合那些有来历与去向的情境——关系、决定、人生章节。三张牌分别显示它从何而来、你身处何处，以及它正向何处倾斜。",
   },
   "reading.deck.label": { en: "Deck", zh: "牌组" },
-  "reading.deck.major": { en: "Major Arcana (22)", zh: "大阿卡纳 (22)" },
+  "reading.deck.major": { en: "Major Arcana (22)", zh: "大阿尔卡那 (22)" },
   "reading.deck.full": { en: "Full deck (78)", zh: "全牌组 (78)" },
   "reading.deck.major.help": {
     en: "Major Arcana speaks to the great themes of a life — love, change, endings, calling. Choose this when your question feels big, soul-level, or archetypal.",
-    zh: "大阿卡纳诉说生命的宏大主题——爱、变迁、结束、召唤。当你的问题感觉宏大、灵魂层面或带有原型意味时，选择它。",
+    zh: "大阿尔卡那诉说生命的宏大主题——爱、变迁、结束、召唤。当你的问题更像灵魂层面的课题，或带有明显的原型意味时，选择它。",
   },
   "reading.deck.full.help": {
     en: "The full 78-card deck includes the four suits — fire, water, air, earth — for the texture of daily life. Choose this for everyday situations: work, money, friendships, the next concrete step.",
@@ -453,19 +453,19 @@ export const dict: Dict = {
   },
   "home.guides.subtitle": {
     en: "Broader guides for the questions people ask before they know which single card they need.",
-    zh: "在你还不知道该先看哪一张牌之前，先用这几篇更宽一点的指南把问题问清楚。",
+    zh: "在你还不知道该先看哪一张牌之前，先用这几篇范围更宽的指南把问题想清楚。",
   },
   "home.guides.read": { en: "Read guide", zh: "阅读指南" },
   "footer.guides": { en: "Popular guides", zh: "热门指南" },
   "guide.contents": { en: "In This Guide", zh: "本页内容" },
-  "guide.cta.title": { en: "Put It Into Practice", zh: "把它用到牌阵里" },
+  "guide.cta.title": { en: "Put It Into Practice", zh: "把它带回真实牌阵" },
   "guide.cta.body": {
     en: "Once the structure is clear, the next step is to read actual cards in context. Use the reading tool or browse the full deck to ground the theory.",
-    zh: "当结构已经清楚，下一步就是把它放回真实的牌阵里。你可以直接去抽牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
+    zh: "当结构已经理清，下一步就是把它带回真实牌阵里。你可以直接去抽牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
   },
   "guide.cta.reading": { en: "Try The Tarot Reading", zh: "去做一次在线抽牌" },
   "guide.cta.cards": { en: "Browse All 78 Cards", zh: "浏览 78 张塔罗牌" },
-  "guide.related.cards": { en: "Cards To Read Next", zh: "接下来可以读的牌" },
+  "guide.related.cards": { en: "Cards To Read Next", zh: "接下来可以继续看的牌" },
   "guide.related.guides": { en: "Related Guides", zh: "相关指南" },
   "guide.faq.title": { en: "Frequently Asked Questions", zh: "常见问题" },
 };

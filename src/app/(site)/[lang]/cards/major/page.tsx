@@ -13,11 +13,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return buildSuitMetadata(typed, {
     slug: "major",
     titleEn: "Major Arcana — All 22 Tarot Cards & Meanings · Stillpoint Tarot",
-    titleZh: "大阿卡纳——全部 22 张塔罗牌与含义 · 静点塔罗",
+    titleZh: "大阿尔卡那——全部 22 张塔罗牌与含义 · 静点塔罗",
     descEn:
       "Explore all 22 Major Arcana tarot cards: The Fool through The World. Full upright and reversed meanings, love, career, and yes/no interpretations for every card.",
     descZh:
-      "探索全部 22 张大阿卡纳塔罗牌：从愚者到世界。每张牌都附有正位与逆位含义、爱情、事业与「是否」解读。",
+      "探索全部 22 张大阿尔卡那塔罗牌：从愚者到世界。每张牌都附有正位与逆位含义、爱情、事业与「是否」解读。",
   });
 }
 

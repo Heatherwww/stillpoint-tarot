@@ -91,11 +91,11 @@ export function buildHomeMetadata(lang: Lang): Metadata {
     "/",
     {
       en: "Stillpoint Tarot | Tarot Card Meanings, Readings & Guides",
-      zh: "Stillpoint Tarot | 塔罗牌义、在线抽牌与双语解读",
+      zh: "Stillpoint Tarot | 塔罗牌义、在线抽牌与中英双语解读",
     },
     {
       en: "Explore all 78 Rider-Waite-Smith tarot cards, read upright and reversed meanings, and draw bilingual tarot readings for love, work, and life questions.",
-      zh: "浏览 78 张伟特塔罗牌，查看正位与逆位牌义，并用中英双语进行爱情、工作与人生问题的在线塔罗抽牌。",
+      zh: "浏览 78 张伟特塔罗牌，查看正位与逆位牌义，并用中英双语在线抽牌，梳理爱情、工作与人生问题。",
     },
   );
 }
@@ -106,11 +106,11 @@ export function buildCardsMetadata(lang: Lang): Metadata {
     "/cards",
     {
       en: "78 Tarot Card Meanings | Upright, Reversed & Suit Guides",
-      zh: "78 张塔罗牌牌义大全 | 正位、逆位与花色分类",
+      zh: "78 张塔罗牌牌义大全 | 正位、逆位与花色导览",
     },
     {
       en: "Browse all 78 Rider-Waite-Smith tarot cards across the Major Arcana, Wands, Cups, Swords, and Pentacles with bilingual meanings and suit guides.",
-      zh: "按大阿尔卡那、权杖、圣杯、宝剑与星币浏览 78 张伟特塔罗牌，查看中英双语牌义、正位逆位与花色导览。",
+      zh: "按大阿尔卡那、权杖、圣杯、宝剑与星币浏览 78 张伟特塔罗牌，查看中英双语牌义、正位逆位与花色说明。",
     },
   );
 }
@@ -121,11 +121,11 @@ export function buildReadingMetadata(lang: Lang): Metadata {
     "/reading",
     {
       en: "Online Tarot Reading | Single Card & 3-Card Spread",
-      zh: "在线塔罗抽牌 | 单张牌与三张牌牌阵",
+      zh: "在线塔罗抽牌 | 单张牌与三张牌牌阵解读",
     },
     {
       en: "Draw a single-card or three-card tarot reading online. Choose your focus, set the context, and receive a grounded bilingual interpretation.",
-      zh: "在线进行单张牌或三张牌塔罗抽牌。先选择主题与情境，再获得一份克制、清晰的中英双语解读。",
+      zh: "在线进行单张牌或三张牌塔罗抽牌。先选主题与情境，再获得一份克制、清晰的中英双语解读。",
     },
   );
 }

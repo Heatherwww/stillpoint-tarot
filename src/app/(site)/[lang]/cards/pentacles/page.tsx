@@ -15,11 +15,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return buildSuitMetadata(typed, {
     slug: "pentacles",
     titleEn: "Suit of Pentacles — All 14 Tarot Cards & Meanings · Stillpoint Tarot",
-    titleZh: "钱币花色——全部 14 张塔罗牌与含义 · 静点塔罗",
+    titleZh: "星币花色——全部 14 张塔罗牌与含义 · 静点塔罗",
     descEn:
       "Explore all 14 Pentacles tarot cards: Ace through King. Earth, money, home, body, and craft. Full upright, reversed, love, and career meanings.",
     descZh:
-      "探索全部 14 张钱币塔罗牌：从首牌到国王。土、金钱、家园、身体与手艺。每张牌都附有正位、逆位、爱情与事业含义。",
+      "探索全部 14 张星币塔罗牌：从首牌到国王。土、金钱、家园、身体与手艺。每张牌都附有正位、逆位、爱情与事业含义。",
   });
 }
 
