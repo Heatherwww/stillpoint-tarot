@@ -254,6 +254,8 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 
 1. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
 2. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). It is `noindex` and excluded from the sitemap until Airwallex is wired.
+3. **SEO follow-up**: request indexing for the newest guide hubs in Google Search Console, then review impressions / CTR after a 1-2 week window before making another round of metadata changes.
+4. **SEO iteration choice**: use GSC data to decide whether the next content batch should keep expanding the love / feelings clusters or switch back to CTR work on homepage, `/cards`, `/reading`, and the top-impression single-card pages.
 
 ## Important conventions
 
