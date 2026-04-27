@@ -90,12 +90,12 @@ export function buildHomeMetadata(lang: Lang): Metadata {
     lang,
     "/",
     {
-      en: "Stillpoint Tarot | Tarot Card Meanings, Readings & Guides",
-      zh: "Stillpoint Tarot | 塔罗牌义、在线抽牌与中英双语解读",
+      en: "Stillpoint Tarot | Free Tarot Reading & 78 Card Meanings",
+      zh: "Stillpoint Tarot | 免费在线塔罗抽牌与 78 张牌义",
     },
     {
-      en: "Explore all 78 Rider-Waite-Smith tarot cards, read upright and reversed meanings, and draw bilingual tarot readings for love, work, and life questions.",
-      zh: "浏览 78 张伟特塔罗牌，查看正位与逆位牌义，并用中英双语在线抽牌，梳理爱情、工作与人生问题。",
+      en: "Get a free online tarot reading, explore all 78 Rider-Waite-Smith cards, and read clear upright, reversed, love, and yes-or-no meanings in English and Chinese.",
+      zh: "免费在线抽牌，浏览 78 张伟特塔罗牌，并查看中英双语的正位、逆位、爱情与是否解读。",
     },
   );
 }
@@ -105,12 +105,12 @@ export function buildCardsMetadata(lang: Lang): Metadata {
     lang,
     "/cards",
     {
-      en: "78 Tarot Card Meanings | Upright, Reversed & Suit Guides",
-      zh: "78 张塔罗牌牌义大全 | 正位、逆位与花色导览",
+      en: "78 Tarot Card Meanings | Love, Yes/No, Upright & Reversed",
+      zh: "78 张塔罗牌牌义大全 | 正位、逆位、爱情与是否",
     },
     {
-      en: "Browse all 78 Rider-Waite-Smith tarot cards across the Major Arcana, Wands, Cups, Swords, and Pentacles with bilingual meanings and suit guides.",
-      zh: "按大阿尔卡那、权杖、圣杯、宝剑与星币浏览 78 张伟特塔罗牌，查看中英双语牌义、正位逆位与花色说明。",
+      en: "Browse all 78 tarot cards across the Major Arcana, Wands, Cups, Swords, and Pentacles, with clear love, yes-or-no, upright, and reversed meanings.",
+      zh: "按大阿尔卡那、权杖、圣杯、宝剑与星币浏览 78 张塔罗牌，快速查看爱情、是否、正位与逆位牌义。",
     },
   );
 }
@@ -120,12 +120,12 @@ export function buildReadingMetadata(lang: Lang): Metadata {
     lang,
     "/reading",
     {
-      en: "Online Tarot Reading | Single Card & 3-Card Spread",
-      zh: "在线塔罗抽牌 | 单张牌与三张牌牌阵解读",
+      en: "Free Online Tarot Reading | Single Card or 3-Card Spread",
+      zh: "免费在线塔罗抽牌 | 单张牌与三张牌牌阵",
     },
     {
-      en: "Draw a single-card or three-card tarot reading online. Choose your focus, set the context, and receive a grounded bilingual interpretation.",
-      zh: "在线进行单张牌或三张牌塔罗抽牌。先选主题与情境，再获得一份克制、清晰的中英双语解读。",
+      en: "Draw a free single-card or three-card tarot reading online. Choose your focus, set the context, and get a clear bilingual interpretation for love, work, or life questions.",
+      zh: "免费进行单张牌或三张牌在线抽牌。先选主题与情境，再获得一份清楚、克制的中英双语解读。",
     },
   );
 }
@@ -141,7 +141,7 @@ export function buildShopMetadata(lang: Lang): Metadata {
       },
       {
         en: "The shop is not yet live. This preview page stays available to visitors, but is excluded from search indexing until payments are wired.",
-        zh: "商店尚未正式开放。该页面仅供访客预览，在支付接入完成前不参与搜索索引。",
+        zh: "商店尚未正式开放。该页面仅供访客预览，在支付接入完成前不会参与搜索索引。",
       },
     ),
     robots: {
