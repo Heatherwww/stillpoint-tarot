@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { fullDeck } from "@/lib/cards";
+import { guideSummaries } from "@/lib/guideSummaries";
 
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.stillpointtarot.com";
@@ -25,7 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/cards/cups", priority: 0.8 },
     { path: "/cards/swords", priority: 0.8 },
     { path: "/cards/pentacles", priority: 0.8 },
-    { path: "/shop", priority: 0.7 },
+    ...guideSummaries.map((guide) => ({
+      path: `/guides/${guide.slug}`,
+      priority: 0.8,
+    })),
     ...fullDeck.map((c) => ({ path: `/cards/${c.id}`, priority: 0.6 })),
   ];
 

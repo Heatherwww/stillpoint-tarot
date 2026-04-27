@@ -447,6 +447,27 @@ export const dict: Dict = {
     en: "Demo only — Stripe is in test mode. Use card 4242 4242 4242 4242 with any future date and CVC.",
     zh: "仅为演示——Stripe 处于测试模式。可使用卡号 4242 4242 4242 4242，任意未来日期与 CVC。",
   },
+  "home.guides.title": {
+    en: "Start with these tarot guides",
+    zh: "先从这三篇塔罗指南开始",
+  },
+  "home.guides.subtitle": {
+    en: "Broader guides for the questions people ask before they know which single card they need.",
+    zh: "在你还不知道该先看哪一张牌之前，先用这几篇更宽一点的指南把问题问清楚。",
+  },
+  "home.guides.read": { en: "Read guide", zh: "阅读指南" },
+  "footer.guides": { en: "Popular guides", zh: "热门指南" },
+  "guide.contents": { en: "In This Guide", zh: "本页内容" },
+  "guide.cta.title": { en: "Put It Into Practice", zh: "把它用到牌阵里" },
+  "guide.cta.body": {
+    en: "Once the structure is clear, the next step is to read actual cards in context. Use the reading tool or browse the full deck to ground the theory.",
+    zh: "当结构已经清楚，下一步就是把它放回真实的牌阵里。你可以直接去抽牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
+  },
+  "guide.cta.reading": { en: "Try The Tarot Reading", zh: "去做一次在线抽牌" },
+  "guide.cta.cards": { en: "Browse All 78 Cards", zh: "浏览 78 张塔罗牌" },
+  "guide.related.cards": { en: "Cards To Read Next", zh: "接下来可以读的牌" },
+  "guide.related.guides": { en: "Related Guides", zh: "相关指南" },
+  "guide.faq.title": { en: "Frequently Asked Questions", zh: "常见问题" },
 };
 
 export function t(key: keyof typeof dict, lang: Lang): string {

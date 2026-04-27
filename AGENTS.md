@@ -25,12 +25,12 @@ Owner: Heather Wang — new to Next.js / Tailwind, values cost clarity and hosti
 | Payment (future) | Airwallex | not yet wired — see `feature/shop-and-ai-payment` |
 | AI reading (future) | DeepSeek (`deepseek-chat`) | not yet wired — same branch |
 
-**No test framework is set up.** Validate changes with `npm run build` (static generation of 181 pages).
+**No test framework is set up.** Validate changes with `npm run build` (static generation of 187 pages).
 
 ## Before making any change
 
 1. **Read this file in full** — it contains the architecture, data flow, file map, and conventions.
-2. **Run `npm run build`** after every change. The build statically generates 181 pages ({en,zh} × most routes + 156 card pages). If any page fails, the build fails. This is the only validation step (no test suite).
+2. **Run `npm run build`** after every change. The build statically generates 187 pages ({en,zh} × most routes + 156 card pages + 6 guide pages). If any page fails, the build fails. This is the only validation step (no test suite).
 3. **All user-facing text must be bilingual** (English + Chinese). Add keys to `src/lib/i18n.tsx`. Card content goes in `src/lib/cards.ts` or `src/lib/cardExtras.ts`.
 
 ## Project structure
@@ -47,12 +47,20 @@ src/
 │   │   └── page.tsx         # / → redirects to /en or /zh based on Accept-Language
 │   └── (site)/
 │       └── [lang]/          # Bilingual segment — lang ∈ {en, zh}; root layout lives here
-│           ├── layout.tsx       # Root HTML shell + LanguageProvider(initialLang=lang) + Nav + Footer
-│           ├── page.tsx         # Homepage
-│           ├── reading/page.tsx # Interactive reading page
+│           ├── layout.tsx           # Root HTML shell + LanguageProvider(initialLang=lang) + Nav + Footer
+│           ├── _routeMeta.ts        # Shared helper for page-level metadata/canonical/OG config
+│           ├── page.tsx             # Homepage server wrapper: metadata + WebSite/Organization JSON-LD
+│           ├── HomePageClient.tsx   # Homepage UI client component
+│           ├── guides/
+│           │   └── [slug]/
+│           │       └── page.tsx     # SSG guide hubs: metadata + Article/Breadcrumb/FAQ JSON-LD
+│           ├── reading/
+│           │   ├── layout.tsx       # Reading page metadata
+│           │   └── page.tsx         # Interactive reading page
 │           ├── cards/
-│           │   ├── page.tsx         # Card library (filterable grid)
-│           │   ├── _suitMeta.ts     # buildSuitMetadata() helper
+│           │   ├── page.tsx             # Card library server wrapper: metadata + CollectionPage JSON-LD
+│           │   ├── CardsIndexClient.tsx # Card library UI client component
+│           │   ├── _suitMeta.ts         # buildSuitMetadata() helper
 │           │   ├── [id]/
 │           │   │   ├── page.tsx             # SSG card detail: metadata + JSON-LD
 │           │   │   └── CardDetailClient.tsx # 10-section card page + prev/next
@@ -61,15 +69,20 @@ src/
 │           │   ├── cups/page.tsx
 │           │   ├── swords/page.tsx
 │           │   └── pentacles/page.tsx
-│           └── shop/page.tsx    # Shop page (payment not wired)
+│           └── shop/
+│               ├── layout.tsx   # Shop metadata: noindex until payments are live
+│               └── page.tsx     # Shop page (payment not wired)
 ├── components/
 │   ├── Nav.tsx              # Sticky header: logo, nav links, language toggle
 │   ├── Footer.tsx           # Footer
+│   ├── GuidePage.tsx        # Shared guide page renderer
 │   ├── LangToggle.tsx       # EN/中文 toggle (URL-swapping links)
 │   └── SuitPage.tsx         # Shared client component for 5 suit landing pages
 ├── lib/
 │   ├── cards.ts             # Core data: TarotCard, majorArcana, minorArcana, fullDeck (78)
 │   ├── cardExtras.ts        # Extended bilingual content (love, career, FAQs, etc.)
+│   ├── guideSummaries.ts    # Shared bilingual guide slugs + titles/descriptions (safe for client imports)
+│   ├── guides.ts            # Shared bilingual SEO guide content + slugs/FAQs/related links
 │   ├── i18n.tsx             # UI translations, LanguageProvider, useLang()
 │   └── products.ts          # Shop product data (inactive)
 public/
@@ -99,11 +112,16 @@ scripts/
 ### Static generation
 - `src/app/(site)/[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
 - `src/app/(site)/[lang]/cards/[id]/page.tsx` returns the cartesian product {en,zh} × 78 = 156 card pages.
+- `src/app/(site)/[lang]/guides/[slug]/page.tsx` returns the cartesian product {en,zh} × 3 guide slugs = 6 guide pages.
 - Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
-- `npm run build` generates **181 total pages**.
+- `npm run build` generates **187 total pages**.
 - Legacy URLs (`/cards`, `/cards/:id`, `/reading`, `/shop`) 301-redirect to `/en/...` via `next.config.ts` to preserve Google-indexed link equity.
 
 ### SEO
+- Homepage, card library, and reading routes each ship page-specific metadata via `src/app/(site)/[lang]/_routeMeta.ts` rather than inheriting one generic layout title/description.
+- Homepage emits `WebSite` + `Organization` JSON-LD; card library emits `CollectionPage` JSON-LD.
+- Guide hubs live at static keyword-targeted slugs under `/[lang]/guides/` and ship `Article` + `BreadcrumbList` + `FAQPage` JSON-LD per guide.
+- Guide metadata and long-form content live in `src/lib/guides.ts`, while homepage/card-library/footer guide links use the lightweight `src/lib/guideSummaries.ts` export to avoid shipping long-form guide copy to the client bundle.
 - Per-card `generateMetadata()` is lang-aware: bilingual title/description, `alternates.languages` (en + zh-CN + x-default), `og:locale` / `og:alternateLocale`, canonical URL pointing at the lang-specific URL.
 - Card page title format targets long-tail GSC queries: `"[Card] Tarot Card Meaning — Upright, Reversed, Love & Yes or No (Yes|No|Maybe)"` / Chinese equivalent. Section H2s (e.g. `"Is Two of Swords a yes or no?"`) are generated from the card name to rank on modifier queries.
 - Three JSON-LD blocks per card page: `Article`, `BreadcrumbList`, `FAQPage` — rendered in current lang with `inLanguage` set.
@@ -111,6 +129,7 @@ scripts/
 - Minor Arcana FAQ generator emits 6 entries tuned for GSC long-tails: *"Is the [Card] a yes or no?"*, *"[Card] upright — yes or no in love?"*, *"[Card] reversed in love?"*, *"What kind of person does [Card] represent?"*, plus general + reversed. Major Arcana have hand-written FAQs in `majorExtras`.
 - Google Search Console verified via `metadata.verification.google` in root layout.
 - Sitemap emits every route × 2 locales with hreflang alternates per entry.
+- `/[lang]/shop` is intentionally omitted from the sitemap and marked `noindex` until payments are wired.
 
 ### Reading page
 - User picks spread (single / 3-card) and deck (Major only / full 78).
@@ -125,6 +144,7 @@ scripts/
 |-------|------|-------------|
 | `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
 | `/[lang]` | SSG (2) | Homepage hub, per locale |
+| `/[lang]/guides/[slug]` | SSG (6) | SEO guide hubs for broader search intent |
 | `/[lang]/reading` | SSG (2) | Interactive reading page |
 | `/[lang]/cards` | SSG (2) | Filterable card library |
 | `/[lang]/cards/[id]` | SSG (156) | Individual card detail (78 × 2 locales) |
@@ -133,7 +153,7 @@ scripts/
 | `/[lang]/cards/cups` | SSG (2) | Cups landing |
 | `/[lang]/cards/swords` | SSG (2) | Swords landing |
 | `/[lang]/cards/pentacles` | SSG (2) | Pentacles landing |
-| `/[lang]/shop` | SSG (2) | Shop (payment not wired) |
+| `/[lang]/shop` | SSG (2) | Shop preview only (payment not wired, `noindex`) |
 | `/sitemap.xml` | Generated | XML sitemap (all locales, with hreflang alternates) |
 | `/robots.txt` | Generated | robots.txt |
 
@@ -190,7 +210,13 @@ Edit `src/app/(site)/[lang]/cards/[id]/page.tsx`. Contains bilingual `generateMe
 Edit `src/app/(site)/[lang]/reading/page.tsx`. Large client component (~500 lines): spread selection, context questions, card drawing, narrative generation.
 
 ### Edit homepage sections
-Edit `src/app/(site)/[lang]/page.tsx`. (The root `/` redirect lives in `src/app/(redirect)/page.tsx`.)
+Edit `src/app/(site)/[lang]/HomePageClient.tsx` for UI and `src/app/(site)/[lang]/page.tsx` for homepage metadata / JSON-LD. (The root `/` redirect lives in `src/app/(redirect)/page.tsx`.)
+
+### Edit card library UI / SEO
+Edit `src/app/(site)/[lang]/cards/CardsIndexClient.tsx` for the filterable grid and `src/app/(site)/[lang]/cards/page.tsx` for metadata / `CollectionPage` JSON-LD.
+
+### Add or edit guide content
+Edit `src/lib/guides.ts` for bilingual guide copy, FAQs, related cards, and inter-guide links. Edit `src/lib/guideSummaries.ts` when changing shared guide slugs, titles, or descriptions used by client components and sitemap. Edit `src/app/(site)/[lang]/guides/[slug]/page.tsx` for guide-route metadata / JSON-LD and `src/components/GuidePage.tsx` for guide layout.
 
 ### Add a suit landing page
 Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build metadata via `buildSuitMetadata()` in `src/app/(site)/[lang]/cards/_suitMeta.ts`. Add the route to `sitemap.ts`.
@@ -227,14 +253,14 @@ Short-lived feature branches should follow `claude/<name>` or `codex/<name>` and
 ## Pending work
 
 1. **Airwallex + DeepSeek integration**: wire up payment and AI reading. Code preserved on `feature/shop-and-ai-payment`.
-2. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). Will switch to Airwallex.
+2. **Shop page**: currently visible but non-functional (checkout API points to inactive Stripe). It is `noindex` and excluded from the sitemap until Airwallex is wired.
 
 ## Important conventions
 
 - **Tone**: reflective, grounded, no fortune-teller theatrics. Content reads like a thoughtful guide, not a prediction.
 - **No emojis in content** unless the user explicitly requests.
 - **Always bilingual**: every user-facing string needs both `en` and `zh`.
-- **Build must pass**: always run `npm run build` after changes. All 181 pages must generate successfully.
+- **Build must pass**: always run `npm run build` after changes. All 187 pages must generate successfully.
 - **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
 - **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
 
@@ -258,7 +284,7 @@ Checklist before every commit:
 - [ ] New/removed component or lib file? → Update file structure
 - [ ] Changed architecture (i18n, SEO, data flow, etc.)? → Update architecture section
 - [ ] Completed or added a pending task? → Update "Pending work"
-- [ ] Changed total page count? → Update "181 pages" references
+- [ ] Changed total page count? → Update the page-count references
 - [ ] New convention or rule? → Update "Important conventions" / "Things to NOT do"
 - [ ] Branch created/merged/deleted? → Update "Git branches" table
 
