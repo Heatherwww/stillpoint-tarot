@@ -7,6 +7,7 @@ import { useLang } from "@/lib/i18n";
 import {
   drawCards,
   fullDeck,
+  getCardImagePath,
   majorArcana,
   getName,
   getKeywords,
@@ -422,7 +423,7 @@ function CardDisplay({
       )}
       <div className="mx-auto mt-3 w-40 overflow-hidden rounded-xl shadow-lg bg-surface-muted">
         <Image
-          src={`/cards/${drawn.card.id}.webp`}
+          src={getCardImagePath(drawn.card.id)}
           alt={getName(drawn.card, lang)}
           width={500}
           height={833}

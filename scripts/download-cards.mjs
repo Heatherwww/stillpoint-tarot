@@ -1,6 +1,6 @@
 // One-off script: download Rider-Waite-Smith card scans from Wikimedia Commons.
 // Pamela Colman Smith, 1909 — public domain.
-// Writes to public/cards/<card-id>.webp at ~500px wide.
+// Writes to public/images/cards/<card-id>.webp at ~500px wide.
 //
 // Run with:  node scripts/download-cards.mjs
 
@@ -9,7 +9,7 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const OUT_DIR = path.resolve("public/cards");
+const OUT_DIR = path.resolve("public/images/cards");
 const WIDTH = 500;
 
 // Major Arcana: card id -> Wikimedia filename (without extension)

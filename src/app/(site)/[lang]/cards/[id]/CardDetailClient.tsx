@@ -3,8 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
-import type { TarotCard } from "@/lib/cards";
-import { fullDeck } from "@/lib/cards";
+import { fullDeck, getCardImagePath, type TarotCard } from "@/lib/cards";
 import { getCardExtras } from "@/lib/cardExtras";
 
 export default function CardDetailClient({ card }: { card: TarotCard }) {
@@ -74,7 +73,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
       <div className="mt-10 flex justify-center">
         <div className="w-56 overflow-hidden rounded-2xl shadow-xl bg-surface-muted">
           <Image
-            src={`/cards/${card.id}.webp`}
+            src={getCardImagePath(card.id)}
             alt={card.name[lang]}
             width={500}
             height={833}
@@ -223,7 +222,7 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
               >
                 <div className="overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
                   <Image
-                    src={`/cards/${rc.id}.webp`}
+                    src={getCardImagePath(rc.id)}
                     alt={rc.name[lang]}
                     width={500}
                     height={833}

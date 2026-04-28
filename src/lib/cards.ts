@@ -782,6 +782,10 @@ export const minorArcana: TarotCard[] = [
 
 export const fullDeck: TarotCard[] = [...majorArcana, ...minorArcana];
 
+export function getCardImagePath(cardId: string): string {
+  return `/images/cards/${cardId}.webp`;
+}
+
 export interface DrawnCard {
   card: TarotCard;
   reversed: boolean;

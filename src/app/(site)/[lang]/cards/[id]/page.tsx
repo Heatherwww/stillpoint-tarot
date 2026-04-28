@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { fullDeck } from "@/lib/cards";
+import { fullDeck, getCardImagePath } from "@/lib/cards";
 import { getCardExtras } from "@/lib/cardExtras";
 import type { Lang } from "@/lib/i18n";
 import { SITE_URL } from "../../_routeMeta";
@@ -56,7 +56,7 @@ export async function generateMetadata({
   const enUrl = `${SITE_URL}/en/cards/${card.id}`;
   const zhUrl = `${SITE_URL}/zh/cards/${card.id}`;
   const canonical = localizedLang === "zh" ? zhUrl : enUrl;
-  const ogImage = `${SITE_URL}/cards/${card.id}.webp`;
+  const ogImage = `${SITE_URL}${getCardImagePath(card.id)}`;
   const answerWord = yesNoWord(extras.yesNo.answer, localizedLang);
   const title = buildCardTitle(card, localizedLang, answerWord);
   const description = buildCardDescription(card, localizedLang, answerWord);
@@ -109,7 +109,7 @@ export default async function CardDetailPage({ params }: PageProps) {
   const title = buildCardTitle(card, typedLang, answerWord);
   const description = buildCardDescription(card, typedLang, answerWord);
   const url = `${SITE_URL}/${typedLang}/cards/${card.id}`;
-  const ogImage = `${SITE_URL}/cards/${card.id}.webp`;
+  const ogImage = `${SITE_URL}${getCardImagePath(card.id)}`;
   const homeUrl = `${SITE_URL}/${typedLang}`;
   const cardsUrl = `${SITE_URL}/${typedLang}/cards`;
   const name = typedLang === "zh" ? card.name.zh : card.name.en;

@@ -90,7 +90,8 @@ src/
 │   └── products.ts          # Shop product data (inactive)
 public/
 ├── logo.png
-├── cards/                   # 78 card images: <card-id>.jpg (500px wide)
+├── images/
+│   └── cards/               # 78 card images: <card-id>.webp (500px wide)
 scripts/
 └── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
 AGENTS.md                    # Codebase architecture, conventions, and agent workflow
@@ -202,7 +203,7 @@ CardExtras {
 - Client components use `useLang()` hook from `@/lib/i18n` for translations.
 - Server components import `{ t }` function directly and pass `lang` as a parameter.
 - Tailwind classes use the project's custom design tokens: `bg-background`, `bg-surface`, `bg-surface-muted`, `text-foreground`, `text-muted`, `text-primary`, `text-accent`, `border-border`, `bg-primary`, `bg-primary-hover`, `font-serif-display` (Cormorant Garamond).
-- Card images are at `public/cards/<card-id>.webp` and referenced as `/cards/<card-id>.webp`.
+- Card images are at `public/images/cards/<card-id>.webp` and should be referenced via `getCardImagePath(cardId)` from `src/lib/cards.ts`.
 
 ## Common tasks
 

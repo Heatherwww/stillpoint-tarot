@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useLang } from "@/lib/i18n";
 import {
   fullDeck,
+  getCardImagePath,
   majorArcana,
   minorArcana,
   type Suit,
@@ -89,7 +90,7 @@ export default function CardsIndexClient() {
           >
             <div className="w-full overflow-hidden rounded-xl bg-surface-muted shadow-md transition-shadow group-hover:shadow-lg">
               <Image
-                src={`/cards/${card.id}.webp`}
+                src={getCardImagePath(card.id)}
                 alt={card.name[lang]}
                 width={500}
                 height={833}

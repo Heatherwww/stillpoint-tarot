@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
-import { fullDeck } from "@/lib/cards";
+import { fullDeck, getCardImagePath } from "@/lib/cards";
 import { guideSummaries } from "@/lib/guideSummaries";
 
 const POPULAR_IDS = [
@@ -81,7 +81,7 @@ export default function HomePageClient() {
               >
                 <div className="w-full overflow-hidden rounded-xl bg-surface-muted shadow-md transition-shadow group-hover:shadow-lg">
                   <Image
-                    src={`/cards/${card.id}.webp`}
+                    src={getCardImagePath(card.id)}
                     alt={card.name[lang]}
                     width={500}
                     height={833}

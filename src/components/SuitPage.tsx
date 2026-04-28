@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/lib/i18n";
-import type { TarotCard, Suit } from "@/lib/cards";
+import { getCardImagePath, type TarotCard } from "@/lib/cards";
 
 interface SuitPageProps {
   titleKey: string;
@@ -79,7 +79,7 @@ export default function SuitPage({
             >
               <div className="w-full overflow-hidden rounded-xl shadow-md group-hover:shadow-lg transition-shadow bg-surface-muted">
                 <Image
-                  src={`/cards/${card.id}.webp`}
+                  src={getCardImagePath(card.id)}
                   alt={card.name[lang]}
                   width={500}
                   height={833}
