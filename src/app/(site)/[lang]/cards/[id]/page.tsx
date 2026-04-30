@@ -10,30 +10,108 @@ interface PageProps {
   params: Promise<{ id: string; lang: string }>;
 }
 
+interface CardMetadataCopy {
+  title: string;
+  description: string;
+}
+
 function yesNoWord(answer: "yes" | "no" | "maybe", lang: Lang) {
   if (answer === "yes") return lang === "zh" ? "是" : "Yes";
   if (answer === "no") return lang === "zh" ? "否" : "No";
   return lang === "zh" ? "也许" : "Maybe";
 }
 
-function buildCardTitle(
+const cardMetadataOverrides: Partial<
+  Record<string, Record<Lang, (answerWord: string) => CardMetadataCopy>>
+> = {
+  "the-fool": {
+    en: () => ({
+      title: "The Fool Yes or No? Tarot Meaning, Love, Upright & Reversed",
+      description:
+        "Is The Fool a yes or no card? Usually yes. Read The Fool upright and reversed meanings, love advice, and what this card says about a leap of faith.",
+    }),
+    zh: () => ({
+      title: "愚者塔罗牌义 | 是否、正位逆位与爱情",
+      description:
+        "愚者在塔罗中常给出“是”的答案。查看愚者正位与逆位牌义、爱情解读、行动建议，以及它对新开始的提示。",
+    }),
+  },
+  "the-lovers": {
+    en: () => ({
+      title: "The Lovers Tarot Meaning | Love, Soulmate, Upright & Reversed",
+      description:
+        "Read The Lovers tarot meaning for love, soulmate questions, choices, and relationships, plus upright and reversed interpretations and yes-or-no guidance.",
+    }),
+    zh: () => ({
+      title: "恋人塔罗牌义 | 爱情、灵魂伴侣、正位逆位",
+      description:
+        "恋人在塔罗中多指爱情、选择与价值对齐。查看恋人牌正位逆位、关系解读，以及它是否代表灵魂伴侣。",
+    }),
+  },
+  "the-moon": {
+    en: (answerWord) => ({
+      title: "The Moon Tarot Meaning | Symbolism, Love, Upright & Reversed",
+      description:
+        `What does The Moon symbolize in tarot? Read The Moon upright and reversed meanings, hidden feelings, intuition, love, and a yes-or-no answer of ${answerWord.toLowerCase()}.`,
+    }),
+    zh: () => ({
+      title: "月亮塔罗牌义与象征 | 正位逆位、爱情与是否（也许）",
+      description:
+        "月亮在塔罗中象征潜意识、幻象与直觉。查看月亮牌正位逆位、爱情解读，以及“是否”答案：也许。",
+    }),
+  },
+  "ace-of-swords": {
+    en: () => ({
+      title:
+        "Ace of Swords Yes or No? Tarot Meaning, Love, Upright & Reversed",
+      description:
+        "Is Ace of Swords a yes or no card? Usually yes. Read the Ace of Swords meaning for clarity, truth, love, career, and upright and reversed readings.",
+    }),
+    zh: () => ({
+      title: "宝剑首牌塔罗牌义 | 是否、正位逆位与爱情",
+      description:
+        "宝剑首牌在“是否”问题里通常偏向“是”。查看它在清晰、真相、爱情与事业中的正位逆位解读。",
+    }),
+  },
+  "three-of-pentacles": {
+    en: () => ({
+      title: "Three of Pentacles Meaning | Work, Collaboration, Love & Advice",
+      description:
+        "What does the Three of Pentacles mean in tarot? Read its meaning for teamwork, work, love, upright and reversed advice, and yes-or-no guidance.",
+    }),
+    zh: () => ({
+      title: "星币三塔罗牌义 | 合作、事业、正位逆位",
+      description:
+        "星币三多指合作、学习与把事做好。查看它在事业、关系、正位逆位与“是否”问题中的含义。",
+    }),
+  },
+};
+
+function buildDefaultCardMetadataCopy(
   card: (typeof fullDeck)[number],
   lang: Lang,
   answerWord: string,
-) {
+) : CardMetadataCopy {
   return lang === "zh"
-    ? `${card.name.zh}塔罗牌义 | 正位逆位、爱情与是否（${answerWord}）`
-    : `${card.name.en} Tarot Card Meaning | Upright & Reversed, Love, Yes or No (${answerWord})`;
+    ? {
+        title: `${card.name.zh}塔罗牌义 | 正位逆位、爱情与是否（${answerWord}）`,
+        description: `${card.name.zh}塔罗牌义速读：查看正位与逆位解读、爱情与事业指引，以及“是否”答案：${answerWord}。`,
+      }
+    : {
+        title: `${card.name.en} Tarot Card Meaning | Upright & Reversed, Love, Yes or No (${answerWord})`,
+        description: `${card.name.en} tarot card meaning at a glance: upright and reversed interpretations, love and career guidance, and a yes-or-no answer of ${answerWord.toLowerCase()}.`,
+      };
 }
 
-function buildCardDescription(
+function buildCardMetadataCopy(
   card: (typeof fullDeck)[number],
   lang: Lang,
   answerWord: string,
-) {
-  return lang === "zh"
-    ? `${card.name.zh}塔罗牌义速读：查看正位与逆位解读、爱情与事业指引，以及“是否”答案：${answerWord}。`
-    : `${card.name.en} tarot card meaning at a glance: upright and reversed interpretations, love and career guidance, and a yes-or-no answer of ${answerWord.toLowerCase()}.`;
+): CardMetadataCopy {
+  const override = cardMetadataOverrides[card.id]?.[lang];
+  return override
+    ? override(answerWord)
+    : buildDefaultCardMetadataCopy(card, lang, answerWord);
 }
 
 export function generateStaticParams() {
@@ -58,8 +136,11 @@ export async function generateMetadata({
   const canonical = localizedLang === "zh" ? zhUrl : enUrl;
   const ogImage = `${SITE_URL}${getCardImagePath(card.id)}`;
   const answerWord = yesNoWord(extras.yesNo.answer, localizedLang);
-  const title = buildCardTitle(card, localizedLang, answerWord);
-  const description = buildCardDescription(card, localizedLang, answerWord);
+  const { title, description } = buildCardMetadataCopy(
+    card,
+    localizedLang,
+    answerWord,
+  );
 
   return {
     title,
@@ -106,8 +187,11 @@ export default async function CardDetailPage({ params }: PageProps) {
   const extras = getCardExtras(card);
   const typedLang: Lang = lang;
   const answerWord = yesNoWord(extras.yesNo.answer, typedLang);
-  const title = buildCardTitle(card, typedLang, answerWord);
-  const description = buildCardDescription(card, typedLang, answerWord);
+  const { title, description } = buildCardMetadataCopy(
+    card,
+    typedLang,
+    answerWord,
+  );
   const url = `${SITE_URL}/${typedLang}/cards/${card.id}`;
   const ogImage = `${SITE_URL}${getCardImagePath(card.id)}`;
   const homeUrl = `${SITE_URL}/${typedLang}`;

@@ -58,6 +58,13 @@ const majorExtras: Record<string, CardExtras> = {
     },
     faqs: [
       {
+        q: { en: "Is The Fool a yes or no card?", zh: "愚者是「是」牌还是「否」牌？" },
+        a: {
+          en: "Usually yes. The Fool points to a leap, a beginning, and a willingness to move before certainty arrives. It becomes a weaker yes only when fear keeps you frozen.",
+          zh: "通常偏向「是」。愚者指向跃起、开始，以及在确定到来之前先行动的意愿。只有当恐惧让你僵住时，这个「是」才会变弱。",
+        },
+      },
+      {
         q: { en: "Is The Fool a good or bad card?", zh: "愚者是好牌还是坏牌？" },
         a: {
           en: "Neither. It is the card of beginning, and beginnings are inherently uncertain. It is good if you are stuck and need to move; harder if you are already overcommitted and adding more.",
@@ -363,6 +370,13 @@ const majorExtras: Record<string, CardExtras> = {
       zh: "6——和谐、合一、二者会面成第三共享之物。",
     },
     faqs: [
+      {
+        q: { en: "What does The Lovers mean in love?", zh: "恋人在爱情里通常是什么意思？" },
+        a: {
+          en: "In love, The Lovers usually points to mutual attraction, a meaningful choice, and a relationship asking for honesty and alignment. It can feel like soulmate energy, but the card still asks what you will choose.",
+          zh: "在爱情里，恋人通常指向双向吸引、一项重要的选择，以及一段请求诚实与对齐的关系。它可以带有灵魂伴侣般的感觉，但这张牌仍在问：你会如何选择？",
+        },
+      },
       {
         q: { en: "Does The Lovers mean soulmate?", zh: "恋人是否意味着灵魂伴侣？" },
         a: {
@@ -975,6 +989,13 @@ const majorExtras: Record<string, CardExtras> = {
       zh: "18——月之旅程、在暗中弯折之路。",
     },
     faqs: [
+      {
+        q: { en: "What does The Moon symbolize in tarot?", zh: "月亮在塔罗中象征什么？" },
+        a: {
+          en: "The Moon symbolizes intuition, illusion, dreams, and what moves under the surface before it can be explained clearly. It often appears when instinct is ahead of logic and when not all information is visible yet.",
+          zh: "月亮象征直觉、幻象、梦，以及那些尚未能被清楚解释、却已在水面下流动的东西。它常出现在直觉走在逻辑前面、且信息尚未完全显现的时候。",
+        },
+      },
       {
         q: { en: "Is The Moon a bad card?", zh: "月亮是坏牌吗？" },
         a: {
