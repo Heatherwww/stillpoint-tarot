@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
     // Before bilingual URL routing, these URLs were the site's English pages.
     // Google has already indexed some of them; preserve link equity with 301s.
     return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "stillpointtarot.com" }],
+        destination: "https://www.stillpointtarot.com/:path*",
+        permanent: true,
+      },
       { source: "/cards", destination: "/en/cards", permanent: true },
       { source: "/cards/:id", destination: "/en/cards/:id", permanent: true },
       { source: "/reading", destination: "/en/reading", permanent: true },

@@ -130,6 +130,7 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKE
 - Guide hubs live at static keyword-targeted slugs under `/[lang]/guides/` and ship `Article` + `BreadcrumbList` + `FAQPage` JSON-LD per guide.
 - Guide metadata and long-form content live in `src/lib/guides.ts`, while homepage/card-library/footer guide links use the lightweight `src/lib/guideSummaries.ts` export to avoid shipping long-form guide copy to the client bundle.
 - Per-card `generateMetadata()` is lang-aware: bilingual title/description, `alternates.languages` (en + zh-CN + x-default), `og:locale` / `og:alternateLocale`, canonical URL pointing at the lang-specific URL.
+- Canonical host is `https://www.stillpointtarot.com`; `stillpointtarot.com` should 301-redirect to the `www` host so Google does not split signals across both versions.
 - Card page title format targets long-tail GSC queries: `"[Card] Tarot Card Meaning — Upright, Reversed, Love & Yes or No (Yes|No|Maybe)"` / Chinese equivalent. Section H2s (e.g. `"Is Two of Swords a yes or no?"`) are generated from the card name to rank on modifier queries.
 - Three JSON-LD blocks per card page: `Article`, `BreadcrumbList`, `FAQPage` — rendered in current lang with `inLanguage` set.
 - `CollectionPage` JSON-LD on each suit landing page, lang-aware.
@@ -272,6 +273,7 @@ Do not store transient outputs here: build page counts, recent command output, a
 - **Keep docs separated by purpose**: `AGENTS.md` is for stable codebase knowledge and workflow; `TRACKER.md` is for active priorities, decisions, and follow-up.
 - **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
 - **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
+- **Preserve one canonical host**: keep `https://www.stillpointtarot.com` as the indexed host and redirect `https://stillpointtarot.com` to it permanently.
 
 ## Things to NOT do
 
