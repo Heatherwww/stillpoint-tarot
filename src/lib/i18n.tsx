@@ -13,7 +13,7 @@ type Dict = Record<string, { en: string; zh: string }>;
 // UI translations. Card meanings live in lib/cards.ts.
 export const dict: Dict = {
   "nav.home": { en: "Home", zh: "首页" },
-  "nav.reading": { en: "Reading", zh: "占卜" },
+  "nav.reading": { en: "Free reading", zh: "在线抽牌" },
   "nav.cards": { en: "Cards", zh: "牌库" },
   "nav.shop": { en: "Shop", zh: "商店" },
   "nav.brand": { en: "Stillpoint Tarot", zh: "静点塔罗" },
@@ -24,6 +24,16 @@ export const dict: Dict = {
     en: "All 78 cards of the Rider-Waite-Smith deck. Tap any card to read its full meaning, upright and reversed.",
     zh: "莱德-韦特-史密斯牌组共 78 张。点击任意一张牌，查看它的正位、逆位与完整牌义。",
   },
+  "cards.readingCta.kicker": { en: "Want the cards in context?", zh: "想让牌回到真实问题里？" },
+  "cards.readingCta.title": {
+    en: "Start with a free tarot reading",
+    zh: "先做一次免费在线抽牌",
+  },
+  "cards.readingCta.body": {
+    en: "Choose love, work, or a general question, then draw one card or a three-card spread with a grounded interpretation.",
+    zh: "选择爱情、工作或一般问题，再抽一张牌或三张牌，并获得一份克制、清楚的解读。",
+  },
+  "cards.readingCta.button": { en: "Start the reading", zh: "开始抽牌" },
   "cards.filter.all": { en: "All", zh: "全部" },
   "cards.filter.major": { en: "Major Arcana", zh: "大阿尔卡那" },
   "cards.filter.wands": { en: "Wands", zh: "权杖" },
@@ -42,6 +52,16 @@ export const dict: Dict = {
     en: "Draw a reading with this deck",
     zh: "用这副牌做一次解读",
   },
+  "card.readingCta.kicker": { en: "Read this card in context", zh: "把这张牌放回牌阵里" },
+  "card.readingCta.title": {
+    en: "Draw a card for your own question",
+    zh: "为你的问题抽一张牌",
+  },
+  "card.readingCta.body": {
+    en: "A single card meaning is useful, but a reading shows where the card is speaking in your actual situation.",
+    zh: "单张牌义很有用，但一次解读会告诉你：这张牌正在你的真实处境里指向哪里。",
+  },
+  "card.readingCta.button": { en: "Go to the reading page", zh: "去在线抽牌页" },
   "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
   "card.prev": { en: "Previous card", zh: "上一张牌" },
   "card.next": { en: "Next card", zh: "下一张牌" },
@@ -137,7 +157,7 @@ export const dict: Dict = {
     en: "Learn the language of tarot, draw a reading, and find tools to keep your practice grounded.",
     zh: "学习塔罗的语言，在线抽牌，并用更清楚的方式理解爱情、工作与人生问题。",
   },
-  "home.hero.cta": { en: "Draw a card", zh: "抽一张牌" },
+  "home.hero.cta": { en: "Start a free reading", zh: "开始免费抽牌" },
   "home.hero.shop": { en: "Visit shop", zh: "进入商店" },
   "home.hero.browse": { en: "Browse the cards", zh: "浏览牌库" },
 

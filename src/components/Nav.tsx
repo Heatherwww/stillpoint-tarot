@@ -23,13 +23,13 @@ export default function Nav() {
             {t("nav.brand")}
           </span>
         </Link>
-        <nav className="flex items-center gap-6 text-sm">
+        <nav className="flex items-center gap-2 text-sm sm:gap-4">
           <Link href={`/${lang}`} className="text-muted hover:text-foreground transition-colors">
             {t("nav.home")}
           </Link>
           <Link
             href={`/${lang}/reading`}
-            className="text-muted hover:text-foreground transition-colors"
+            className="rounded-full bg-primary px-3 py-2 font-medium text-white shadow-sm shadow-primary/20 transition-colors hover:bg-primary-hover sm:px-4"
           >
             {t("nav.reading")}
           </Link>

@@ -50,7 +50,7 @@ export default function HomePageClient() {
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link
               href={`/${lang}/reading`}
-              className="rounded-full bg-primary px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+              className="rounded-full bg-primary px-8 py-4 text-base font-medium text-white shadow-lg shadow-primary/20 transition-colors hover:bg-primary-hover"
             >
               {t("home.hero.cta")}
             </Link>

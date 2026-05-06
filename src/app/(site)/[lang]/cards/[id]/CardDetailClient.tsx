@@ -124,6 +124,29 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         )}
       </div>
 
+      {/* Primary CTA for search visitors who land on a card meaning page */}
+      <section className="mt-10 rounded-3xl border border-primary/30 bg-primary/10 p-6 shadow-lg shadow-primary/10 md:p-8">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-accent">
+          {t("card.readingCta.kicker")}
+        </p>
+        <div className="mt-3 flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h2 className="font-serif-display text-2xl text-primary">
+              {t("card.readingCta.title")}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground/75">
+              {t("card.readingCta.body")}
+            </p>
+          </div>
+          <Link
+            href={`/${lang}/reading`}
+            className="shrink-0 rounded-full bg-primary px-6 py-3 text-center text-sm font-medium text-white transition-colors hover:bg-primary-hover"
+          >
+            {t("card.readingCta.button")}
+          </Link>
+        </div>
+      </section>
+
       {/* Upright meaning */}
       <section className="mt-12 rounded-2xl border border-border bg-surface p-8">
         <div className="flex items-center gap-3">
