@@ -26,6 +26,11 @@ Keep command output, build logs, and other session-only notes out of this file u
 - Reading page: `/en/reading`, `/zh/reading`
 - Highest-impression single-card pages from GSC
 
+### Custom deck art
+
+- Validate a preserve-structure custom art direction on 6 anchor cards before expanding to the full 78-card deck.
+- Keep Rider-Waite symbolic structure recognizable while replacing the historic illustration style with a Stillpoint-specific visual language.
+
 ## Later
 
 ### Product / platform

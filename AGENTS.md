@@ -92,8 +92,13 @@ public/
 ├── logo.png
 ├── images/
 │   └── cards/               # 78 card images: <card-id>.webp (500px wide)
+reference/
+├── deck-art/
+│   ├── README.md            # Custom deck-art workflow, review criteria, and sample commands
+│   └── preserve-structure-anchor-cards.json # Prompt manifest for the first 6 anchor cards
 scripts/
 └── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
+└── generate-deck-art.mjs    # Batch-generate custom tarot art samples via the OpenAI Image API
 AGENTS.md                    # Codebase architecture, conventions, and agent workflow
 TRACKER.md                   # Product tracker, roadmap, and follow-up TODOs
 CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKER.md
@@ -205,6 +210,7 @@ CardExtras {
 - Server components import `{ t }` function directly and pass `lang` as a parameter.
 - Tailwind classes use the project's custom design tokens: `bg-background`, `bg-surface`, `bg-surface-muted`, `text-foreground`, `text-muted`, `text-primary`, `text-accent`, `border-border`, `bg-primary`, `bg-primary-hover`, `font-serif-display` (Cormorant Garamond).
 - Card images are at `public/images/cards/<card-id>.webp` and should be referenced via `getCardImagePath(cardId)` from `src/lib/cards.ts`.
+- Custom deck-art exploration lives under `reference/deck-art/`; generated review assets should stay out of git unless explicitly curated into `public/images/cards/`.
 
 ## Common tasks
 
@@ -237,6 +243,9 @@ Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build me
 ### Add or edit card content
 - **Card names, keywords, upright/reversed meanings**: edit `src/lib/cards.ts`.
 - **Love, career, advice, yes/no, element, numerology, FAQs, related cards**: edit `src/lib/cardExtras.ts`. Major → `majorExtras` directly; Minor → the suit/rank tables inside `buildMinorExtras()`.
+
+### Generate custom deck art samples
+Edit `reference/deck-art/preserve-structure-anchor-cards.json` for the art brief and card-specific prompts, then run `node scripts/generate-deck-art.mjs`. Review outputs under `reference/deck-art/generated/` before promoting any image into `public/images/cards/`.
 
 ## Multi-agent workflow
 
@@ -274,6 +283,8 @@ Do not store transient outputs here: build page counts, recent command output, a
 - **Every internal `<Link href>` must be lang-prefixed**: use `` `/${lang}/...` `` (from `useLang()` in client components, or route params in server components). An unprefixed href lands on the root redirect.
 - **Commit directly to `main`** for small changes, or via a named feature branch for larger work. No PR workflow yet.
 - **Preserve one canonical host**: keep `https://www.stillpointtarot.com` as the indexed host and redirect `https://stillpointtarot.com` to it permanently.
+- **Custom tarot art direction defaults to preserve-structure**: keep Rider-Waite symbolic structure recognizable unless the task explicitly calls for a non-RWS reinterpretation.
+- **Do not bake titles into card art**: generated images should be text-free; card names and numbering remain in the site UI.
 
 ## Things to NOT do
 

@@ -1,0 +1,155 @@
+{
+  "deckName": "Stillpoint Tarot",
+  "direction": "Preserve Rider-Waite symbolic structure while creating a fully original Stillpoint Tarot visual language.",
+  "brandBrief": {
+    "tone": [
+      "reflective",
+      "grounded",
+      "serene",
+      "luminous",
+      "premium"
+    ],
+    "rendering": "Painterly editorial illustration with clean forms, restrained detail, subtle atmosphere, and believable anatomy.",
+    "border": "Elegant light border integrated into the card art, subtle linework, premium print-ready feel, no text or numerals.",
+    "palette": "Soft dawn and dusk tones, weathered neutrals, mineral blues, muted golds, gentle contrast.",
+    "avoid": [
+      "text",
+      "titles",
+      "Roman numerals",
+      "watermarks",
+      "logo marks",
+      "horror tone",
+      "fortune-teller camp",
+      "anime exaggeration",
+      "photoreal collage look"
+    ]
+  },
+  "defaults": {
+    "model": "gpt-image-1.5",
+    "size": "1024x1536",
+    "quality": "high",
+    "outputFormat": "png"
+  },
+  "globalPromptBullets": [
+    "Create a single tarot card illustration for Stillpoint Tarot.",
+    "Preserve the card's classic Rider-Waite symbolic structure, but do not copy any specific historical artwork exactly.",
+    "Keep the composition readable at thumbnail size and graceful at full size.",
+    "The mood should feel contemplative and quietly spiritual, not gothic spectacle.",
+    "Make the whole image feel like part of one premium, unified 78-card deck."
+  ],
+  "cards": [
+    {
+      "id": "the-fool",
+      "title": "The Fool",
+      "mustKeep": [
+        "youthful traveler on the edge of a cliff",
+        "small white dog companion",
+        "light satchel or bundle",
+        "bright open sky and distant mountains",
+        "upward or forward gaze suggesting innocent trust"
+      ],
+      "stillpointTwist": "Replace the old theatrical wanderer with a quieter, more inward traveler whose courage feels gentle rather than reckless.",
+      "paletteHint": "Morning light, chalk white, pale gold, wind-washed blue, soft stone.",
+      "compositionHint": "Clear silhouette, airy top half, sense of poised movement at the threshold.",
+      "avoid": [
+        "comic whimsy",
+        "harsh slapstick energy",
+        "busy decorative clutter"
+      ]
+    },
+    {
+      "id": "the-high-priestess",
+      "title": "The High Priestess",
+      "mustKeep": [
+        "seated priestess centered in stillness",
+        "two contrasting pillars",
+        "veil or curtain suggesting hidden knowledge",
+        "scroll or book-like symbol of sacred wisdom",
+        "moon symbolism"
+      ],
+      "stillpointTwist": "Emphasize calm inner knowing and sacred quiet over dramatic mystery.",
+      "paletteHint": "Moonlit ivory, midnight blue, muted silver, soft shadow.",
+      "compositionHint": "Strong symmetry, gentle depth, veil and pillars framing the figure.",
+      "avoid": [
+        "overly sexualized styling",
+        "fantasy armor",
+        "neon occult effects"
+      ]
+    },
+    {
+      "id": "death",
+      "title": "Death",
+      "mustKeep": [
+        "mounted rider or ceremonial figure associated with death",
+        "white horse",
+        "banner or emblem",
+        "figures encountering the passage of death",
+        "visual sense of ending becoming transformation"
+      ],
+      "stillpointTwist": "Make the card solemn and clarifying rather than horror-driven; the feeling should be release, truth, and transition.",
+      "paletteHint": "Bone white, dusk black, weathered gold, pale sunrise at the horizon.",
+      "compositionHint": "Processional movement across the frame with a visible opening of light beyond the ending.",
+      "avoid": [
+        "gore",
+        "jump-scare horror",
+        "grimdark video game styling"
+      ]
+    },
+    {
+      "id": "ace-of-cups",
+      "title": "Ace of Cups",
+      "mustKeep": [
+        "single overflowing cup",
+        "water streaming from the cup",
+        "hand presenting the cup",
+        "dove or descending spiritual symbol",
+        "water and stillness around the offering"
+      ],
+      "stillpointTwist": "Lean into grace, tenderness, and emotional spaciousness.",
+      "paletteHint": "Pearl, mist blue, soft teal, pale gold, luminous white.",
+      "compositionHint": "Simple centered offering with generous negative space and a sacred hush.",
+      "avoid": [
+        "crowded symbolism",
+        "cheap fantasy sparkle",
+        "aggressive contrast"
+      ]
+    },
+    {
+      "id": "three-of-swords",
+      "title": "Three of Swords",
+      "mustKeep": [
+        "heart pierced by three swords",
+        "storm or rain atmosphere",
+        "direct emotional legibility",
+        "clear triangular arrangement of swords"
+      ],
+      "stillpointTwist": "Treat heartbreak as lucid grief rather than melodrama; the image should hurt, but it should also breathe.",
+      "paletteHint": "Storm gray, muted crimson, wet silver, distant light.",
+      "compositionHint": "Minimal composition, strong negative space, high clarity even at small size.",
+      "avoid": [
+        "splatter",
+        "body horror",
+        "romance-novel melodrama"
+      ]
+    },
+    {
+      "id": "ten-of-pentacles",
+      "title": "Ten of Pentacles",
+      "mustKeep": [
+        "intergenerational scene",
+        "multiple pentacles arranged clearly",
+        "sense of inheritance, household, and continuity",
+        "architecture or setting that implies established life",
+        "animals or companions if helpful to the composition"
+      ],
+      "stillpointTwist": "Focus on rootedness, belonging, and continuity across generations, not luxury display.",
+      "paletteHint": "Warm stone, muted ochre, dark olive, faded red, candle gold.",
+      "compositionHint": "Layered domestic scene with visual stability and quiet abundance.",
+      "avoid": [
+        "gaudy wealth",
+        "overcrowded faces",
+        "storybook kitsch"
+      ]
+    }
+  ]
+}

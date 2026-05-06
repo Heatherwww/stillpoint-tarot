@@ -23,6 +23,9 @@
 # misc
 .DS_Store
 *.pem
+.artifacts/
+reference/deck-art/generated/
+reference/social/
 
 # debug
 npm-debug.log*
