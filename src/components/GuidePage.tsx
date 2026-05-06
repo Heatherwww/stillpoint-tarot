@@ -7,10 +7,10 @@ const guideUi = {
   contents: { en: "In This Guide", zh: "本页内容" },
   ctaTitle: { en: "Put It Into Practice", zh: "把它带回真实牌阵" },
   ctaBody: {
-    en: "Once the structure is clear, the next step is to read actual cards in context. Use the reading tool or browse the full deck to ground the theory.",
-    zh: "当结构已经理清，下一步就是把它带回真实牌阵里。你可以直接去抽牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
+    en: "Once the structure is clear, bring it to one real question. Ask the cards, or browse the full deck to ground the theory.",
+    zh: "当结构已经理清，就把它带回一个真实问题里。你可以直接问问牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
   },
-  ctaReading: { en: "Try The Tarot Reading", zh: "去做一次在线抽牌" },
+  ctaReading: { en: "Ask the cards", zh: "问问牌" },
   ctaCards: { en: "Browse All 78 Cards", zh: "浏览 78 张塔罗牌" },
   relatedCards: { en: "Cards To Read Next", zh: "接下来可以继续看的牌" },
   relatedGuides: { en: "Related Guides", zh: "相关指南" },

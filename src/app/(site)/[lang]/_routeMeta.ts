@@ -120,12 +120,12 @@ export function buildReadingMetadata(lang: Lang): Metadata {
     lang,
     "/reading",
     {
-      en: "Free Online Tarot Reading | Single Card or 3-Card Spread",
-      zh: "免费在线塔罗抽牌 | 单张牌与三张牌牌阵",
+      en: "Should You Stay, Leave, or Wait? | Ask the Cards",
+      zh: "该留下、离开，还是再等等？ | 问问牌",
     },
     {
-      en: "Draw a free single-card or three-card tarot reading online. Choose your focus, set the context, and get a clear bilingual interpretation for love, work, or life questions.",
-      zh: "免费进行单张牌或三张牌在线抽牌。先选主题与情境，再获得一份清楚、克制的中英双语解读。",
+      en: "Ask the cards one real question: stay or leave, wait or act, say it or let it go. Draw one card or a three-card spread for a grounded bilingual answer.",
+      zh: "带着一个真实问题来问问牌：该留下还是离开、再等等还是行动、该说出口还是放下。抽一张牌或三张牌，得到一份克制、清楚的中英双语回应。",
     },
   );
 }

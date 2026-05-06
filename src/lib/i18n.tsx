@@ -13,7 +13,7 @@ type Dict = Record<string, { en: string; zh: string }>;
 // UI translations. Card meanings live in lib/cards.ts.
 export const dict: Dict = {
   "nav.home": { en: "Home", zh: "首页" },
-  "nav.reading": { en: "Free reading", zh: "在线抽牌" },
+  "nav.reading": { en: "Ask the cards", zh: "问问牌" },
   "nav.cards": { en: "Cards", zh: "牌库" },
   "nav.shop": { en: "Shop", zh: "商店" },
   "nav.brand": { en: "Stillpoint Tarot", zh: "静点塔罗" },
@@ -24,16 +24,16 @@ export const dict: Dict = {
     en: "All 78 cards of the Rider-Waite-Smith deck. Tap any card to read its full meaning, upright and reversed.",
     zh: "莱德-韦特-史密斯牌组共 78 张。点击任意一张牌，查看它的正位、逆位与完整牌义。",
   },
-  "cards.readingCta.kicker": { en: "Want the cards in context?", zh: "想让牌回到真实问题里？" },
+  "cards.readingCta.kicker": { en: "Not sure what to do next?", zh: "不知道下一步怎么走？" },
   "cards.readingCta.title": {
-    en: "Start with a free tarot reading",
-    zh: "先做一次免费在线抽牌",
+    en: "Ask the cards before you decide",
+    zh: "做决定前，先问问牌",
   },
   "cards.readingCta.body": {
-    en: "Choose love, work, or a general question, then draw one card or a three-card spread with a grounded interpretation.",
-    zh: "选择爱情、工作或一般问题，再抽一张牌或三张牌，并获得一份克制、清楚的解读。",
+    en: "Bring one real question: stay or leave, wait or act, say it or let it go. Draw one card or a three-card spread for a grounded answer.",
+    zh: "带着一个真实问题来：该留下还是离开、再等等还是行动、该说出口还是放下。抽一张牌或三张牌，得到一份更落地的回应。",
   },
-  "cards.readingCta.button": { en: "Start the reading", zh: "开始抽牌" },
+  "cards.readingCta.button": { en: "Ask the cards", zh: "问问牌" },
   "cards.filter.all": { en: "All", zh: "全部" },
   "cards.filter.major": { en: "Major Arcana", zh: "大阿尔卡那" },
   "cards.filter.wands": { en: "Wands", zh: "权杖" },
@@ -49,19 +49,19 @@ export const dict: Dict = {
   "card.reversed.title": { en: "Reversed meaning", zh: "逆位含义" },
   "card.keywords.label": { en: "Keywords", zh: "关键词" },
   "card.cta": {
-    en: "Draw a reading with this deck",
-    zh: "用这副牌做一次解读",
+    en: "Ask the cards with this deck",
+    zh: "用这副牌问问牌",
   },
-  "card.readingCta.kicker": { en: "Read this card in context", zh: "把这张牌放回牌阵里" },
+  "card.readingCta.kicker": { en: "Turn this meaning into an answer", zh: "把牌义变成一个回答" },
   "card.readingCta.title": {
-    en: "Draw a card for your own question",
-    zh: "为你的问题抽一张牌",
+    en: "Should you stay, leave, or wait?",
+    zh: "该留下、离开，还是再等等？",
   },
   "card.readingCta.body": {
-    en: "A single card meaning is useful, but a reading shows where the card is speaking in your actual situation.",
-    zh: "单张牌义很有用，但一次解读会告诉你：这张牌正在你的真实处境里指向哪里。",
+    en: "A card meaning is useful. A reading is sharper: it places the card inside the question you cannot stop thinking about.",
+    zh: "单张牌义很有用；但一次抽牌会更直接：它会把牌放进那个你一直放不下的问题里。",
   },
-  "card.readingCta.button": { en: "Go to the reading page", zh: "去在线抽牌页" },
+  "card.readingCta.button": { en: "Ask your question", zh: "带着问题去抽牌" },
   "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
   "card.prev": { en: "Previous card", zh: "上一张牌" },
   "card.next": { en: "Next card", zh: "下一张牌" },
@@ -154,10 +154,10 @@ export const dict: Dict = {
     zh: "倾听牌的低语。",
   },
   "home.hero.subtitle": {
-    en: "Learn the language of tarot, draw a reading, and find tools to keep your practice grounded.",
-    zh: "学习塔罗的语言，在线抽牌，并用更清楚的方式理解爱情、工作与人生问题。",
+    en: "Bring one question you cannot stop turning over. Ask the cards, then read the meaning without handing your agency away.",
+    zh: "带着一个你反复想起的问题来。问问牌，再用不交出主动权的方式读懂它。",
   },
-  "home.hero.cta": { en: "Start a free reading", zh: "开始免费抽牌" },
+  "home.hero.cta": { en: "Ask the cards", zh: "问问牌" },
   "home.hero.shop": { en: "Visit shop", zh: "进入商店" },
   "home.hero.browse": { en: "Browse the cards", zh: "浏览牌库" },
 
@@ -211,10 +211,13 @@ export const dict: Dict = {
   },
 
   // Reading
-  "reading.title": { en: "A Tarot Reading", zh: "塔罗解读" },
+  "reading.title": {
+    en: "Should you stay, leave, or wait?",
+    zh: "该留下、离开，还是再等等？",
+  },
   "reading.subtitle": {
-    en: "Choose a spread and a deck, breathe, then draw.",
-    zh: "选好牌阵与牌组，先静一静，再开始抽牌。",
+    en: "Bring the question that keeps looping in your mind. Choose a spread, give it context, then ask the cards.",
+    zh: "带着那个在脑子里反复出现的问题来。选择牌阵，给它一点背景，然后问问牌。",
   },
   "reading.spread.label": { en: "Spread", zh: "牌阵" },
   "reading.spread.single": { en: "Single card", zh: "单张牌" },
@@ -270,8 +273,8 @@ export const dict: Dict = {
     en: "Read the meaning slowly, twice. Notice which line catches you — that is where the card is speaking to you specifically.",
     zh: "缓慢地读两遍含义。留意哪一句让你停顿——那便是这张牌对你具体所言之处。",
   },
-  "reading.draw": { en: "Draw cards", zh: "抽牌" },
-  "reading.redraw": { en: "Draw again", zh: "重新抽牌" },
+  "reading.draw": { en: "Ask the cards", zh: "问问牌" },
+  "reading.redraw": { en: "Ask again", zh: "再问一次" },
   "reading.shuffling": { en: "Shuffling…", zh: "洗牌中…" },
   "reading.reversed": { en: "Reversed", zh: "逆位" },
   "reading.upright": { en: "Upright", zh: "正位" },
@@ -285,12 +288,12 @@ export const dict: Dict = {
 
   // Pre-reading questions
   "reading.questions.title": {
-    en: "Before we draw",
-    zh: "在抽牌之前",
+    en: "What are you really asking?",
+    zh: "你真正想问的是什么？",
   },
   "reading.questions.subtitle": {
-    en: "A reading lands differently when the cards know where you are asking from.",
-    zh: "当牌知晓你从何处发问，解读会落得不同。",
+    en: "A sharper question makes a sharper reading. Give the cards enough context to answer the situation you are actually in.",
+    zh: "问题越清楚，解读越有力。给牌一点背景，让它回应你真实所在的处境。",
   },
   "reading.q.area": {
     en: "What area is your question about?",
@@ -480,10 +483,10 @@ export const dict: Dict = {
   "guide.contents": { en: "In This Guide", zh: "本页内容" },
   "guide.cta.title": { en: "Put It Into Practice", zh: "把它带回真实牌阵" },
   "guide.cta.body": {
-    en: "Once the structure is clear, the next step is to read actual cards in context. Use the reading tool or browse the full deck to ground the theory.",
-    zh: "当结构已经理清，下一步就是把它带回真实牌阵里。你可以直接去抽牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
+    en: "Once the structure is clear, bring it to one real question. Ask the cards, or browse the full deck to ground the theory.",
+    zh: "当结构已经理清，就把它带回一个真实问题里。你可以直接问问牌，也可以先浏览整副牌，把这些原则落到具体图像上。",
   },
-  "guide.cta.reading": { en: "Try The Tarot Reading", zh: "去做一次在线抽牌" },
+  "guide.cta.reading": { en: "Ask the cards", zh: "问问牌" },
   "guide.cta.cards": { en: "Browse All 78 Cards", zh: "浏览 78 张塔罗牌" },
   "guide.related.cards": { en: "Cards To Read Next", zh: "接下来可以继续看的牌" },
   "guide.related.guides": { en: "Related Guides", zh: "相关指南" },
