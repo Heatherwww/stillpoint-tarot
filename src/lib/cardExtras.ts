@@ -1177,9 +1177,10 @@ const majorExtras: Record<string, CardExtras> = {
 
 // ---------- Minor Arcana extras (templated by suit + rank) ----------
 //
-// Each suit has an "in love", "in career", "advice" voice keyed to the suit's
-// element. Each rank brings a developmental angle. The combination produces
-// per-card content that is consistent in tone with the existing meanings.
+// Each suit contributes short focus fragments, each rank contributes a
+// developmental angle, and each card contributes its own meanings/keywords.
+// This keeps the generated minor-card pages specific instead of repeating
+// long template sentences across the deck.
 
 type Rank =
   | "ace" | "two" | "three" | "four" | "five" | "six" | "seven"
@@ -1190,46 +1191,6 @@ const suitElement: Record<Suit, BilingualText> = {
   cups: { en: "Water", zh: "水" },
   swords: { en: "Air", zh: "风" },
   pentacles: { en: "Earth", zh: "土" },
-};
-
-// Per-suit love voice (used as a frame for each rank)
-const suitLove: Record<Suit, BilingualText> = {
-  wands: {
-    en: "In love, Wands cards are about heat, attraction, and the willingness to act on what you feel. Energy is high — the question is whether you channel it or let it scatter.",
-    zh: "在爱中，权杖牌关乎热度、吸引力，以及为所感而行动的意愿。能量很高——问题是你引导它，还是任它散乱。",
-  },
-  cups: {
-    en: "In love, Cups cards live in the emotional weather — what you feel, what your partner feels, what is unsaid between you. Listen more than you speak.",
-    zh: "在爱中，圣杯牌活在情感的天气中——你的感受、伴侣的感受、你们之间未言之物。多听少说。",
-  },
-  swords: {
-    en: "In love, Swords cards are about communication and clarity — the conversations you keep avoiding, the truths that need naming, the words that build or wound.",
-    zh: "在爱中，宝剑牌关乎沟通与清明——你一直在回避的对话、需要被命名的真相、能建造或伤害的言语。",
-  },
-  pentacles: {
-    en: "In love, Pentacles cards are about steadiness — shared resources, daily routines, the quiet trust built by showing up consistently rather than dramatically.",
-    zh: "在爱中，星币牌关乎稳定——共享的资源、日常的惯例，以及由始终如一而非戏剧性表现所建立的安静信任。",
-  },
-};
-
-// Per-suit career voice
-const suitCareer: Record<Suit, BilingualText> = {
-  wands: {
-    en: "Professionally, Wands cards favor initiative, ambition, and the courage to start before you feel ready. Energy is on your side — the only obstacle is hesitation.",
-    zh: "在事业上，权杖牌支持主动、野心，以及在感到准备好之前开始的勇气。能量站在你这一边——唯一的障碍是迟疑。",
-  },
-  cups: {
-    en: "At work, Cups cards point to creative or care-based work — anything that requires you to bring genuine feeling rather than execution alone. Trust the emotional read of the room.",
-    zh: "在工作中，圣杯牌指向创意或照护性的工作——任何需要你带入真实感受而非仅是执行的事。信任你对场域的情感读取。",
-  },
-  swords: {
-    en: "Career-wise, Swords cards are about thinking clearly under pressure — strategy, decisions, hard conversations. Cut through the noise; do not let politics make the call for you.",
-    zh: "在事业上，宝剑牌关乎在压力下清晰思考——策略、决定、艰难的对话。穿过噪音；不要让政治为你做决定。",
-  },
-  pentacles: {
-    en: "At work, Pentacles cards favor patient, material building — money, contracts, resources, long-term skill. The slow path is the right one this season.",
-    zh: "在工作中，星币牌支持耐心而务实的建造——金钱、合同、资源、长期技能。这个阶段，走慢一点反而更对。",
-  },
 };
 
 // Per-rank developmental phase (used for advice + yes/no feel)
@@ -1266,80 +1227,115 @@ function suitFromId(id: string): Suit | null {
   return (m?.[1] as Suit) ?? null;
 }
 
+function firstSentence(text: string, lang: "en" | "zh"): string {
+  const end = lang === "zh" ? "。" : ".";
+  const index = text.indexOf(end);
+  return index >= 0 ? text.slice(0, index + end.length) : text;
+}
+
+function sentenceFragment(text: string, lang: "en" | "zh"): string {
+  const end = lang === "zh" ? "。" : ".";
+  const sentence = firstSentence(text, lang).replace(new RegExp(`${end}$`), "");
+  if (lang === "zh") return sentence;
+  return sentence.charAt(0).toLowerCase() + sentence.slice(1);
+}
+
+function keywordPair(keywords: string[], lang: "en" | "zh"): string {
+  const [first, second] = keywords;
+  if (!first) return lang === "zh" ? "这张牌的主题" : "this card's themes";
+  if (!second) return first;
+  return lang === "zh" ? `${first}与${second}` : `${first} and ${second}`;
+}
+
+function answerWord(answer: YesNoAnswer, lang: "en" | "zh"): string {
+  if (answer === "yes") return lang === "zh" ? "是" : "yes";
+  if (answer === "no") return lang === "zh" ? "否" : "no";
+  return lang === "zh" ? "也许" : "maybe";
+}
+
+const suitFocus: Record<
+  Suit,
+  {
+    love: BilingualText;
+    career: BilingualText;
+    person: BilingualText;
+    step: BilingualText;
+  }
+> = {
+  wands: {
+    love: { en: "desire, timing, and the courage to act", zh: "渴望、时机与行动的勇气" },
+    career: { en: "initiative, visibility, and creative momentum", zh: "主动性、能见度与创造性的推进" },
+    person: { en: "drive, heat, and impatience", zh: "驱力、热度与急切" },
+    step: { en: "make one visible move before the energy scatters", zh: "在能量散开前做出一个看得见的行动" },
+  },
+  cups: {
+    love: { en: "feeling, receptivity, and what remains unsaid", zh: "感受、接纳与尚未说出口之物" },
+    career: { en: "emotional intelligence, care, and creative listening", zh: "情感智慧、照护与创造性的倾听" },
+    person: { en: "sensitivity, memory, and emotional honesty", zh: "敏感、记忆与情感上的诚实" },
+    step: { en: "name the feeling before trying to solve it", zh: "先命名感受，再急着解决问题" },
+  },
+  swords: {
+    love: { en: "language, boundaries, and the truth that needs air", zh: "语言、界限与需要被说清的真相" },
+    career: { en: "strategy, decisions, and difficult conversations", zh: "策略、决策与艰难对话" },
+    person: { en: "discernment, analysis, and sharp speech", zh: "辨别力、分析与锋利的表达" },
+    step: { en: "write the truth plainly before debating it", zh: "在争论之前先把真相清楚写下" },
+  },
+  pentacles: {
+    love: { en: "trust, routines, and the material shape of commitment", zh: "信任、日常习惯与承诺的现实形状" },
+    career: { en: "resources, craft, money, and long-term building", zh: "资源、手艺、金钱与长期建设" },
+    person: { en: "steadiness, patience, and practical devotion", zh: "稳定、耐心与务实的投入" },
+    step: { en: "turn the insight into one concrete habit or resource", zh: "把洞察变成一个具体习惯或资源" },
+  },
+};
+
 function buildMinorExtras(card: TarotCard): CardExtras {
   const rank = rankFromId(card.id);
   const suit = card.suit ?? suitFromId(card.id);
   if (!rank || !suit) {
     throw new Error(`Cannot derive extras for ${card.id}`);
   }
-  const phase = rankPhase[rank];
-  const love = suitLove[suit];
-  const career = suitCareer[suit];
 
-  // Compose love: suit voice + rank-tuned closer using the existing meaning
+  const phase = rankPhase[rank];
+  const focus = suitFocus[suit];
+  const cardEn = card.name.en;
+  const cardZh = card.name.zh;
+  const uprightEn = sentenceFragment(card.upright.en, "en");
+  const uprightZh = sentenceFragment(card.upright.zh, "zh");
+  const reversedEn = sentenceFragment(card.reversed.en, "en");
+  const reversedZh = sentenceFragment(card.reversed.zh, "zh");
+  const keywordsEn = keywordPair(card.keywords.en, "en");
+  const keywordsZh = keywordPair(card.keywords.zh, "zh");
+  const yesNoEn = answerWord(phase.yesNo, "en");
+  const yesNoZh = answerWord(phase.yesNo, "zh");
+
   const inLove: BilingualText = {
-    en: `${love.en} This card — ${phase.tone} — colors the situation with ${card.upright.en.split(".")[0].toLowerCase()}. ${rank === "five" || phase.yesNo === "no" ? "If a relationship is straining, name what is hard rather than waiting it out." : "If you are open, the connection in front of you is more available than you think."}`,
-    zh: `${love.zh}这张牌——${phase.tone_zh}——以${card.upright.zh.split("。")[0]}的色调染上当下处境。${rank === "five" || phase.yesNo === "no" ? "若一段关系正紧绷，命名艰难之事，而非等它过去。" : "若你敞开，眼前的连接比你以为的更可得。"}`,
+    en: `${cardEn} in love brings ${focus.love.en} into the specific atmosphere of ${phase.tone}. In plain terms, ${cardEn} asks you to bring this image into the relationship: ${uprightEn}. Watch for ${keywordsEn} in the way someone reaches out, withdraws, answers, or avoids answering. The useful question with ${cardEn} is what can be made emotionally honest now, not what can be forced into certainty.`,
+    zh: `${cardZh}在爱情中把${focus.love.zh}带入“${phase.tone_zh}”的具体气氛里。具体来说，${cardZh}要你留意哪里正在出现“${uprightZh}”。同时观察${keywordsZh}如何出现在一个人的靠近、退后、回应或回避中。${cardZh}更适合追问：此刻什么可以变得更真实，而不是什么必须立刻确定。`,
   };
 
   const inCareer: BilingualText = {
-    en: `${career.en} The ${rank.charAt(0).toUpperCase() + rank.slice(1)} of ${suit.charAt(0).toUpperCase() + suit.slice(1)} brings ${phase.tone}, which means: ${card.upright.en.split(".").slice(1).join(".").trim() || card.upright.en}`,
-    zh: `${career.zh}这张牌带来${phase.tone_zh}，意味着：${card.upright.zh.split("。").slice(1).join("。").trim() || card.upright.zh}`,
+    en: `${cardEn} at work points to ${focus.career.en} while the situation is moving through ${phase.tone}. At the practical level, this card works with a concrete image: ${uprightEn}. Use ${cardEn} to name the task in front of you: make ${keywordsEn} visible in a decision, a conversation, or the next piece of work.`,
+    zh: `${cardZh}在事业中指向${focus.career.zh}，同时处境正经过“${phase.tone_zh}”这一阶段。在实际层面，这张牌描述的是“${uprightZh}”正在发生的时刻。可以用${cardZh}来命名眼前的任务：让${keywordsZh}体现在一个决定、一场对话或下一步工作里。`,
   };
 
   const advice: BilingualText = {
-    en: `${
-      phase.yesNo === "yes"
-        ? "Move with the energy of this card rather than against it."
-        : phase.yesNo === "no"
-        ? "Pause. The card is asking you to honor a difficulty rather than push past it."
-        : "Hold the question lightly; the answer is still forming."
-    } Let the suit element of ${suitElement[suit].en} guide your next small step.`,
-    zh: `${
-      phase.yesNo === "yes"
-        ? "顺着这张牌的能量行动，而非与之对抗。"
-        : phase.yesNo === "no"
-        ? "暂停。这张牌请你尊崇困难，而非强行越过。"
-        : "轻轻持着问题；答案仍在成形。"
-    }让${suitElement[suit].zh}元素引导你下一个小步。`,
+    en: `${cardEn} advises a modest but real next step: ${focus.step.en}. Keep ${keywordsEn} in view, and treat the reversal as a caution sign when the pattern begins to look like ${reversedEn}.`,
+    zh: `${cardZh}给出的建议是一个小而真实的下一步：${focus.step.zh}。把${keywordsZh}放在眼前；当“${reversedZh}”出现时，就把它当作提醒。`,
   };
 
   const yesNoExplain: BilingualText = {
-    en:
-      phase.yesNo === "yes"
-        ? `Yes — the energy of this ${suit} card supports the question.`
-        : phase.yesNo === "no"
-        ? `No — this ${suit} card warns of cost or strain in the current direction.`
-        : `Maybe — the answer depends on a choice still in motion.`,
-    zh:
-      phase.yesNo === "yes"
-        ? `是——这张${suitElement[suit].zh}元素的牌支持你的问题。`
-        : phase.yesNo === "no"
-        ? `否——这张${suitElement[suit].zh}元素的牌警告当前方向的代价或紧绷。`
-        : `也许——答案取决于一个仍在变动中的选择。`,
+    en: `For ${cardEn}, the yes-or-no answer is ${yesNoEn}. Its upright image is this: ${uprightEn}. The answer depends on the card's own ${keywordsEn}, not only on the general ${suitName(suit, "en")} suit.`,
+    zh: `${cardZh}的是否答案是${yesNoZh}。它的正位图像指向“${uprightZh}”，所以这个答案来自这张牌自身的${keywordsZh}，而不只是${suitName(suit, "zh")}花色的一般倾向。`,
   };
 
-  const cardEn = `${capitalize(rank)} of ${capitalize(suit)}`;
-  const cardZh = `${suitName(suit, "zh")}${rankName(rank, "zh")}`;
-
   const yesNoPhrase = {
-    en:
-      phase.yesNo === "yes"
-        ? `Yes. Upright, the ${cardEn} answers in the affirmative — the ${suit} energy of ${suitElement[suit].en.toLowerCase()} supports moving forward with the question.`
-        : phase.yesNo === "no"
-        ? `No. Upright, the ${cardEn} answers in the negative — the card is naming a cost, friction, or limit in the current direction.`
-        : `Maybe. Upright, the ${cardEn} sits between yes and no — the answer depends on a choice that is still in motion.`,
-    zh:
-      phase.yesNo === "yes"
-        ? `是。正位的${cardZh}给出肯定的答案——${suitElement[suit].zh}的能量支持你在此问题上前行。`
-        : phase.yesNo === "no"
-        ? `否。正位的${cardZh}给出否定的答案——牌正在为当前方向上的代价、摩擦或限制命名。`
-        : `也许。正位的${cardZh}介于是与否之间——答案取决于一个仍在变动中的选择。`,
+    en: `${cardEn} leans ${yesNoEn} because its upright meaning centers on ${keywordsEn}.`,
+    zh: `${cardZh}倾向于${yesNoZh}，因为它的正位重点落在${keywordsZh}上。`,
   };
 
   const personDesc = {
-    en: `The ${cardEn} as a person is someone living ${phase.tone} through the lens of ${suit}. Expect traits tied to the suit's element of ${suitElement[suit].en.toLowerCase()} — the way this person meets the world is shaped by ${suit === "wands" ? "drive and impatience" : suit === "cups" ? "feeling and receptivity" : suit === "swords" ? "thought and words" : "steadiness and the long view"}.`,
-    zh: `作为一个人，${cardZh}代表一个通过${suitName(suit, "zh")}的视角活出「${phase.tone_zh}」的人。你可以预期与${suitElement[suit].zh}元素相关的特质——这个人面对世界的方式被${suit === "wands" ? "驱力与急切" : suit === "cups" ? "感受与接受" : suit === "swords" ? "思维与言语" : "稳定与长远的眼光"}所塑造。`,
+    en: `${cardEn} as a person describes someone whose ${focus.person.en} is filtered through ${keywordsEn}. They may show the upright gift of the card, but under pressure they can slip into the reversal pattern described by ${reversedEn}.`,
+    zh: `作为一个人，${cardZh}描述的是一个把${focus.person.zh}透过${keywordsZh}表现出来的人。这个人可能展现这张牌正位的天赋，但在压力下也会滑向“${reversedZh}”的逆位模式。`,
   };
 
   const faqs: FaqEntry[] = [
@@ -1349,25 +1345,28 @@ function buildMinorExtras(card: TarotCard): CardExtras {
         zh: `${cardZh}是什么意思？`,
       },
       a: {
-        en: `It marks ${phase.tone} within the ${suit} suit — ${card.upright.en}`,
-        zh: `它标记${suitName(suit, "zh")}花色中的${phase.tone_zh}——${card.upright.zh}`,
+        en: `${cardEn} marks ${phase.tone} in the ${suitName(suit, "en")} suit. Its core meaning is: ${card.upright.en}`,
+        zh: `${cardZh}标记${suitName(suit, "zh")}花色中的“${phase.tone_zh}”。它的核心含义是：${card.upright.zh}`,
       },
     },
     {
       q: {
         en: `Is the ${cardEn} a yes or no?`,
-        zh: `${cardZh}是「是」还是「否」？`,
+        zh: `${cardZh}是“是”还是“否”？`,
       },
-      a: yesNoPhrase,
+      a: {
+        en: `Read as ${yesNoEn}, ${cardEn} does not answer in the abstract. It ties the response to ${keywordsEn}, the ${suitName(suit, "en")} suit, and the concrete situation described by this card.`,
+        zh: `${cardZh}可以读作${yesNoZh}，但它不是抽象地给答案。这个回应要放在${keywordsZh}、${suitName(suit, "zh")}花色，以及这张牌描述的具体处境中理解。`,
+      },
     },
     {
       q: {
-        en: `What does ${cardEn} upright mean — yes or no in love?`,
-        zh: `${cardZh}正位在爱情中是「是」还是「否」？`,
+        en: `What does ${cardEn} upright mean, yes or no in love?`,
+        zh: `${cardZh}正位在爱情中是“是”还是“否”？`,
       },
       a: {
-        en: `${yesNoPhrase.en} In love specifically, read this through the suit's voice: ${suitLove[suit].en}`,
-        zh: `${yesNoPhrase.zh}具体在爱情中，通过花色的声音来读它：${suitLove[suit].zh}`,
+        en: `${yesNoPhrase.en} In love, ${cardEn} asks you to read that answer through ${focus.love.en} and the visible pattern of ${keywordsEn}.`,
+        zh: `${yesNoPhrase.zh} 在爱情中，${cardZh}要你把这个答案放回${focus.love.zh}以及${keywordsZh}的具体模式里理解。`,
       },
     },
     {
@@ -1376,8 +1375,8 @@ function buildMinorExtras(card: TarotCard): CardExtras {
         zh: `${cardZh}逆位在爱情中是什么意思？`,
       },
       a: {
-        en: `Reversed, the ${cardEn} in a love reading points to the shadow side of the upright meaning — ${card.reversed.en} In a relationship context, this often shows up as the pattern the upright card was trying to avoid.`,
-        zh: `逆位的${cardZh}在爱情解读中指向正位含义的阴影面——${card.reversed.zh}在关系情境中，这常以正位所欲规避的模式出现。`,
+        en: `Reversed in love, ${cardEn} points to the shadow pattern described by ${reversedEn}. In a relationship, look for where ${keywordsEn} has become defensive, withheld, or overdone.`,
+        zh: `在爱情中逆位时，${cardZh}指向“${reversedZh}”这一阴影模式。在关系里，留意${keywordsZh}何处变得防御、压抑或过度。`,
       },
     },
     {
@@ -1393,13 +1392,12 @@ function buildMinorExtras(card: TarotCard): CardExtras {
         zh: `${cardZh}逆位是什么意思？`,
       },
       a: {
-        en: card.reversed.en,
-        zh: card.reversed.zh,
+        en: `${cardEn} reversed means: ${card.reversed.en}`,
+        zh: `${cardZh}逆位意味着：${card.reversed.zh}`,
       },
     },
   ];
 
-  // Related: same suit ±1 in rank, plus the suit's ace as anchor
   const ranks: Rank[] = [
     "ace", "two", "three", "four", "five", "six", "seven",
     "eight", "nine", "ten", "page", "knight", "queen", "king",
@@ -1409,8 +1407,6 @@ function buildMinorExtras(card: TarotCard): CardExtras {
   if (idx > 0) related.push(`${ranks[idx - 1]}-of-${suit}`);
   if (idx < ranks.length - 1) related.push(`${ranks[idx + 1]}-of-${suit}`);
   if (rank !== "ace") related.push(`ace-of-${suit}`);
-  // Cap at 3
-  const relatedFinal = related.slice(0, 3);
 
   return {
     inLove,
@@ -1420,12 +1416,8 @@ function buildMinorExtras(card: TarotCard): CardExtras {
     element: suitElement[suit],
     numerology: numerologyFor(rank),
     faqs,
-    related: relatedFinal,
+    related: related.slice(0, 3),
   };
-}
-
-function capitalize(s: string): string {
-  return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 function suitName(suit: Suit, lang: "en" | "zh"): string {
@@ -1436,26 +1428,6 @@ function suitName(suit: Suit, lang: "en" | "zh"): string {
     pentacles: { en: "Pentacles", zh: "星币" },
   };
   return map[suit][lang];
-}
-
-function rankName(rank: Rank, lang: "en" | "zh"): string {
-  const map: Record<Rank, BilingualText> = {
-    ace: { en: "Ace", zh: "首牌" },
-    two: { en: "Two", zh: "二" },
-    three: { en: "Three", zh: "三" },
-    four: { en: "Four", zh: "四" },
-    five: { en: "Five", zh: "五" },
-    six: { en: "Six", zh: "六" },
-    seven: { en: "Seven", zh: "七" },
-    eight: { en: "Eight", zh: "八" },
-    nine: { en: "Nine", zh: "九" },
-    ten: { en: "Ten", zh: "十" },
-    page: { en: "Page", zh: "侍从" },
-    knight: { en: "Knight", zh: "骑士" },
-    queen: { en: "Queen", zh: "皇后" },
-    king: { en: "King", zh: "国王" },
-  };
-  return map[rank][lang];
 }
 
 function numerologyFor(rank: Rank): BilingualText {
