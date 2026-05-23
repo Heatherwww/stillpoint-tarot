@@ -120,12 +120,12 @@ export function buildReadingMetadata(lang: Lang): Metadata {
     lang,
     "/reading",
     {
-      en: "Should You Stay, Leave, or Wait? | Ask the Cards",
-      zh: "该留下、离开，还是再等等？ | 问问牌",
+      en: "Free Online Tarot Reading | One Card, Yes or No & 3-Card Spread",
+      zh: "免费在线塔罗抽牌 | 单张牌、是或否与三张牌牌阵",
     },
     {
-      en: "Ask the cards one real question: stay or leave, wait or act, say it or let it go. Draw one card or a three-card spread for a grounded bilingual answer.",
-      zh: "带着一个真实问题来问问牌：该留下还是离开、再等等还是行动、该说出口还是放下。抽一张牌或三张牌，得到一份克制、清楚的中英双语回应。",
+      en: "Get a free online tarot reading for one real question. Draw one card for yes-or-no guidance or a three-card spread for love, work, and life decisions.",
+      zh: "带着一个真实问题进行免费在线塔罗抽牌。抽一张牌做是或否判断，或抽三张牌看爱情、工作与人生选择。",
     },
   );
 }

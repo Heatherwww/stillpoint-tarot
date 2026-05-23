@@ -89,10 +89,15 @@ export default function ReadingPage() {
   return (
     <div className="mx-auto max-w-5xl px-6 py-16">
       <header className="text-center">
+        <div className="text-xs uppercase tracking-[0.25em] text-accent">
+          {t("reading.kicker")}
+        </div>
         <h1 className="font-serif-display text-4xl md:text-5xl text-primary">
           {t("reading.title")}
         </h1>
-        <p className="mt-3 text-muted">{t("reading.subtitle")}</p>
+        <p className="mx-auto mt-3 max-w-2xl text-muted">
+          {t("reading.subtitle")}
+        </p>
       </header>
 
       {/* Pre-reading questions */}
@@ -300,6 +305,29 @@ export default function ReadingPage() {
       <p className="mt-16 text-center text-xs text-muted">
         {t("reading.disclaimer")}
       </p>
+
+      <section className="mt-16 rounded-3xl border border-border bg-surface-muted p-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif-display text-3xl text-primary">
+            {t("reading.seo.title")}
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-foreground/75">
+            {t("reading.seo.body")}
+          </p>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-3">
+          {[1, 2, 3].map((item) => (
+            <div key={item} className="rounded-2xl border border-border bg-surface p-5">
+              <h3 className="font-serif-display text-xl text-primary">
+                {t(`reading.seo.card${item}.title` as never)}
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">
+                {t(`reading.seo.card${item}.body` as never)}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

@@ -211,13 +211,17 @@ export const dict: Dict = {
   },
 
   // Reading
-  "reading.title": {
+  "reading.kicker": {
     en: "Should you stay, leave, or wait?",
     zh: "该留下、离开，还是再等等？",
   },
+  "reading.title": {
+    en: "Free online tarot reading",
+    zh: "免费在线塔罗抽牌",
+  },
   "reading.subtitle": {
-    en: "Bring the question that keeps looping in your mind. Choose a spread, give it context, then ask the cards.",
-    zh: "带着那个在脑子里反复出现的问题来。选择牌阵，给它一点背景，然后问问牌。",
+    en: "Ask one real question, then draw a one-card yes-or-no tarot reading or a three-card spread for love, work, and life decisions.",
+    zh: "带着一个真实问题来，抽一张牌做是否判断，或抽三张牌看爱情、工作与人生选择的走向。",
   },
   "reading.spread.label": { en: "Spread", zh: "牌阵" },
   "reading.spread.single": { en: "Single card", zh: "单张牌" },
@@ -284,6 +288,38 @@ export const dict: Dict = {
   "reading.disclaimer": {
     en: "Tarot is a tool for reflection, not a substitute for professional advice.",
     zh: "塔罗是反思的工具，不能替代专业建议。",
+  },
+  "reading.seo.title": {
+    en: "Choose the tarot reading that fits your question",
+    zh: "选择适合你问题的塔罗抽牌方式",
+  },
+  "reading.seo.body": {
+    en: "This free online tarot reading is designed for concrete questions: whether to stay or leave, wait or act, speak or let something go. Start with one card for a quick yes-or-no tarot reading, or choose a three-card tarot spread when the situation needs more context.",
+    zh: "这个免费在线塔罗抽牌页适合具体问题：该留下还是离开、再等等还是行动、该说出口还是放下。你可以先抽一张牌做快速的是或否判断，也可以选择三张牌牌阵，看见更多背景与走向。",
+  },
+  "reading.seo.card1.title": {
+    en: "One-card tarot reading",
+    zh: "单张牌塔罗抽牌",
+  },
+  "reading.seo.card1.body": {
+    en: "Use one card when you need a clear signal about what is most alive in the question right now.",
+    zh: "当你只需要一个清楚的提示时，单张牌能指出这个问题此刻最重要的能量。",
+  },
+  "reading.seo.card2.title": {
+    en: "Yes or no tarot",
+    zh: "是或否塔罗",
+  },
+  "reading.seo.card2.body": {
+    en: "Best for focused choices: should I send the message, wait, leave, apply, accept, or pause?",
+    zh: "适合具体选择：该不该发消息、等待、离开、申请、接受，还是暂停一下？",
+  },
+  "reading.seo.card3.title": {
+    en: "Three-card tarot spread",
+    zh: "三张牌牌阵",
+  },
+  "reading.seo.card3.body": {
+    en: "Choose three cards when you want past, present, and future context before making the next move.",
+    zh: "当你需要看见过去、现在与未来趋势，再决定下一步时，适合使用三张牌牌阵。",
   },
 
   // Pre-reading questions
