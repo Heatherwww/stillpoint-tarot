@@ -96,7 +96,7 @@ export const guideSummaries: GuideSummary[] = [
       zh: "感情塔罗怎么读：如何看清一个人的情绪",
     },
     description: {
-      en: "Learn how to read feelings in tarot without forcing certainty: attraction, hesitation, avoidance, emotional availability, and what the suits reveal about someone's inner state.",
+      en: "Learn how to read feelings in tarot without forcing certainty: attraction, hesitation, avoidance, availability, and what the suits reveal.",
       zh: "学会怎样用塔罗读感受而不硬逼结论：吸引、犹疑、回避、情感可得性，以及四种花色如何透露一个人的内在状态。",
     },
   },
@@ -118,7 +118,7 @@ export const guideSummaries: GuideSummary[] = [
       zh: "大阿尔卡那指南：22 张塔罗牌与愚者之旅",
     },
     description: {
-      en: "Understand the 22 Major Arcana as one larger arc: turning points, life lessons, spiritual pressure, and why these tarot cards often speak louder than the rest of the spread.",
+      en: "Understand the 22 Major Arcana as one larger arc: turning points, life lessons, spiritual pressure, and why these cards speak louder.",
       zh: "把 22 张大阿尔卡那放回同一条弧线上理解：转折、生命课题、灵魂压力，以及为什么它们常常比周围的牌更响亮。",
     },
   },

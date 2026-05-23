@@ -26,7 +26,7 @@ const cardMetadataOverrides: Partial<
 > = {
   "the-fool": {
     en: () => ({
-      title: "The Fool Yes or No? Tarot Meaning, Love, Upright & Reversed",
+      title: "The Fool Yes or No? Tarot Meaning, Love & Reversed",
       description:
         "Is The Fool a yes or no card? Usually yes. Read The Fool upright and reversed meanings, love advice, and what this card says about a leap of faith.",
     }),
@@ -38,7 +38,7 @@ const cardMetadataOverrides: Partial<
   },
   "the-lovers": {
     en: () => ({
-      title: "The Lovers Tarot Meaning | Love, Soulmate, Upright & Reversed",
+      title: "The Lovers Tarot Meaning: Love, Soulmate & Reversed",
       description:
         "Read The Lovers tarot meaning for love, soulmate questions, choices, and relationships, plus upright and reversed interpretations and yes-or-no guidance.",
     }),
@@ -50,7 +50,7 @@ const cardMetadataOverrides: Partial<
   },
   "the-moon": {
     en: (answerWord) => ({
-      title: "The Moon Tarot Meaning | Symbolism, Love, Upright & Reversed",
+      title: "The Moon Tarot Meaning: Symbolism, Love & Reversed",
       description:
         `What does The Moon symbolize in tarot? Read The Moon upright and reversed meanings, hidden feelings, intuition, love, and a yes-or-no answer of ${answerWord.toLowerCase()}.`,
     }),
@@ -63,7 +63,7 @@ const cardMetadataOverrides: Partial<
   "ace-of-swords": {
     en: () => ({
       title:
-        "Ace of Swords Yes or No? Tarot Meaning, Love, Upright & Reversed",
+        "Ace of Swords Yes or No? Tarot Meaning & Love",
       description:
         "Is Ace of Swords a yes or no card? Usually yes. Read the Ace of Swords meaning for clarity, truth, love, career, and upright and reversed readings.",
     }),
@@ -98,7 +98,7 @@ function buildDefaultCardMetadataCopy(
         description: `${card.name.zh}塔罗牌义速读：查看正位与逆位解读、爱情与事业指引，以及“是否”答案：${answerWord}。`,
       }
     : {
-        title: `${card.name.en} Tarot Card Meaning | Upright & Reversed, Love, Yes or No (${answerWord})`,
+        title: `${card.name.en} Tarot Meaning: Yes/No, Love & Reversed`,
         description: `${card.name.en} tarot card meaning at a glance: upright and reversed interpretations, love and career guidance, and a yes-or-no answer of ${answerWord.toLowerCase()}.`,
       };
 }
