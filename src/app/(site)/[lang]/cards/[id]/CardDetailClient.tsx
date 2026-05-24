@@ -65,8 +65,15 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
           {card.number !== undefined && <> · {card.number}</>}
         </div>
         <h1 className="mt-3 font-serif-display text-5xl md:text-6xl text-primary">
-          {card.name[lang]}
+          {lang === "zh"
+            ? `${card.name.zh}塔罗牌义`
+            : `${card.name.en} Tarot Card Meaning`}
         </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+          {lang === "zh"
+            ? `查看${card.name.zh}的正位、逆位、爱情、事业与是或否解读。`
+            : `Read ${card.name.en} upright, reversed, love, career, and yes-or-no tarot meanings.`}
+        </p>
       </header>
 
       {/* Card visual */}

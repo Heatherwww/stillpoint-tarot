@@ -14,12 +14,12 @@ type Dict = Record<string, { en: string; zh: string }>;
 export const dict: Dict = {
   "nav.home": { en: "Home", zh: "首页" },
   "nav.reading": { en: "Ask the cards", zh: "问问牌" },
-  "nav.cards": { en: "Cards", zh: "牌库" },
+  "nav.cards": { en: "Card meanings", zh: "牌义" },
   "nav.shop": { en: "Shop", zh: "商店" },
   "nav.brand": { en: "Stillpoint Tarot", zh: "静点塔罗" },
 
   // Card library
-  "cards.title": { en: "The Card Library", zh: "塔罗牌库" },
+  "cards.title": { en: "78 Tarot Card Meanings", zh: "78 张塔罗牌牌义" },
   "cards.subtitle": {
     en: "All 78 cards of the Rider-Waite-Smith deck. Tap any card to read its full meaning, upright and reversed.",
     zh: "莱德-韦特-史密斯牌组共 78 张。点击任意一张牌，查看它的正位、逆位与完整牌义。",
