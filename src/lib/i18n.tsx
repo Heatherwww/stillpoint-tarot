@@ -62,6 +62,13 @@ export const dict: Dict = {
     zh: "单张牌义很有用；但一次抽牌会更直接：它会把牌放进那个你一直放不下的问题里。",
   },
   "card.readingCta.button": { en: "Ask your question", zh: "带着问题去抽牌" },
+  "card.quick.upright": { en: "Upright meaning", zh: "正位含义" },
+  "card.quick.reversed": { en: "Reversed meaning", zh: "逆位含义" },
+  "card.quick.yesNo": { en: "Yes or no tarot", zh: "是或否塔罗" },
+  "card.yesNoGuide.link": {
+    en: "Read the yes-or-no tarot guide",
+    zh: "继续看 Yes or No 塔罗怎么问",
+  },
   "card.back": { en: "← Back to all cards", zh: "← 返回牌库" },
   "card.prev": { en: "Previous card", zh: "上一张牌" },
   "card.next": { en: "Next card", zh: "下一张牌" },

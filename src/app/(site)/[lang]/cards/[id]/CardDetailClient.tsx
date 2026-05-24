@@ -6,6 +6,11 @@ import { useLang } from "@/lib/i18n";
 import { fullDeck, getCardImagePath, type TarotCard } from "@/lib/cards";
 import { getCardExtras } from "@/lib/cardExtras";
 
+function firstSentence(text: string, lang: "en" | "zh") {
+  const match = text.match(lang === "zh" ? /[^。！？]+[。！？]?/ : /[^.!?]+[.!?]?/);
+  return match?.[0]?.trim() || text;
+}
+
 export default function CardDetailClient({ card }: { card: TarotCard }) {
   const { t, lang } = useLang();
   const extras = getCardExtras(card);
@@ -131,6 +136,42 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         )}
       </div>
 
+      {/* High-intent summary for search visitors scanning card meanings */}
+      <section className="mt-10 rounded-2xl border border-border bg-surface p-6 md:p-8">
+        <h2 className="font-serif-display text-2xl text-primary">
+          {lang === "zh"
+            ? `${card.name.zh}塔罗牌义速览`
+            : `${card.name.en} tarot meaning quick answer`}
+        </h2>
+        <div className="mt-5 grid gap-4 md:grid-cols-3">
+          <div className="rounded-2xl border border-border bg-background/40 p-4">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-accent">
+              {t("card.quick.upright")}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+              {firstSentence(card.upright[lang], lang)}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-background/40 p-4">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-accent">
+              {t("card.quick.reversed")}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+              {firstSentence(card.reversed[lang], lang)}
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-background/40 p-4">
+            <h3 className="text-sm font-medium uppercase tracking-wider text-accent">
+              {t("card.quick.yesNo")}
+            </h3>
+            <p className="mt-3 text-sm leading-relaxed text-foreground/80">
+              {lang === "zh" ? `${yesNoLabel}。` : `${yesNoLabel}. `}
+              {firstSentence(extras.yesNo.explain[lang], lang)}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Primary CTA for search visitors who land on a card meaning page */}
       <section className="mt-10 rounded-3xl border border-primary/30 bg-primary/10 p-6 shadow-lg shadow-primary/10 md:p-8">
         <p className="text-[10px] uppercase tracking-[0.2em] text-accent">
@@ -235,6 +276,12 @@ export default function CardDetailClient({ card }: { card: TarotCard }) {
         <p className="mt-4 text-foreground/85 leading-relaxed">
           {extras.yesNo.explain[lang]}
         </p>
+        <Link
+          href={`/${lang}/guides/yes-no-tarot`}
+          className="mt-4 inline-block text-sm font-medium text-primary hover:text-primary-hover"
+        >
+          {t("card.yesNoGuide.link")}
+        </Link>
       </section>
 
       {/* Related cards */}

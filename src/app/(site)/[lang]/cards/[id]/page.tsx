@@ -22,7 +22,7 @@ function yesNoWord(answer: "yes" | "no" | "maybe", lang: Lang) {
 }
 
 const cardMetadataOverrides: Partial<
-  Record<string, Record<Lang, (answerWord: string) => CardMetadataCopy>>
+  Record<string, Partial<Record<Lang, (answerWord: string) => CardMetadataCopy>>>
 > = {
   "the-fool": {
     en: () => ({
@@ -73,6 +73,62 @@ const cardMetadataOverrides: Partial<
         "宝剑首牌在“是否”问题里通常偏向“是”。查看它在清晰、真相、爱情与事业中的正位逆位解读。",
     }),
   },
+  "knight-of-cups": {
+    en: (answerWord) => ({
+      title: "Knight of Cups Reversed Meaning, Love & Yes or No",
+      description:
+        `Read Knight of Cups reversed meaning for love, romance, emotional offers, upright guidance, and a yes or no answer of ${answerWord.toLowerCase()}.`,
+    }),
+  },
+  "knight-of-pentacles": {
+    en: (answerWord) => ({
+      title: "Knight of Pentacles Tarot Meaning: Love & Reversed",
+      description:
+        `Read Knight of Pentacles tarot meaning for love, work, patience, reversed energy, and a yes or no answer of ${answerWord.toLowerCase()}.`,
+    }),
+  },
+  "ten-of-pentacles": {
+    en: (answerWord) => ({
+      title: "Ten of Pentacles Yes or No, Love & Tarot Meaning",
+      description:
+        `Is Ten of Pentacles a yes or no card? Read its tarot meaning for love, family, money, upright and reversed guidance. Answer: ${answerWord}.`,
+    }),
+  },
+  "four-of-cups": {
+    en: (answerWord) => ({
+      title: "Four of Cups Yes or No, Love & Reversed Meaning",
+      description:
+        `Is Four of Cups a yes or no card? Read its tarot meaning for boredom, hesitation, love, reversed energy, and a ${answerWord.toLowerCase()} answer.`,
+    }),
+  },
+  "five-of-swords": {
+    en: (answerWord) => ({
+      title: "Five of Swords Yes or No, Love & Reversed Meaning",
+      description:
+        `Is Five of Swords a yes or no card? Read its tarot meaning for conflict, love, reversed energy, advice, and a ${answerWord.toLowerCase()} answer.`,
+    }),
+  },
+  "queen-of-cups": {
+    en: (answerWord) => ({
+      title: "Queen of Cups Yes or No, Love & Tarot Meaning",
+      description:
+        `Is Queen of Cups a yes or no card? Read its tarot meaning for love, feelings, intuition, upright and reversed guidance. Answer: ${answerWord}.`,
+    }),
+  },
+  "ten-of-wands": {
+    en: (answerWord) => ({
+      title: "Ten of Wands Yes or No, Love & Reversed Meaning",
+      description:
+        `Is Ten of Wands a yes or no card? Read its tarot meaning for burden, burnout, love, reversed guidance, and a ${answerWord.toLowerCase()} answer.`,
+    }),
+  },
+  "three-of-cups": {
+    en: (answerWord) => ({
+      title: "Three of Cups Reversed Meaning, Love & Yes or No",
+      description:
+        `Read Three of Cups reversed meaning for friendship, love, social tension, reunion questions, and a yes or no answer of ${answerWord.toLowerCase()}.`,
+    }),
+  },
   "three-of-pentacles": {
     en: () => ({
       title: "Three of Pentacles Meaning | Work, Collaboration, Love & Advice",
@@ -98,8 +154,8 @@ function buildDefaultCardMetadataCopy(
         description: `${card.name.zh}塔罗牌义速读：查看正位与逆位解读、爱情与事业指引，以及“是否”答案：${answerWord}。`,
       }
     : {
-        title: `${card.name.en} Tarot Meaning: Yes/No, Love & Reversed`,
-        description: `${card.name.en} tarot card meaning at a glance: upright and reversed interpretations, love and career guidance, and a yes-or-no answer of ${answerWord.toLowerCase()}.`,
+        title: `${card.name.en} Tarot Meaning: Yes or No, Love & Reversed`,
+        description: `${card.name.en} tarot card meaning at a glance: upright and reversed interpretations, love and career guidance, and a yes or no answer of ${answerWord.toLowerCase()}.`,
       };
 }
 
