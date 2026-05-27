@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>001 Preview Loop</title>
+  <style>
+    body {
+      margin: 0;
+      background: #121015;
+      color: #f5ecdc;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif;
+    }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px;
+    }
+    .stage {
+      display: grid;
+      grid-template-columns: minmax(280px, 420px) 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    #loop {
+      width: 100%;
+      border: 1px solid #4b4153;
+      border-radius: 8px;
+      background: #18141d;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+    figure {
+      margin: 0;
+      background: #1c1822;
+      border: 1px solid #403747;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    figure img {
+      width: 100%;
+      display: block;
+      border-radius: 6px;
+    }
+    figcaption {
+      margin-top: 8px;
+      color: #bdb2c4;
+      font-size: 13px;
+    }
+    @media (max-width: 800px) {
+      .stage { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>001 Preview Loop</h1>
+    <div class="stage">
+      <img id="loop" src="frames/01-selection.png" alt="preview loop">
+      <div>
+        <p>This is a structural reference only. The final video should feel like a real person reading at a table, with actual hand movement, card turns, pauses, and spoken interpretation.</p>
+        <p>Landing points: 00:50 / 07:45 / 14:55 / 22:45.</p>
+      </div>
+    </div>
+    <section class="grid">
+        <figure><img src="frames/01-selection.png" alt="01-selection"><figcaption>01-selection.png</figcaption></figure>
+        <figure><img src="frames/02-group-1-spread.png" alt="02-group-1-spread"><figcaption>02-group-1-spread.png</figcaption></figure>
+        <figure><img src="frames/03-group-1-key.png" alt="03-group-1-key"><figcaption>03-group-1-key.png</figcaption></figure>
+        <figure><img src="frames/04-group-2-spread.png" alt="04-group-2-spread"><figcaption>04-group-2-spread.png</figcaption></figure>
+        <figure><img src="frames/05-group-2-key.png" alt="05-group-2-key"><figcaption>05-group-2-key.png</figcaption></figure>
+        <figure><img src="frames/06-group-3-spread.png" alt="06-group-3-spread"><figcaption>06-group-3-spread.png</figcaption></figure>
+        <figure><img src="frames/07-group-3-key.png" alt="07-group-3-key"><figcaption>07-group-3-key.png</figcaption></figure>
+        <figure><img src="frames/08-closing.png" alt="08-closing"><figcaption>08-closing.png</figcaption></figure>
+    </section>
+  </main>
+  <script>
+    const frames = [
+      "frames/01-selection.png",
+      "frames/02-group-1-spread.png",
+      "frames/03-group-1-key.png",
+      "frames/04-group-2-spread.png",
+      "frames/05-group-2-key.png",
+      "frames/06-group-3-spread.png",
+      "frames/07-group-3-key.png",
+      "frames/08-closing.png"
+    ];
+    let index = 0;
+    const img = document.getElementById("loop");
+    setInterval(() => {
+      index = (index + 1) % frames.length;
+      img.src = frames[index];
+    }, 1800);
+  </script>
+</body>
+</html>

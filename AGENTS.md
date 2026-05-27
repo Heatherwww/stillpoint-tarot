@@ -96,6 +96,10 @@ reference/
 ├── deck-art/
 │   ├── README.md            # Custom deck-art workflow, review criteria, and sample commands
 │   └── preserve-structure-anchor-cards.json # Prompt manifest for the first 6 anchor cards
+├── video/
+│   ├── README.md            # Naming rules for video projects and prototypes
+│   ├── 001-*/               # Planned video project folders: draw logs, scripts, briefs
+│   └── prototype-*/         # Technical/format experiments and preview exports
 scripts/
 └── download-cards.mjs       # One-off script to fetch card art from Wikimedia Commons
 └── generate-deck-art.mjs    # Batch-generate custom tarot art samples via the OpenAI Image API

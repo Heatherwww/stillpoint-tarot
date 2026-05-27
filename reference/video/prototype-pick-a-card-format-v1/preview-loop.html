@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stillpoint Pick-A-Card Prototype</title>
+  <style>
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: #141214;
+      display: grid;
+      place-items: center;
+      color: #f3ecdc;
+      font-family: "Microsoft YaHei", Arial, sans-serif;
+    }
+    .frame {
+      width: min(100vw, 1280px);
+      aspect-ratio: 16 / 9;
+      background-size: cover;
+      background-position: center;
+      animation: stillpointPilot 104s linear infinite;
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
+    }
+    .hint {
+      margin-top: 16px;
+      color: #bfb5a9;
+      font-size: 14px;
+    }
+    @keyframes stillpointPilot {   0.000%, 4.808% { background-image: url('scenes/scene-01.png'); }   4.808%, 12.500% { background-image: url('scenes/scene-02.png'); }   12.500%, 19.231% { background-image: url('scenes/scene-03.png'); }   19.231%, 26.923% { background-image: url('scenes/scene-04.png'); }   26.923%, 34.615% { background-image: url('scenes/scene-05.png'); }   34.615%, 42.308% { background-image: url('scenes/scene-06.png'); }   42.308%, 50.000% { background-image: url('scenes/scene-07.png'); }   50.000%, 57.692% { background-image: url('scenes/scene-08.png'); }   57.692%, 65.385% { background-image: url('scenes/scene-09.png'); }   65.385%, 73.077% { background-image: url('scenes/scene-10.png'); }   73.077%, 80.769% { background-image: url('scenes/scene-11.png'); }   80.769%, 88.462% { background-image: url('scenes/scene-12.png'); }   88.462%, 95.192% { background-image: url('scenes/scene-13.png'); }   95.192%, 100.000% { background-image: url('scenes/scene-14.png'); } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="frame" aria-label="Stillpoint Tarot pick-a-card prototype"></div>
+    <div class="hint">HTML preview loops the scene timing. MP4/GIF exports use the same frames.</div>
+  </main>
+</body>
+</html>

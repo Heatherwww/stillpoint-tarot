@@ -1,0 +1,155 @@
+{
+  "width": 1280,
+  "height": 720,
+  "scenes": [
+    {
+      "kind": "hero",
+      "duration": 5,
+      "title": "未来30天，\n你需要看见什么？",
+      "subtitle": "What needs your attention\nin the next 30 days?"
+    },
+    {
+      "kind": "pick",
+      "duration": 8,
+      "title": "三组选牌",
+      "subtitle": "Take a breath. Choose 1, 2, or 3."
+    },
+    {
+      "kind": "pick",
+      "duration": 7,
+      "title": "闭眼想一个问题",
+      "subtitle": "Let the first quiet answer be enough."
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 0,
+      "line": 0
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 0,
+      "line": 1
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 0,
+      "line": 2
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 1,
+      "line": 0
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 1,
+      "line": 1
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 1,
+      "line": 2
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 2,
+      "line": 0
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 2,
+      "line": 1
+    },
+    {
+      "kind": "group",
+      "duration": 8,
+      "group": 2,
+      "line": 2
+    },
+    {
+      "kind": "closing",
+      "duration": 7,
+      "title": "把它当作提醒，不是定论。",
+      "subtitle": "Use this as a mirror, not a verdict."
+    },
+    {
+      "kind": "closing",
+      "duration": 5,
+      "title": "保存你选中的组，月底回看。",
+      "subtitle": "Save your group and revisit it at month-end."
+    }
+  ],
+  "groups": [
+    {
+      "label": "第一组",
+      "label_en": "Group 1",
+      "title": "从恢复到行动",
+      "title_en": "From Recovery To Movement",
+      "cards": [
+        "the-star",
+        "ace-of-pentacles",
+        "eight-of-wands"
+      ],
+      "lines": [
+        [
+          "你不是没准备好，是需要降低噪音。",
+          "You are not unready. You need less noise."
+        ],
+        [
+          "先把一个小承诺落地，机会会顺着行动变清楚。",
+          "Land one small promise first; the next opening gets clearer through action."
+        ]
+      ]
+    },
+    {
+      "label": "第二组",
+      "label_en": "Group 2",
+      "title": "暂停是为了看清",
+      "title_en": "Pause To See Clearly",
+      "cards": [
+        "two-of-swords",
+        "the-hermit",
+        "three-of-pentacles"
+      ],
+      "lines": [
+        [
+          "现在最重要的不是立刻决定，而是拿回判断。",
+          "The point is not to decide instantly, but to reclaim your judgment."
+        ],
+        [
+          "向一个可靠的人确认现实，再决定下一步怎么走。",
+          "Check reality with someone steady, then choose the next step."
+        ]
+      ]
+    },
+    {
+      "label": "第三组",
+      "label_en": "Group 3",
+      "title": "温柔地换一个版本",
+      "title_en": "Change Gently",
+      "cards": [
+        "death",
+        "queen-of-cups",
+        "the-sun"
+      ],
+      "lines": [
+        [
+          "旧的方式正在结束，但你不需要用力证明自己。",
+          "An old way is ending; you do not need to prove yourself by force."
+        ],
+        [
+          "保留柔软，也保留边界，新的明亮会慢慢出来。",
+          "Keep your softness and your boundaries; brightness returns gradually."
+        ]
+      ]
+    }
+  ]
+}
