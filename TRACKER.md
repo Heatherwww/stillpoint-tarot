@@ -8,6 +8,12 @@ Keep command output, build logs, and other session-only notes out of this file u
 
 ## Now
 
+### Controlled guide sprint
+
+- Publish the first long-tail love / feelings guide cluster to test whether Google starts giving impressions beyond the broad card pages.
+- First page: `the-moon-as-feelings`.
+- Next candidates: `six-of-cups-as-feelings`, `four-of-cups-as-feelings`, `seven-of-swords-as-feelings`, `page-of-cups-as-feelings`, `does-he-miss-me-tarot-spread`, `no-contact-tarot-spread`, `will-they-reach-out-tarot-spread`.
+
 ### SEO follow-up
 
 - Request indexing in Google Search Console for the newest guide hubs.

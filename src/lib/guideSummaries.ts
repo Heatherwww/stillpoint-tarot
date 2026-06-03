@@ -10,6 +10,7 @@ export type GuideSlug =
   | "how-to-read-reversed-tarot-cards"
   | "court-cards-tarot-meanings"
   | "tarot-for-feelings"
+  | "the-moon-as-feelings"
   | "career-tarot-spreads"
   | "major-arcana-guide"
   | "questions-to-ask-tarot"
@@ -98,6 +99,17 @@ export const guideSummaries: GuideSummary[] = [
     description: {
       en: "Learn how to read feelings in tarot without forcing certainty: attraction, hesitation, avoidance, availability, and what the suits reveal.",
       zh: "学会怎样用塔罗读感受而不硬逼结论：吸引、犹疑、回避、情感可得性，以及四种花色如何透露一个人的内在状态。",
+    },
+  },
+  {
+    slug: "the-moon-as-feelings",
+    title: {
+      en: "The Moon as Feelings: Upright, Reversed, Love & No Contact",
+      zh: "月亮牌作为感受：正位、逆位、爱情与断联怎么读",
+    },
+    description: {
+      en: "Learn what The Moon means as feelings in tarot: uncertainty, longing, projection, fear, hidden emotion, reversed clarity, and what to do in love or no contact.",
+      zh: "理解月亮牌在感受问题里的含义：不确定、想念、投射、恐惧、隐藏情绪、逆位带来的澄清，以及在爱情或断联中该怎么看。",
     },
   },
   {

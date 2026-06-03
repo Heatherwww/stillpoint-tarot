@@ -1422,6 +1422,217 @@ export const guides: Guide[] = [
     relatedGuideSlugs: ["three-card-tarot-spread", "tarot-card-meanings", "questions-to-ask-tarot"],
   },
   {
+    ...summaryBySlug["the-moon-as-feelings"],
+    intro: {
+      en: [
+        "Quick answer: The Moon as feelings usually points to emotional uncertainty, hidden longing, projection, fear, or a bond that feels intense but hard to read. It does not prove that someone is secretly in love, and it does not prove they feel nothing. It says the emotional field is cloudy.",
+        "In love or no-contact readings, The Moon often appears when someone is feeling more than they can clearly name or safely express. The useful question is not just do they feel something? It is what is making those feelings unclear, private, or difficult to act on?",
+      ],
+      zh: [
+        "快速答案：月亮牌作为感受，通常指向情绪不确定、隐藏的想念、投射、恐惧，或一种很强烈但很难读懂的连接。它不能证明某个人暗地里很爱你，也不能证明对方毫无感觉。它更像是在说：这片情绪场是有雾的。",
+        "在爱情或断联问题里，月亮牌常常出现在一个人感受很多、却说不清或不敢表达的时候。真正有用的问题不只是“ta 有没有感觉”，而是“是什么让这些感觉变得模糊、私密，或很难转化成行动？”",
+      ],
+    },
+    sections: [
+      {
+        id: "emotional-climate",
+        title: {
+          en: "What The Moon means as feelings",
+          zh: "月亮牌作为感受，核心在说什么",
+        },
+        paragraphs: {
+          en: [
+            "The Moon describes feelings that move through fog. There may be attraction, longing, worry, fantasy, distrust, shame, or intuition, but the person experiencing them may not be able to separate what is real from what is imagined. The feeling exists inside a charged emotional atmosphere rather than a clean statement.",
+            "This is why The Moon can feel so frustrating in a relationship reading. It rarely gives a simple yes or no. Instead, it shows that someone is responding through fear, memory, projection, or private sensitivity. The card asks you to slow down before turning uncertainty into a final story.",
+          ],
+          zh: [
+            "月亮牌描述的是在雾里流动的感受。里面可能有吸引、想念、担心、幻想、不信任、羞耻，或某种直觉，但经历这些感受的人，未必能分清哪些是真实的，哪些是被想象或过去经验放大的。它不是一句干净的表白，而是一片带电的情绪天气。",
+            "所以月亮牌在感情解读里会让人很焦躁。它很少直接给你一个简单的 yes 或 no。它更常显示：某个人正在透过恐惧、记忆、投射或私密的敏感来反应。它要求你先慢下来，不要把不确定立刻写成最终结论。",
+          ],
+        },
+      },
+      {
+        id: "upright-feelings",
+        title: {
+          en: "The Moon upright as feelings",
+          zh: "月亮正位作为感受",
+        },
+        paragraphs: {
+          en: [
+            "Upright, The Moon often suggests deep but unclear emotion. Someone may feel drawn to you, haunted by the situation, or unusually sensitive to small signals. They may read too much into silence, tone, timing, or old memories because the emotional body is louder than the rational mind.",
+            "That does not automatically mean readiness. The Moon upright can show a person who feels something, but does not know what to trust. They may hesitate, disappear, send mixed signals, or keep the connection in imagination because reality feels more vulnerable than fantasy.",
+          ],
+          zh: [
+            "正位的月亮，常常表示很深但不清楚的情绪。一个人可能被你吸引、被这段关系牵动，或对很小的信号异常敏感。沉默、语气、回复时间、旧回忆，都可能被放大，因为此刻情绪身体比理性头脑更响。",
+            "但这不自动等于准备好了。月亮正位可以表示一个人确实有感觉，却不知道该相信什么。ta 可能犹豫、消失、给出混合信号，或把连接停留在想象里，因为现实里的靠近比幻想更脆弱。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Likely feeling: private longing, confusion, emotional pull, anxiety, fantasy.",
+            "Possible behavior: silence, mixed signals, indirect watching, sudden withdrawal.",
+            "What not to assume: that confusion equals commitment, or that silence equals no feeling.",
+          ],
+          zh: [
+            "可能的感受：私下想念、困惑、情绪牵引、焦虑、幻想。",
+            "可能的表现：沉默、信号混杂、间接观察、突然退开。",
+            "不要直接假设：困惑等于承诺，或沉默等于没有感觉。",
+          ],
+        },
+      },
+      {
+        id: "reversed-feelings",
+        title: {
+          en: "The Moon reversed as feelings",
+          zh: "月亮逆位作为感受",
+        },
+        paragraphs: {
+          en: [
+            "Reversed, The Moon can show emotions beginning to surface after confusion. A person may be realizing what they feel, seeing through an illusion, or noticing that fear has been shaping the connection. Sometimes this is a gentle clearing. Sometimes it is uncomfortable because the truth is less romantic than the fantasy.",
+            "The reversed Moon can also show suppressed feelings that are becoming hard to contain. If someone has avoided the topic, hidden their vulnerability, or acted as if nothing matters, the reversal may mark the pressure point where the hidden emotional material starts asking to be named.",
+          ],
+          zh: [
+            "逆位的月亮，可能表示困惑之后，情绪开始浮出水面。一个人可能正在意识到自己真正的感受，看穿某种幻想，或发现一直是恐惧在塑造这段连接。有时这是一种温和的澄清；有时它会不舒服，因为真相比幻想少了一层浪漫滤镜。",
+            "月亮逆位也可能表示被压住的感受越来越难继续藏住。如果某个人一直回避话题、隐藏脆弱，或表现得好像什么都不重要，逆位可能标记了一个压力点：那些被藏起来的情绪内容，开始要求被说出来。",
+          ],
+        },
+        bullets: {
+          en: [
+            "Clearing version: fear starts to loosen, reality becomes easier to see.",
+            "Pressure version: hidden feelings, jealousy, grief, or uncertainty push upward.",
+            "Shadow version: denial, avoidance, or projection becomes harder to maintain.",
+          ],
+          zh: [
+            "澄清版本：恐惧开始松动，现实变得更容易被看见。",
+            "压力版本：隐藏的感受、嫉妒、悲伤或不确定开始往上浮。",
+            "阴影版本：否认、逃避或投射变得越来越难维持。",
+          ],
+        },
+      },
+      {
+        id: "love-no-contact",
+        title: {
+          en: "The Moon in love, separation, and no contact",
+          zh: "月亮牌在爱情、分开与断联里的含义",
+        },
+        paragraphs: {
+          en: [
+            "In love, The Moon often describes a bond that is emotionally real but not emotionally clear. There may be chemistry, tenderness, or longing, but also fear, mistrust, old wounds, poor timing, or stories that neither person has verified. The card asks you to separate emotional intensity from emotional safety.",
+            "In no contact, The Moon can mean someone is thinking or feeling in private, but it does not promise they will reach out. It can also show your own nervous system filling silence with imagined explanations. Before acting, ask what is known, what is guessed, and what direct communication would actually clarify.",
+          ],
+          zh: [
+            "在爱情里，月亮牌常常描述一种情绪上真实、但情绪上并不清楚的连接。里面可能有化学反应、柔软、想念，但也可能有恐惧、不信任、旧伤、时机不成熟，或双方都没有验证过的故事。它提醒你：情绪强度不等于情绪安全。",
+            "在断联里，月亮可以表示对方确实在私下想、私下感受，但它不保证对方会主动联系。它也可能显示你自己的神经系统正在用想象填补沉默。行动之前，先问清楚：什么是已知的，什么是猜的，什么是只有直接沟通才能澄清的。",
+          ],
+        },
+      },
+      {
+        id: "signals-and-pairings",
+        title: {
+          en: "Real-life signals and cards that change the meaning",
+          zh: "现实信号，以及会改变含义的组合牌",
+        },
+        paragraphs: {
+          en: [
+            "The Moon becomes clearer when you look at behavior and neighboring cards. On its own, it says emotion is hard to read. With other cards, it can lean toward longing, avoidance, fantasy, healing, or eventual honesty.",
+            "Do not use these pairings as rigid formulas. Use them as direction markers. A card combination shows the texture of the emotional field; it still needs the actual question and real-world behavior to become a useful reading.",
+          ],
+          zh: [
+            "月亮牌需要结合行为和旁边的牌，才会更清楚。它单独出现时，是在说情绪很难读懂；和其他牌放在一起时，它可能更偏向想念、逃避、幻想、疗愈，或最终诚实。",
+            "不要把这些组合当成死公式。把它们当成方向标就好。牌与牌的组合显示的是情绪场的质地；它仍然需要具体问题和现实行为，才能变成真正有用的解读。",
+          ],
+        },
+        bullets: {
+          en: [
+            "The Moon + Six of Cups: nostalgia, memory, missing the past, but possible idealization.",
+            "The Moon + Two of Cups: real emotional pull, but the connection may still lack clarity.",
+            "The Moon + Seven of Swords: secrecy, avoidance, partial truth, or hidden motives.",
+            "The Moon + Four of Cups: emotional withdrawal, numbness, or not responding to what is offered.",
+            "The Moon + Ace of Swords: confusion begins to clear through a direct truth or conversation.",
+          ],
+          zh: [
+            "月亮 + 圣杯六：怀旧、回忆、想念过去，但也可能有理想化。",
+            "月亮 + 圣杯二：确实有情绪牵引，但这段连接仍然不够清楚。",
+            "月亮 + 宝剑七：秘密、逃避、只说一部分真相，或隐藏动机。",
+            "月亮 + 圣杯四：情绪退缩、麻木，或没有回应眼前被递来的东西。",
+            "月亮 + 宝剑首牌：混乱开始被一句直接的真话或一次对话切开。",
+          ],
+        },
+      },
+      {
+        id: "what-to-do-next",
+        title: {
+          en: "What to do when The Moon appears as feelings",
+          zh: "抽到月亮作为感受之后，下一步怎么做",
+        },
+        paragraphs: {
+          en: [
+            "The Moon asks for reality-checking, not panic. If you are reading about another person, separate what they have actually done from what you are imagining they feel. If you are reading about yourself, notice where fear, desire, and memory are blending into one story.",
+            "A better follow-up question is: what would bring more clarity here? That might be time, a direct message, a boundary, a clarifying card, or choosing not to keep feeding a situation that only gives you fog.",
+          ],
+          zh: [
+            "月亮牌要的不是恐慌，而是现实校准。如果你在读另一个人，把 ta 实际做过的事和你想象 ta 可能有的感受分开。如果你在读自己，留意恐惧、欲望和回忆是在哪里混成了同一个故事。",
+            "更好的追问是：什么会让这里变得更清楚？答案可能是时间、一条直接的信息、一个边界、一张澄清牌，或决定不再继续喂养一个只给你雾气的情境。",
+          ],
+        },
+      },
+    ],
+    faqs: [
+      {
+        q: {
+          en: "Does The Moon mean someone has feelings for me?",
+          zh: "月亮牌代表对方对我有感觉吗？",
+        },
+        a: {
+          en: "It can, but the feelings are usually unclear, private, anxious, or mixed with projection. The Moon suggests emotional charge, not clean certainty or guaranteed action.",
+          zh: "有可能，但这种感觉通常不够清楚，比较私密、焦虑，或混杂着投射。月亮牌更像是在说这里有情绪电流，而不是给出干净确定的答案或保证行动。",
+        },
+      },
+      {
+        q: {
+          en: "What does The Moon reversed mean as feelings?",
+          zh: "月亮逆位作为感受是什么意思？",
+        },
+        a: {
+          en: "The Moon reversed can mean confusion is starting to clear, hidden feelings are surfacing, or someone is beginning to see through fear and fantasy. It can also show suppressed emotion becoming harder to hide.",
+          zh: "月亮逆位可能表示困惑开始澄清、隐藏的感受正在浮出水面，或某个人开始看穿恐惧与幻想。它也可能表示被压住的情绪越来越难继续藏住。",
+        },
+      },
+      {
+        q: {
+          en: "Is The Moon a bad card in love readings?",
+          zh: "月亮牌在爱情里是坏牌吗？",
+        },
+        a: {
+          en: "No, but it is not a simple comfort card. In love, The Moon often points to uncertainty, mixed signals, projection, fear, or emotional intensity without enough clarity.",
+          zh: "不是，但它也不是一张单纯让人安心的牌。在爱情里，月亮常常指向不确定、混合信号、投射、恐惧，或情绪很强但清晰度不够。",
+        },
+      },
+      {
+        q: {
+          en: "Does The Moon in no contact mean they miss me?",
+          zh: "断联里抽到月亮，代表对方想我吗？",
+        },
+        a: {
+          en: "It may show private longing or emotional preoccupation, but it can also show fear, confusion, or your own mind filling silence with imagined meaning. Look for supporting cards before reading it as missing you.",
+          zh: "它可能显示私下想念或情绪上被牵动，但也可能显示恐惧、困惑，或你自己的头脑正在用想象填补沉默。要不要读成“想你”，最好看旁边有没有支持牌。",
+        },
+      },
+      {
+        q: {
+          en: "Should I reach out if The Moon appears?",
+          zh: "抽到月亮牌时，我应该主动联系吗？",
+        },
+        a: {
+          en: "Not automatically. The Moon asks you to check what is real, what is guessed, and whether contact would bring clarity or deepen confusion. If you reach out, keep the message simple and reality-based.",
+          zh: "不自动建议。月亮牌要求你先分清什么是真实的、什么是猜测的，以及联系会带来澄清，还是让你更混乱。如果要联系，信息最好简单、具体、贴近现实。",
+        },
+      },
+    ],
+    relatedCardIds: ["the-moon", "six-of-cups", "two-of-cups", "seven-of-swords", "ace-of-swords"],
+    relatedGuideSlugs: ["tarot-for-feelings", "love-tarot-card-meanings", "questions-to-ask-tarot"],
+  },
+  {
     ...summaryBySlug["tarot-for-self-love"],
     intro: {
       en: [
