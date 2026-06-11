@@ -15,6 +15,7 @@ export const dict: Dict = {
   "nav.home": { en: "Home", zh: "首页" },
   "nav.reading": { en: "Ask the cards", zh: "问问牌" },
   "nav.cards": { en: "Card meanings", zh: "牌义" },
+  "nav.guides": { en: "Guides", zh: "指南" },
   "nav.shop": { en: "Shop", zh: "商店" },
   "nav.brand": { en: "Stillpoint Tarot", zh: "静点塔罗" },
 

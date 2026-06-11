@@ -26,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/cards/cups", priority: 0.8 },
     { path: "/cards/swords", priority: 0.8 },
     { path: "/cards/pentacles", priority: 0.8 },
+    { path: "/guides", priority: 0.85 },
     ...guideSummaries.map((guide) => ({
       path: `/guides/${guide.slug}`,
       priority: 0.8,

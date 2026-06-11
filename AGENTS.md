@@ -128,6 +128,7 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKE
 ### Static generation
 - `src/app/(site)/[lang]/layout.tsx` `generateStaticParams()` returns `[{lang:"en"},{lang:"zh"}]`.
 - `src/app/(site)/[lang]/cards/[id]/page.tsx` statically generates every card detail route across both locales.
+- `src/app/(site)/[lang]/guides/page.tsx` provides a static guide library hub across both locales.
 - `src/app/(site)/[lang]/guides/[slug]/page.tsx` statically generates every guide hub route across both locales.
 - Suit landing pages use static route folders (`cards/major/`, `cards/wands/`, …) which take priority over `[id]`.
 - `npm run build` validates the full statically generated route set.
@@ -136,6 +137,7 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKE
 ### SEO
 - Homepage, card library, and reading routes each ship page-specific metadata via `src/app/(site)/[lang]/_routeMeta.ts` rather than inheriting one generic layout title/description.
 - Homepage emits `WebSite` + `Organization` JSON-LD; card library emits `CollectionPage` JSON-LD.
+- The guide library hub at `/[lang]/guides` emits `CollectionPage` + `BreadcrumbList` JSON-LD and links to every guide.
 - Guide hubs live at static keyword-targeted slugs under `/[lang]/guides/` and ship `Article` + `BreadcrumbList` + `FAQPage` JSON-LD per guide.
 - Guide metadata and long-form content live in `src/lib/guides.ts`, while homepage/card-library/footer guide links use the lightweight `src/lib/guideSummaries.ts` export to avoid shipping long-form guide copy to the client bundle.
 - Per-card `generateMetadata()` is lang-aware: bilingual title/description, `alternates.languages` (en + zh-CN + x-default), `og:locale` / `og:alternateLocale`, canonical URL pointing at the lang-specific URL.
@@ -161,6 +163,7 @@ CLAUDE.md                    # Claude entrypoint that imports AGENTS.md + TRACKE
 |-------|------|-------------|
 | `/` | Dynamic | Server redirect to `/en` or `/zh` based on `Accept-Language` |
 | `/[lang]` | SSG | Homepage hub, per locale |
+| `/[lang]/guides` | SSG | Guide library hub linking to every SEO guide |
 | `/[lang]/guides/[slug]` | SSG | SEO guide hubs for broader search intent |
 | `/[lang]/reading` | SSG | Interactive reading page |
 | `/[lang]/cards` | SSG | Filterable card library |
@@ -234,7 +237,7 @@ Edit `src/app/(site)/[lang]/HomePageClient.tsx` for UI and `src/app/(site)/[lang
 Edit `src/app/(site)/[lang]/cards/CardsIndexClient.tsx` for the filterable grid and `src/app/(site)/[lang]/cards/page.tsx` for metadata / `CollectionPage` JSON-LD.
 
 ### Add or edit guide content
-Edit `src/lib/guides.ts` for bilingual guide copy, FAQs, related cards, and inter-guide links. Edit `src/lib/guideSummaries.ts` when changing shared guide slugs, titles, or descriptions used by client components and sitemap. Edit `src/app/(site)/[lang]/guides/[slug]/page.tsx` for guide-route metadata / JSON-LD and `src/components/GuidePage.tsx` for guide layout.
+Edit `src/lib/guides.ts` for bilingual guide copy, FAQs, related cards, and inter-guide links. Edit `src/lib/guideSummaries.ts` when changing shared guide slugs, titles, or descriptions used by client components and sitemap. Edit `src/app/(site)/[lang]/guides/page.tsx` for the guide library hub, `src/app/(site)/[lang]/guides/[slug]/page.tsx` for guide-route metadata / JSON-LD, and `src/components/GuidePage.tsx` for guide layout.
 
 ### Add a suit landing page
 Use the shared `SuitPage` component from `src/components/SuitPage.tsx`. Build metadata via `buildSuitMetadata()` in `src/app/(site)/[lang]/cards/_suitMeta.ts`. Add the route to `sitemap.ts`.

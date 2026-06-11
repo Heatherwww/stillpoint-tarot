@@ -8,6 +8,12 @@ Keep command output, build logs, and other session-only notes out of this file u
 
 ## Now
 
+### Indexing recovery
+
+- Search Console shows core guide URLs can sit in `Discovered - currently not indexed` with no crawl date; prioritize crawl/index recovery before publishing more guide pages.
+- Add and submit the `/[lang]/guides` guide library hub as a stronger crawl path for every guide.
+- Manually inspect and request indexing for `/en`, `/en/guides`, `/en/cards`, `/en/guides/tarot-for-feelings`, `/en/guides/the-moon-as-feelings`, and `/en/cards/the-moon`.
+
 ### Controlled guide sprint
 
 - Publish the first long-tail love / feelings guide cluster to test whether Google starts giving impressions beyond the broad card pages.

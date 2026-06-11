@@ -85,6 +85,21 @@ export function buildGuideMetadata(
   };
 }
 
+export function buildGuidesIndexMetadata(lang: Lang): Metadata {
+  return buildPageMetadata(
+    lang,
+    "/guides",
+    {
+      en: "Tarot Guides Library | Love, Feelings, Spreads & Card Meanings",
+      zh: "塔罗指南库 | 爱情、感受、牌阵与牌义学习",
+    },
+    {
+      en: "Browse Stillpoint Tarot's full guide library for tarot card meanings, love readings, feelings, yes-or-no tarot, three-card spreads, reversals, court cards, and self-reflection.",
+      zh: "浏览 Stillpoint Tarot 的完整指南库：塔罗牌义、爱情解读、感受问题、Yes or No、三张牌牌阵、逆位、宫廷牌与自我探索。",
+    },
+  );
+}
+
 export function buildHomeMetadata(lang: Lang): Metadata {
   return buildPageMetadata(
     lang,
