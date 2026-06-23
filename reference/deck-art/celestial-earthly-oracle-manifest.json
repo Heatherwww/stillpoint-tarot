@@ -1,0 +1,140 @@
+{
+  "deckName": "Celestial & Earthly Spirits Oracle",
+  "workingTitleZh": "天地神谕（暂定，名称待 Heather 确定）",
+  "status": "DESIGN — anchor-first. Full art ingredients authored for the 6 anchor cards only; the other 34 are catalogued (name + reflective meaning) and get detailed ingredients after the anchors pass QC.",
+  "theme": "An original oracle rooted in classical Chinese mythology and folklore (public-domain sources such as 山海经, 淮南子, folk legend) — celestial deities, the four guardians and mythic creatures, and the forces of the Dao. Reflective and grounded, not fortune-telling spectacle.",
+  "format": { "type": "oracle", "cardCount": 40, "groups": ["天 Celestial", "地 Earthly", "人·道 Human & the Way"] },
+  "copyrightStance": "Public-domain mythology only. Fully original art. Do NOT reproduce any existing game/anime/film character design of these figures (e.g. no 原神/王者荣耀-style renditions). Ride the cultural source, invent the depiction.",
+  "_generatorNote": "This manifest uses the general pipeline schema (title as {en,zh}; per-card fields mustInclude/twist/paletteHint/compositionHint/avoid). The existing scripts/generate-deck-art.mjs reads a flat string title plus mustKeep/stillpointTwist — it needs a small generalization (accept {en,zh} title and the general field names) before it can consume this manifest. Generation is deferred until anchors are designed in full and Heather is ready.",
+
+  "brandBrief": {
+    "tone": ["reflective", "grounded", "reverent", "luminous", "quietly mythic"],
+    "rendering": "Painterly editorial illustration with an East-Asian ink-wash sensibility: confident brush-feel, generous negative space (留白), restrained detail, believable anatomy, soft atmosphere. Modern and premium, not historical reproduction.",
+    "border": "Elegant light border with a subtle cloud/line (云纹) motif, identical across every card. No text, titles, or numerals inside the art.",
+    "palette": "Traditional Chinese mineral-pigment palette: ink black, rice-paper cream, cinnabar/朱砂 red, azurite/石青 blue, malachite/石绿 green, aged gold. Muted and harmonious, never neon or garish.",
+    "avoid": [
+      "any text, titles, Roman or Chinese numerals, watermarks, logos, accidental lettering",
+      "copying any existing game/anime/film character design of these mythic figures",
+      "kitsch 'oriental' cliché, dragon-on-a-takeout-box look",
+      "hyper-sexualized styling",
+      "horror, gore, jump-scare tone",
+      "fortune-teller camp, cheap fantasy sparkle",
+      "over-saturated neon, photoreal collage look",
+      "Western fantasy art conventions that erase the East Asian rooting"
+    ]
+  },
+
+  "defaults": { "model": "<verify current image-model id before generating>", "size": "1024x1536", "quality": "high", "outputFormat": "png" },
+
+  "globalPromptBullets": [
+    "Create a single portrait-format oracle card illustration for an original Chinese-mythology oracle deck.",
+    "Root the figure in its classical source but invent a fully original depiction; do not copy any existing artwork, game, anime, or film design.",
+    "Use an ink-wash-meets-painterly style with generous negative space; readable at thumbnail, graceful at full size.",
+    "Keep the mood contemplative and reverent, not gothic spectacle or cute mascot.",
+    "Make every card feel like part of one unified, premium 40-card deck.",
+    "No text, no titles, no numerals, no watermark, no logo."
+  ],
+
+  "anchorCards": ["azure-dragon", "change", "vermilion-bird", "taiji", "houyi", "meng-po"],
+  "anchorRationale": "These six stress-test the style across the deck's full range: a repeating guardian-creature (azure-dragon, sets the 四象 consistency bar), a quiet emotional figure in a dark palette (change), a bright fiery expressive case (vermilion-bird), a minimal abstract symbol (taiji), a narrative action scene (houyi), and a somber heavy figure (meng-po). If the style holds here, it is safe to expand to the full 40.",
+
+  "cards": [
+    {
+      "id": "azure-dragon", "group": "地", "anchor": true,
+      "title": { "en": "Azure Dragon", "zh": "青龙" },
+      "meaning": { "en": "The rising force of the east — spring, beginnings, momentum that gathers like weather.", "zh": "东方升发之力——春、开端，如天气般聚拢的势能。" },
+      "mustInclude": ["a sinuous Chinese dragon coiling through cloud and rain", "sense of eastward rising movement", "water/storm atmosphere implied around it"],
+      "twist": "Power as quiet inevitability rather than aggression — the dragon as the turning of a season, not a monster.",
+      "paletteHint": "Azurite blue, malachite green, rain silver, a thread of gold scale.",
+      "compositionHint": "Diagonal upward sweep, lots of misted negative space, clear silhouette at thumbnail.",
+      "avoid": ["Western winged dragon", "fire-breathing menace", "video-game boss styling"]
+    },
+    {
+      "id": "change", "group": "天", "anchor": true,
+      "title": { "en": "Chang'e", "zh": "嫦娥" },
+      "meaning": { "en": "Distance and longing — the cost of ascent, beauty held far from what it loves.", "zh": "距离与思念——飞升的代价，美被高悬在所爱之外。" },
+      "mustInclude": ["a solitary woman figure on the moon", "vast moon disc and cold night sky", "a jade hare or osmanthus tree as quiet companion symbol"],
+      "twist": "Not a romantic moon goddess but a study in chosen solitude — serene, a little sorrowful, fully composed.",
+      "paletteHint": "Moonlit ivory, deep indigo night, pale silver, faint osmanthus gold.",
+      "compositionHint": "Strong vertical stillness, figure small against a large moon, generous emptiness.",
+      "avoid": ["sexualized styling", "fantasy armor", "neon glow effects"]
+    },
+    {
+      "id": "vermilion-bird", "group": "地", "anchor": true,
+      "title": { "en": "Vermilion Bird", "zh": "朱雀" },
+      "meaning": { "en": "The blazing south — full expression, summer, the courage to be wholly seen.", "zh": "炽烈的南方——全然的表达、夏，敢于被完全看见的勇气。" },
+      "mustInclude": ["a phoenix-like vermilion bird with spreading flame-feathers", "upward radiant southern fire energy", "graceful long tail feathers"],
+      "twist": "Brightness as openness, not destruction — warmth that reveals rather than burns.",
+      "paletteHint": "Cinnabar red, warm gold, ember orange against pale cream.",
+      "compositionHint": "Radial spread, strong central figure, bright but controlled contrast.",
+      "avoid": ["literal wildfire", "harsh neon orange", "Western firebird cliché"]
+    },
+    {
+      "id": "taiji", "group": "人·道", "anchor": true,
+      "title": { "en": "Taiji", "zh": "太极" },
+      "meaning": { "en": "Balance — the turning of opposites, neither side winning, both needed.", "zh": "衡——阴阳相生相转，无一方独胜，二者皆需。" },
+      "mustInclude": ["an abstract evocation of the taiji turning (light and dark in motion)", "ink-wash circular flow", "no human figure"],
+      "twist": "Render it as living motion and brush energy, not the flat logo — balance felt as a slow turning.",
+      "paletteHint": "Ink black and rice-paper cream, a single restrained accent of gold.",
+      "compositionHint": "Centered circular composition, maximal negative space, pure and quiet.",
+      "avoid": ["the clichéd flat yin-yang icon", "clutter", "literal symmetry that reads as a stamp"]
+    },
+    {
+      "id": "houyi", "group": "天", "anchor": true,
+      "title": { "en": "Houyi the Archer", "zh": "后羿" },
+      "meaning": { "en": "The necessary shot — decisive sacrifice, doing the hard thing that restores balance.", "zh": "必要的一箭——果决的牺牲，做那件恢复平衡的难事。" },
+      "mustInclude": ["an archer drawing a great bow toward the sky", "suns/golden crows being shot from the heavens", "scorched yet relieved earth below"],
+      "twist": "Heroism as solemn duty, not triumph — the weight of the choice visible in the figure.",
+      "paletteHint": "Scorched gold, deep sky blue, earth ochre, ember red.",
+      "compositionHint": "Dynamic tension along the bow's line, sky-heavy upper frame, clear narrative read.",
+      "avoid": ["macho action-poster energy", "gore", "comic-book dynamism"]
+    },
+    {
+      "id": "meng-po", "group": "人·道", "anchor": true,
+      "title": { "en": "Meng Po", "zh": "孟婆" },
+      "meaning": { "en": "Forgetting — release before the next beginning, laying a burden down at the threshold.", "zh": "忘——在下一段开始前放手，在桥头将重担卸下。" },
+      "mustInclude": ["an old woman offering a bowl of broth", "a dim threshold or bridge of passage", "soft mist of forgetting"],
+      "twist": "Tender rather than eerie — forgetting as mercy, the kindness of being allowed to let go.",
+      "paletteHint": "Dusk grey, faded jade, dim lantern gold, soft shadow.",
+      "compositionHint": "Quiet frontal offering, low warm light, heavy stillness with breathing room.",
+      "avoid": ["horror hag styling", "ghostly jump-scare", "grimdark tone"]
+    },
+
+    { "id": "pangu", "group": "天", "title": { "en": "Pangu", "zh": "盘古" }, "meaning": { "en": "Beginnings carved from chaos — the first separation that makes a world possible.", "zh": "从混沌中开辟——使世界得以成形的第一次分离。" } },
+    { "id": "nuwa", "group": "天", "title": { "en": "Nüwa", "zh": "女娲" }, "meaning": { "en": "Mending what is broken — care that patches the sky and remakes the whole.", "zh": "修补破损——补天的关怀，重新成全整体。" } },
+    { "id": "fuxi", "group": "天", "title": { "en": "Fuxi", "zh": "伏羲" }, "meaning": { "en": "Reading the patterns — order found by patiently watching the world.", "zh": "观象——在耐心观察世界中找到秩序。" } },
+    { "id": "queen-mother-west", "group": "天", "title": { "en": "Queen Mother of the West", "zh": "西王母" }, "meaning": { "en": "Keeper of thresholds — guardian of what must be earned, not taken.", "zh": "守界者——守护那些须靠修得、而非夺取之物。" } },
+    { "id": "jade-emperor", "group": "天", "title": { "en": "Jade Emperor", "zh": "玉皇大帝" }, "meaning": { "en": "Order and hierarchy — the rule you answer to, for better or worse.", "zh": "秩序与位阶——你须回应的那套规则，无论好坏。" } },
+    { "id": "golden-crow", "group": "天", "title": { "en": "Golden Crow", "zh": "金乌" }, "meaning": { "en": "Burning vitality — life force so strong it risks scorching.", "zh": "炽盛的生命力——强到可能灼伤的活力。" } },
+    { "id": "moon-toad", "group": "天", "title": { "en": "The Moon", "zh": "太阴" }, "meaning": { "en": "The hidden and the cyclical — quiet knowing that waxes and wanes.", "zh": "隐与循环——盈亏之间安静的明了。" } },
+    { "id": "big-dipper", "group": "天", "title": { "en": "The Big Dipper", "zh": "北斗" }, "meaning": { "en": "Orientation — finding true north when you are lost.", "zh": "指向——迷失时找到真正的方向。" } },
+    { "id": "weaver-maid", "group": "天", "title": { "en": "The Weaver Maid", "zh": "织女" }, "meaning": { "en": "Love stretched across separation — devotion that distance cannot cut.", "zh": "横跨分离的爱——距离斩不断的牵念。" } },
+    { "id": "cowherd", "group": "天", "title": { "en": "The Cowherd", "zh": "牛郎" }, "meaning": { "en": "Faithful waiting — keeping the promise through the long apart.", "zh": "忠诚的守候——在漫长的分离中守住承诺。" } },
+    { "id": "thunder-gods", "group": "天", "title": { "en": "The Thunder Gods", "zh": "雷公电母" }, "meaning": { "en": "Sudden reckoning — the jolt of truth that cannot be argued with.", "zh": "骤然的清算——无可辩驳的真相之击。" } },
+
+    { "id": "white-tiger", "group": "地", "title": { "en": "White Tiger", "zh": "白虎" }, "meaning": { "en": "The cutting west — autumn, courage, the clean severance that frees.", "zh": "肃杀的西方——秋、勇气，使人解脱的果断切断。" } },
+    { "id": "black-tortoise", "group": "地", "title": { "en": "Black Tortoise", "zh": "玄武" }, "meaning": { "en": "The still north — winter, endurance, depth that outlasts.", "zh": "沉静的北方——冬、耐力，比一切更长久的深沉。" } },
+    { "id": "phoenix", "group": "地", "title": { "en": "Phoenix", "zh": "凤凰" }, "meaning": { "en": "Renewal through ending — what rises only because something burned.", "zh": "由终结而新生——因有所焚毁才得以升起。" } },
+    { "id": "qilin", "group": "地", "title": { "en": "Qilin", "zh": "麒麟" }, "meaning": { "en": "Gentleness that harms nothing — strength chosen to be kind.", "zh": "不伤万物的温柔——选择以仁示人的力量。" } },
+    { "id": "dragon", "group": "地", "title": { "en": "Dragon of Waters", "zh": "龙" }, "meaning": { "en": "Momentum — power that moves the weather of your life.", "zh": "势——能改变你人生天气的力量。" } },
+    { "id": "fox-spirit", "group": "地", "title": { "en": "Fox Spirit", "zh": "狐仙" }, "meaning": { "en": "Transformation and allure — the mask, and what it both hides and reveals.", "zh": "化与魅——面具，以及它所掩藏与显露之物。" } },
+    { "id": "mountain-spirit", "group": "地", "title": { "en": "Mountain Spirit", "zh": "山神" }, "meaning": { "en": "Steadiness — the weight that holds when everything else moves.", "zh": "镇定——万物皆动时仍稳住的重量。" } },
+    { "id": "river-lord", "group": "地", "title": { "en": "River Lord", "zh": "河伯" }, "meaning": { "en": "Flow — the wisdom of surrendering to the current.", "zh": "流——顺应水势的智慧。" } },
+    { "id": "earth-god", "group": "地", "title": { "en": "Earth God", "zh": "土地" }, "meaning": { "en": "Belonging — the small local protector of where you stand.", "zh": "归属——守护你立足之地的小小神明。" } },
+    { "id": "tree-spirit", "group": "地", "title": { "en": "Tree Spirit", "zh": "树精" }, "meaning": { "en": "Slow growth — patience rooted deeper than any season.", "zh": "缓长——比任何季节都扎得更深的耐心。" } },
+    { "id": "jingwei", "group": "地", "title": { "en": "Jingwei", "zh": "精卫" }, "meaning": { "en": "Stubborn devotion — carrying stones to fill an impossible sea.", "zh": "执——衔石填海般固执的献身。" } },
+    { "id": "kun-peng", "group": "地", "title": { "en": "Kun-Peng", "zh": "鲲鹏" }, "meaning": { "en": "Vast transformation — outgrowing the scale you were born to.", "zh": "化境——超越你与生俱来的尺度。" } },
+
+    { "id": "zhong-kui", "group": "人·道", "title": { "en": "Zhong Kui", "zh": "钟馗" }, "meaning": { "en": "Protection — facing squarely what frightens you.", "zh": "驱邪——正面直视令你恐惧之物。" } },
+    { "id": "the-impermanent", "group": "人·道", "title": { "en": "The Impermanent", "zh": "无常" }, "meaning": { "en": "The threshold — what cannot be delayed, only met.", "zh": "临界——无法拖延、只能面对之事。" } },
+    { "id": "eight-immortals", "group": "人·道", "title": { "en": "The Eight Immortals", "zh": "八仙" }, "meaning": { "en": "Unconventional paths — many different ways across the same sea.", "zh": "异途——渡过同一片海的种种不同方式。" } },
+    { "id": "kuafu", "group": "人·道", "title": { "en": "Kuafu", "zh": "夸父" }, "meaning": { "en": "The pursuit that consumes — chasing the sun until it costs everything.", "zh": "逐——追日直至耗尽自身。" } },
+    { "id": "yugong", "group": "人·道", "title": { "en": "Yugong", "zh": "愚公" }, "meaning": { "en": "Perseverance — moving the mountain across generations.", "zh": "恒——以世代之力移山。" } },
+    { "id": "yuan", "group": "人·道", "title": { "en": "Yuan (Affinity)", "zh": "缘" }, "meaning": { "en": "Fated connection — the unseen threads that bind people together.", "zh": "缘分——将人系在一起的无形之线。" } },
+    { "id": "yin", "group": "人·道", "title": { "en": "Yin", "zh": "阴" }, "meaning": { "en": "Receptivity — rest, the dark that holds and restores.", "zh": "受——休养，承托并修复的暗。" } },
+    { "id": "yang", "group": "人·道", "title": { "en": "Yang", "zh": "阳" }, "meaning": { "en": "Action — brightness, the move outward into the world.", "zh": "动——明亮，向世界迈出的行动。" } },
+    { "id": "qi", "group": "人·道", "title": { "en": "Qi", "zh": "气" }, "meaning": { "en": "Vital breath — the living energy moving through everything.", "zh": "息——流贯万物的生命之气。" } },
+    { "id": "dao", "group": "人·道", "title": { "en": "The Dao", "zh": "道" }, "meaning": { "en": "The way — flow without forcing, the path that makes itself.", "zh": "道——顺势而不强求，自成之路。" } },
+    { "id": "hundun", "group": "人·道", "title": { "en": "Hundun (Chaos)", "zh": "混沌" }, "meaning": { "en": "The formless before form — pure potential, not yet decided.", "zh": "未分之形——纯粹的可能，尚未定型。" } }
+  ]
+}
