@@ -10,7 +10,7 @@
   "brandBrief": {
     "tone": ["reflective", "grounded", "reverent", "luminous", "quietly mythic"],
     "rendering": "Painterly editorial illustration with an East-Asian ink-wash sensibility: confident brush-feel, generous negative space (留白), restrained detail, believable anatomy, soft atmosphere. Modern and premium, not historical reproduction.",
-    "border": "Elegant light border with a subtle cloud/line (云纹) motif, identical across every card. No text, titles, or numerals inside the art.",
+    "border": "Elegant light cream border with ornate cloud-bracket (云头/云纹) flourishes at the four corners — this is the LOCKED deck border, identical across every card. Match the established anchor cards (e.g. generated/taiji.png, generated/change.png); do NOT use a plain thin double-line. No text, titles, or numerals inside the art.",
     "palette": "Traditional Chinese mineral-pigment palette: ink black, rice-paper cream, cinnabar/朱砂 red, azurite/石青 blue, malachite/石绿 green, aged gold. Muted and harmonious, never neon or garish.",
     "avoid": [
       "any text, titles, Roman or Chinese numerals, watermarks, logos, accidental lettering",

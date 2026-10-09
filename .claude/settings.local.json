@@ -20,7 +20,8 @@
       "Bash(curl -sLo public/cards/_test_wands.jpg \"https://commons.wikimedia.org/wiki/Special:FilePath/Wands01.jpg?width=500\")",
       "Bash(node scripts/download-cards.mjs)",
       "Bash(git reset:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "WebFetch(domain:www.qinprinting.com)"
     ]
   },
   "model": "claude-opus-4-5-20251001"
